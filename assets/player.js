@@ -83,7 +83,7 @@ function updateTrackCards() {
     const button = card.querySelector("[data-track-play]");
     if (!button) return;
     const label = isPlaying ? "Пауза" : "Слушать";
-    button.innerHTML = `<span aria-hidden="true">${isPlaying ? "Ⅱ" : "▶"}</span> ${label}`;
+    button.innerHTML = `<img class="track-play-button-icon" src="${controlIcon(isPlaying ? "pause" : "play")}" alt="" aria-hidden="true" /><span class="track-play-button-label">${label}</span>`;
     button.setAttribute("aria-label", `${label}: ${tracks[cardIndex].title}`);
   });
 }
