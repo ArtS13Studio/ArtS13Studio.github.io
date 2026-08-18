@@ -1,77 +1,153 @@
+const playerScript = document.currentScript;
+const assetsBase = new URL("./", playerScript?.src ?? window.location.href);
+
+const tracks = [
+  { title: "Пока горим", cover: "music/poka-gorim-cover.png", src: "audio/poka-gorim.mp3" },
+  { title: "Последний круг", cover: "music/posledniy-krug-cover.png", src: "audio/posledniy-krug.mp3" },
+  { title: "Разные голоса", cover: "music/raznye-golosa-cover.png", src: "audio/raznye-golosa.mp3" },
+  { title: "Маска у цеха", cover: "music/maska-u-tsekha-cover.png", src: "audio/maska-u-tsekha.mp3" },
+  { title: "Пока помнят имена", cover: "music/poka-pomnyat-imena-cover.png", src: "audio/poka-pomnyat-imena.mp3" },
+  { title: "Шествия", cover: "music/shestviya-cover.png", src: "audio/shestviya.mp3" },
+];
+
+document.body.insertAdjacentHTML("beforeend", `
+  <aside class="global-player" aria-label="Музыкальный плеер">
+    <div class="global-player-inner">
+      <div class="global-player-track">
+        <img data-player-cover src="" alt="" />
+        <div><span>Сейчас играет</span><strong data-player-title></strong></div>
+      </div>
+      <div class="global-player-transport">
+        <button type="button" data-player-previous aria-label="Предыдущий трек">⏮</button>
+        <button class="global-player-main-button" type="button" data-player-toggle aria-label="Воспроизвести">▶</button>
+        <button type="button" data-player-next aria-label="Следующий трек">⏭</button>
+      </div>
+      <div class="global-player-modes">
+        <button type="button" data-player-mode="repeat-one" aria-label="Повторять один трек" aria-pressed="false" title="Повторять один трек">↻<span>Один</span></button>
+        <button type="button" data-player-mode="sequential" aria-label="Слушать все треки подряд" aria-pressed="false" title="Слушать всё подряд">≡<span>Подряд</span></button>
+      </div>
+      <div class="global-player-progress">
+        <span data-player-current>0:00</span>
+        <input data-player-progress type="range" min="0" max="0" step="0.1" value="0" aria-label="Позиция воспроизведения" />
+        <span data-player-duration>0:00</span>
+      </div>
+    </div>
+    <audio data-global-audio preload="metadata"></audio>
+  </aside>
+`);
+
+const audio = document.querySelector("[data-global-audio]");
+const cover = document.querySelector("[data-player-cover]");
+const title = document.querySelector("[data-player-title]");
+const toggle = document.querySelector("[data-player-toggle]");
+const previous = document.querySelector("[data-player-previous]");
+const next = document.querySelector("[data-player-next]");
+const progress = document.querySelector("[data-player-progress]");
+const currentTime = document.querySelector("[data-player-current]");
+const duration = document.querySelector("[data-player-duration]");
+const modeButtons = document.querySelectorAll("[data-player-mode]");
+const trackCards = document.querySelectorAll("[data-track-index]");
+
+let currentIndex = 0;
 let playbackMode = "normal";
 
-const modeButtons = document.querySelectorAll("[data-playback-mode]");
-const modeStatus = document.querySelector("[data-playback-status]");
-const statusText = {
-  normal: "Выберите режим или запустите любой трек вручную.",
-  "repeat-one": "Выбранный трек будет повторяться.",
-  sequential: "После окончания автоматически включится следующий трек.",
-};
+function formatTime(value) {
+  if (!Number.isFinite(value)) return "0:00";
+  const minutes = Math.floor(value / 60);
+  const seconds = String(Math.floor(value % 60)).padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
 
-function getPlayers() {
-  return Array.from(document.querySelectorAll("audio"));
+function updateTrackCards() {
+  trackCards.forEach((card) => {
+    const cardIndex = Number(card.dataset.trackIndex);
+    const isCurrent = cardIndex === currentIndex;
+    const isPlaying = isCurrent && !audio.paused;
+    card.classList.toggle("is-current", isCurrent);
+    card.classList.toggle("is-playing", isPlaying);
+    const button = card.querySelector("[data-track-play]");
+    if (!button) return;
+    const label = isPlaying ? "Пауза" : "Слушать";
+    button.innerHTML = `<span aria-hidden="true">${isPlaying ? "Ⅱ" : "▶"}</span> ${label}`;
+    button.setAttribute("aria-label", `${label}: ${tracks[cardIndex].title}`);
+  });
+}
+
+function updatePlayerState() {
+  const playing = !audio.paused;
+  toggle.textContent = playing ? "Ⅱ" : "▶";
+  toggle.setAttribute("aria-label", playing ? "Пауза" : "Воспроизвести");
+  updateTrackCards();
+}
+
+function selectTrack(index, autoplay = true) {
+  currentIndex = (index + tracks.length) % tracks.length;
+  const track = tracks[currentIndex];
+  audio.src = new URL(track.src, assetsBase).href;
+  cover.src = new URL(track.cover, assetsBase).href;
+  title.textContent = track.title;
+  progress.value = "0";
+  currentTime.textContent = "0:00";
+  duration.textContent = "0:00";
+  updateTrackCards();
+  if (autoplay) {
+    audio.play().catch(updatePlayerState);
+  }
 }
 
 function setPlaybackMode(selectedMode) {
   playbackMode = playbackMode === selectedMode ? "normal" : selectedMode;
-  document.documentElement.dataset.playbackMode = playbackMode;
-
   modeButtons.forEach((button) => {
-    const isActive = button.dataset.playbackMode === playbackMode;
+    const isActive = button.dataset.playerMode === playbackMode;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
-
-  if (modeStatus) {
-    modeStatus.textContent = statusText[playbackMode];
-  }
-
-  if (playbackMode === "sequential") {
-    const players = getPlayers();
-    const hasActiveTrack = players.some((player) => !player.paused);
-
-    if (!hasActiveTrack && players[0]) {
-      void players[0].play();
-    }
-  }
 }
 
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    setPlaybackMode(button.dataset.playbackMode);
+trackCards.forEach((card) => {
+  card.querySelector("[data-track-play]")?.addEventListener("click", () => {
+    const index = Number(card.dataset.trackIndex);
+    if (index === currentIndex) {
+      if (audio.paused) audio.play().catch(updatePlayerState);
+      else audio.pause();
+      return;
+    }
+    selectTrack(index);
   });
 });
 
-document.addEventListener("play", (event) => {
-  const current = event.target;
+toggle.addEventListener("click", () => {
+  if (audio.paused) audio.play().catch(updatePlayerState);
+  else audio.pause();
+});
+previous.addEventListener("click", () => selectTrack(currentIndex - 1));
+next.addEventListener("click", () => selectTrack(currentIndex + 1));
+modeButtons.forEach((button) => button.addEventListener("click", () => setPlaybackMode(button.dataset.playerMode)));
 
-  if (!(current instanceof HTMLAudioElement)) return;
-
-  document.querySelectorAll("audio").forEach((player) => {
-    if (player !== current && !player.paused) {
-      player.pause();
-    }
-  });
-}, true);
-
-document.addEventListener("ended", (event) => {
-  const current = event.target;
-
-  if (!(current instanceof HTMLAudioElement)) return;
-
+progress.addEventListener("input", () => {
+  audio.currentTime = Number(progress.value);
+});
+audio.addEventListener("play", updatePlayerState);
+audio.addEventListener("pause", updatePlayerState);
+audio.addEventListener("timeupdate", () => {
+  progress.value = String(audio.currentTime);
+  currentTime.textContent = formatTime(audio.currentTime);
+});
+audio.addEventListener("loadedmetadata", () => {
+  progress.max = String(audio.duration || 0);
+  duration.textContent = formatTime(audio.duration);
+});
+audio.addEventListener("ended", () => {
   if (playbackMode === "repeat-one") {
-    current.currentTime = 0;
-    void current.play();
+    audio.currentTime = 0;
+    audio.play().catch(updatePlayerState);
     return;
   }
-
-  if (playbackMode === "sequential") {
-    const players = getPlayers();
-    const nextPlayer = players[players.indexOf(current) + 1];
-
-    if (nextPlayer) {
-      nextPlayer.currentTime = 0;
-      void nextPlayer.play();
-    }
+  if (playbackMode === "sequential" && currentIndex < tracks.length - 1) {
+    selectTrack(currentIndex + 1);
+    return;
   }
-}, true);
+  updatePlayerState();
+});
+
+selectTrack(0, false);
