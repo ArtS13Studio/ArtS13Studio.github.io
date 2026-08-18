@@ -37,8 +37,8 @@ document.body.insertAdjacentHTML("beforeend", `
         <button type="button" data-player-next aria-label="Следующий трек" title="Следующий трек"><img class="global-player-control-icon" src="${controlIcon("next")}" alt="" aria-hidden="true" /></button>
       </div>
       <div class="global-player-modes">
-        <button type="button" data-player-mode="repeat-one" aria-label="Повторять один трек" aria-pressed="false" title="Повторять один трек">↻<span>Один</span></button>
-        <button type="button" data-player-mode="sequential" aria-label="Слушать все треки подряд" aria-pressed="false" title="Слушать всё подряд">≡<span>Подряд</span></button>
+        <button class="player-mode-button" type="button" data-player-mode="repeat-one" aria-label="Повторять один трек" aria-pressed="false" title="Повторять один трек"><span class="player-mode-icon" aria-hidden="true">↻</span><span class="player-mode-label">Один</span></button>
+        <button class="player-mode-button" type="button" data-player-mode="sequential" aria-label="Слушать все треки подряд" aria-pressed="false" title="Слушать всё подряд"><span class="player-mode-icon player-mode-icon-list" aria-hidden="true">≡</span><span class="player-mode-label">Подряд</span></button>
       </div>
       <div class="global-player-progress">
         <span data-player-current>0:00</span>
