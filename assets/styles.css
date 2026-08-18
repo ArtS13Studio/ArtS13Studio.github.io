@@ -229,7 +229,7 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
 
 /* Общий музыкальный плеер — только в разделе музыки */
 .track-play-button { min-width: 138px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 18px; border: 1px solid rgba(184, 199, 211, .26); background: linear-gradient(90deg, rgba(5, 8, 12, .9), rgba(8, 10, 17, .72), rgba(5, 8, 12, .9)), url("player-background.jpg") center 55% / cover no-repeat; color: var(--steel); font-family: "Caesar Dressing Cyrillic", "Russo One", "Bahnschrift", sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .04em; line-height: 1; text-transform: uppercase; cursor: pointer; }
-.track-play-button-icon { width: 32px; height: 32px; flex: 0 0 32px; object-fit: cover; border: 0; background: transparent; mix-blend-mode: screen; transition: transform .2s ease, filter .2s ease; }
+.track-play-button-icon { width: 32px; height: 32px; flex: 0 0 32px; object-fit: contain; border: 0; background: transparent; transition: transform .2s ease, filter .2s ease; }
 .track-play-button-label { color: inherit; line-height: 1; }
 .track-play-button:hover, .is-current .track-play-button { border-color: var(--amber); color: var(--white); }
 .is-playing .track-play-button { background: linear-gradient(90deg, rgba(34, 20, 9, .78), rgba(15, 11, 22, .65), rgba(34, 20, 9, .78)), url("player-background.jpg") center 55% / cover no-repeat; }
@@ -254,10 +254,7 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
 .global-player-transport button { position: relative; isolation: isolate; width: 58px; height: 58px; overflow: visible; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 .global-player-transport button:hover { border-color: transparent; color: var(--white); box-shadow: none; }
 .global-player-transport .global-player-main-button { width: 66px; height: 66px; border: 0; border-radius: 0; color: var(--amber); }
-.global-player-control-icon { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transition: transform .2s ease, filter .2s ease; }
-.global-player-transport button[data-player-previous] .global-player-control-icon { clip-path: polygon(94% 4%, 6% 50%, 94% 96%); }
-.global-player-transport button[data-player-toggle] .global-player-control-icon,
-.global-player-transport button[data-player-next] .global-player-control-icon { clip-path: polygon(6% 4%, 94% 50%, 6% 96%); }
+.global-player-control-icon { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .2s ease, filter .2s ease; }
 @media (hover: hover) and (pointer: fine) {
   .global-player-transport button:hover .global-player-control-icon,
   .global-player-transport button:focus-visible .global-player-control-icon,

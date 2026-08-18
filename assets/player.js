@@ -22,7 +22,7 @@ if (!isMusicLibraryPage) {
     });
   }, true);
 } else {
-const controlIcon = (name) => new URL(`player-controls/${name}.jpg`, assetsBase).href;
+const controlIcon = (name) => new URL(`player-controls/${name}.png`, assetsBase).href;
 
 document.body.insertAdjacentHTML("beforeend", `
   <aside class="global-player" aria-label="Музыкальный плеер">
