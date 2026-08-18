@@ -22,6 +22,8 @@ if (!isMusicLibraryPage) {
     });
   }, true);
 } else {
+const controlIcon = (name) => new URL(`player-controls/${name}.jpg`, assetsBase).href;
+
 document.body.insertAdjacentHTML("beforeend", `
   <aside class="global-player" aria-label="Музыкальный плеер">
     <div class="global-player-inner">
@@ -30,9 +32,9 @@ document.body.insertAdjacentHTML("beforeend", `
         <div><span>Сейчас играет</span><strong data-player-title></strong></div>
       </div>
       <div class="global-player-transport">
-        <button type="button" data-player-previous aria-label="Предыдущий трек">⏮</button>
-        <button class="global-player-main-button" type="button" data-player-toggle aria-label="Воспроизвести">▶</button>
-        <button type="button" data-player-next aria-label="Следующий трек">⏭</button>
+        <button type="button" data-player-previous aria-label="Предыдущий трек" title="Предыдущий трек"><img class="global-player-control-icon" src="${controlIcon("previous")}" alt="" aria-hidden="true" /></button>
+        <button class="global-player-main-button" type="button" data-player-toggle aria-label="Воспроизвести" title="Воспроизвести"><img class="global-player-control-icon" data-player-main-icon src="${controlIcon("play")}" alt="" aria-hidden="true" /></button>
+        <button type="button" data-player-next aria-label="Следующий трек" title="Следующий трек"><img class="global-player-control-icon" src="${controlIcon("next")}" alt="" aria-hidden="true" /></button>
       </div>
       <div class="global-player-modes">
         <button type="button" data-player-mode="repeat-one" aria-label="Повторять один трек" aria-pressed="false" title="Повторять один трек">↻<span>Один</span></button>
@@ -52,6 +54,7 @@ const audio = document.querySelector("[data-global-audio]");
 const cover = document.querySelector("[data-player-cover]");
 const title = document.querySelector("[data-player-title]");
 const toggle = document.querySelector("[data-player-toggle]");
+const toggleIcon = document.querySelector("[data-player-main-icon]");
 const previous = document.querySelector("[data-player-previous]");
 const next = document.querySelector("[data-player-next]");
 const progress = document.querySelector("[data-player-progress]");
@@ -87,8 +90,9 @@ function updateTrackCards() {
 
 function updatePlayerState() {
   const playing = !audio.paused;
-  toggle.textContent = playing ? "Ⅱ" : "▶";
+  toggleIcon.src = controlIcon(playing ? "pause" : "play");
   toggle.setAttribute("aria-label", playing ? "Пауза" : "Воспроизвести");
+  toggle.setAttribute("title", playing ? "Пауза" : "Воспроизвести");
   updateTrackCards();
 }
 

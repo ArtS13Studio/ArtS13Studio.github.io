@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@font-face {
+  font-family: "Caesar Dressing Cyrillic";
+  src: url("fonts/CaesarDressingCyrillic.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
 :root {
   --black: #07090b;
@@ -243,9 +250,11 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
 .global-player-track strong { display: block; overflow: hidden; color: var(--white); font-size: 17px; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .global-player-transport { display: flex; align-items: center; justify-content: center; gap: 10px; }
 .global-player button { display: inline-grid; place-items: center; border: 1px solid transparent; background: transparent; color: var(--steel); font: inherit; cursor: pointer; }
-.global-player-transport button { width: 40px; height: 40px; font-size: 16px; }
-.global-player-transport button:hover { color: var(--white); }
-.global-player-transport .global-player-main-button { width: 50px; height: 50px; border-color: var(--amber); border-radius: 50%; color: var(--amber); font-size: 17px; }
+.global-player-transport button { width: 52px; height: 52px; overflow: hidden; padding: 0; border-color: rgba(74, 151, 224, .28); border-radius: 8px; background: #020305; box-shadow: 0 0 18px rgba(34, 113, 206, .08); }
+.global-player-transport button:hover { border-color: rgba(77, 167, 255, .72); color: var(--white); box-shadow: 0 0 20px rgba(44, 129, 225, .2); }
+.global-player-transport .global-player-main-button { width: 60px; height: 60px; border-color: rgba(97, 102, 255, .64); border-radius: 8px; color: var(--amber); }
+.global-player-control-icon { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .2s ease, filter .2s ease; }
+.global-player-transport button:hover .global-player-control-icon { filter: brightness(1.12); transform: scale(1.045); }
 .global-player-modes { display: flex; justify-content: flex-end; gap: 8px; }
 .global-player-modes button { min-width: 72px; min-height: 38px; grid-auto-flow: column; gap: 6px; padding: 7px 10px; border-color: var(--line); font-size: 17px; }
 .global-player-modes button span { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -268,9 +277,26 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .global-player-track img { width: 52px; height: 52px; flex-basis: 52px; }
   .global-player-track strong { font-size: 14px; }
   .global-player-transport { justify-content: flex-end; }
-  .global-player-transport button { width: 34px; height: 34px; }
-  .global-player-transport .global-player-main-button { width: 44px; height: 44px; }
+  .global-player-transport button { width: 42px; height: 42px; }
+  .global-player-transport .global-player-main-button { width: 50px; height: 50px; }
   .global-player-modes { grid-column: 1 / -1; justify-content: center; }
   .global-player-modes button { min-height: 36px; }
   .global-player-progress { grid-column: 1 / -1; }
+}
+/* Фирменный шрифт для крупных заголовков и названий треков */
+h1,
+h2,
+h3,
+.hero-content h1,
+.music-library-hero h1,
+.section-heading h2,
+.contact-section h2,
+.direction-card h3,
+.track-copy h3,
+.library-track-copy h2,
+.video-placeholder h3,
+.global-player-track strong {
+  font-family: "Caesar Dressing Cyrillic", "Russo One", "Bahnschrift", "Arial Narrow", sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
 }
