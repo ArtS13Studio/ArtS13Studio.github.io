@@ -228,11 +228,11 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
 }
 
 /* Общий музыкальный плеер — только в разделе музыки */
-.track-play-button { min-width: 138px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 18px; border: 1px solid rgba(184, 199, 211, .26); background: #0a0d10; color: var(--steel); font-family: "Caesar Dressing Cyrillic", "Russo One", "Bahnschrift", sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .04em; line-height: 1; text-transform: uppercase; cursor: pointer; }
+.track-play-button { min-width: 138px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 18px; border: 1px solid rgba(184, 199, 211, .26); background: linear-gradient(90deg, rgba(5, 8, 12, .9), rgba(8, 10, 17, .72), rgba(5, 8, 12, .9)), url("player-background.jpg") center 55% / cover no-repeat; color: var(--steel); font-family: "Caesar Dressing Cyrillic", "Russo One", "Bahnschrift", sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .04em; line-height: 1; text-transform: uppercase; cursor: pointer; }
 .track-play-button-icon { width: 32px; height: 32px; flex: 0 0 32px; object-fit: cover; border: 0; background: transparent; mix-blend-mode: screen; transition: transform .2s ease, filter .2s ease; }
 .track-play-button-label { color: inherit; line-height: 1; }
 .track-play-button:hover, .is-current .track-play-button { border-color: var(--amber); color: var(--white); }
-.is-playing .track-play-button { background: rgba(212, 138, 58, .13); }
+.is-playing .track-play-button { background: linear-gradient(90deg, rgba(34, 20, 9, .78), rgba(15, 11, 22, .65), rgba(34, 20, 9, .78)), url("player-background.jpg") center 55% / cover no-repeat; }
 .library-track { transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
 .library-track.is-current { border-color: rgba(212, 138, 58, .72); box-shadow: 0 0 0 1px rgba(212, 138, 58, .12), 0 18px 48px rgba(0, 0, 0, .3); transform: translateY(-3px); }
 .library-track-mood { min-height: 48px; }
