@@ -10,6 +10,18 @@ const tracks = [
   { title: "Шествия", cover: "music/shestviya-cover.png", src: "audio/shestviya.mp3" },
 ];
 
+const isMusicLibraryPage = document.querySelector(".music-page");
+
+if (!isMusicLibraryPage) {
+  document.addEventListener("play", (event) => {
+    const current = event.target;
+    if (!(current instanceof HTMLAudioElement)) return;
+
+    document.querySelectorAll("audio").forEach((player) => {
+      if (player !== current && !player.paused) player.pause();
+    });
+  }, true);
+} else {
 document.body.insertAdjacentHTML("beforeend", `
   <aside class="global-player" aria-label="Музыкальный плеер">
     <div class="global-player-inner">
@@ -151,3 +163,4 @@ audio.addEventListener("ended", () => {
 });
 
 selectTrack(0, false);
+}
