@@ -1,5 +1,6 @@
 const playerScript = document.currentScript;
 const assetsBase = new URL("./", playerScript?.src ?? window.location.href);
+const controlIcon = (name) => new URL(`player-controls/${name}.png`, assetsBase).href;
 
 const tracks = [
   { title: "Пока горим", cover: "music/poka-gorim-cover.png", src: "audio/poka-gorim.mp3" },
@@ -8,11 +9,33 @@ const tracks = [
   { title: "Маска у цеха", cover: "music/maska-u-tsekha-cover.png", src: "audio/maska-u-tsekha.mp3" },
   { title: "Пока помнят имена", cover: "music/poka-pomnyat-imena-cover.png", src: "audio/poka-pomnyat-imena.mp3" },
   { title: "Шествия", cover: "music/shestviya-cover.png", src: "audio/shestviya.mp3" },
+  { title: "Шов", cover: "music/shov-cover.jpg", src: "audio/shov.mp3" },
 ];
 
 const isMusicLibraryPage = document.querySelector(".music-page");
 
 if (!isMusicLibraryPage) {
+  const homeReleaseAudio = document.querySelector("[data-home-release-audio]");
+  const homeReleaseButton = document.querySelector("[data-home-release-play]");
+
+  function updateHomeReleaseButton() {
+    if (!homeReleaseAudio || !homeReleaseButton) return;
+    const isPlaying = !homeReleaseAudio.paused;
+    const label = isPlaying ? "Пауза" : "Слушать";
+    homeReleaseButton.innerHTML = `<img class="track-play-button-icon" src="${controlIcon(isPlaying ? "pause" : "play")}" alt="" aria-hidden="true" /><span class="track-play-button-label">${label}</span>`;
+    homeReleaseButton.setAttribute("aria-label", `${label}: Шов`);
+    homeReleaseButton.classList.toggle("is-playing", isPlaying);
+  }
+
+  homeReleaseButton?.addEventListener("click", () => {
+    if (!homeReleaseAudio) return;
+    if (homeReleaseAudio.paused) homeReleaseAudio.play().catch(updateHomeReleaseButton);
+    else homeReleaseAudio.pause();
+  });
+  homeReleaseAudio?.addEventListener("play", updateHomeReleaseButton);
+  homeReleaseAudio?.addEventListener("pause", updateHomeReleaseButton);
+  homeReleaseAudio?.addEventListener("ended", updateHomeReleaseButton);
+
   document.addEventListener("play", (event) => {
     const current = event.target;
     if (!(current instanceof HTMLAudioElement)) return;
@@ -22,8 +45,6 @@ if (!isMusicLibraryPage) {
     });
   }, true);
 } else {
-const controlIcon = (name) => new URL(`player-controls/${name}.png`, assetsBase).href;
-
 document.body.insertAdjacentHTML("beforeend", `
   <aside class="global-player" aria-label="Музыкальный плеер">
     <div class="global-player-inner">

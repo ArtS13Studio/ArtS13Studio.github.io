@@ -10,13 +10,13 @@
     <meta property="og:image" content="assets/og.png" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="preload" href="assets/fonts/CaesarDressingCyrillic.otf" as="font" type="font/otf" crossorigin />
-    <link rel="stylesheet" href="assets/styles.css?v=20260820-fontfix1" />
-    <script src="assets/player.js?v=20260818-mode1" defer></script>
+    <link rel="stylesheet" href="assets/styles.css?v=20260821-release1" />
+    <script src="assets/player.js?v=20260821-release1" defer></script>
   </head>
   <body>
     <main>
       <header class="site-header">
-        <a class="brand" href="#top" aria-label="ArtS13Studio — на главную"><span class="brand-mark">13</span><span>ArtS13Studio</span></a>
+        <a class="brand project-brand" href="#top" aria-label="13 AI the Dark и ArtS13Studio — на главную"><span class="project-brand-mark">13</span><span class="project-brand-copy"><strong>13 AI THE DARK</strong><small>ArtS13Studio</small></span></a>
         <nav aria-label="Основная навигация">
           <a href="#about">О студии</a><a href="#music">Музыка</a><a href="#video">Видео</a><a href="#gallery">Галерея</a>
         </nav>
@@ -35,6 +35,24 @@
           </div>
         </div>
         <div class="scroll-cue" aria-hidden="true"><span></span> Листайте ниже</div>
+      </section>
+
+      <section class="release-strip" aria-labelledby="home-release-title">
+        <div class="release-strip-cover-wrap">
+          <img class="release-strip-cover" src="assets/music/shov-cover.jpg" alt="Обложка трека «Шов»" />
+          <span class="release-strip-number" aria-hidden="true">07</span>
+        </div>
+        <div class="release-strip-copy">
+          <p class="release-kicker"><span aria-hidden="true"></span> Новый релиз · 13 AI the Dark</p>
+          <h2 id="home-release-title">Шов</h2>
+          <p>То, что разошлось, не обязательно выбрасывать. Иногда шов не прячет разрыв, а становится частью новой истории.</p>
+        </div>
+        <div class="release-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="release-strip-actions">
+          <button class="track-play-button home-release-play-button" type="button" data-home-release-play aria-label="Слушать трек «Шов»"><img class="track-play-button-icon" src="assets/player-controls/play.png" alt="" aria-hidden="true" /><span class="track-play-button-label">Слушать</span></button>
+          <a class="release-link" href="music/#release-shov">Открыть релиз <span aria-hidden="true">↗</span></a>
+        </div>
+        <audio data-home-release-audio preload="metadata" src="assets/audio/shov.mp3"></audio>
       </section>
 
       <section class="section" id="about">
