@@ -194,7 +194,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   background:
     linear-gradient(180deg, #07090b 0%, rgba(7, 9, 11, .42) 16%, rgba(7, 9, 11, .18) 48%, rgba(7, 9, 11, .34) 82%, #07090b 100%),
     linear-gradient(90deg, rgba(4, 6, 8, .24), rgba(4, 6, 8, .06) 50%, rgba(4, 6, 8, .24)),
-    url("music-atmosphere-hq.png") center top / cover no-repeat;
+    url("music-atmosphere-runes-notes-v2.png") center top / cover no-repeat;
   box-shadow: inset 0 48px 90px rgba(0, 0, 0, .28), inset 0 -56px 96px rgba(0, 0, 0, .42);
 }
 .music-section > * { max-width: 1300px; margin-left: auto; margin-right: auto; }
@@ -220,7 +220,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   background:
     linear-gradient(180deg, rgba(4, 6, 8, .18) 0%, rgba(4, 6, 8, .34) 52%, rgba(4, 6, 8, .54) 100%),
     linear-gradient(90deg, rgba(4, 6, 8, .12), rgba(4, 6, 8, .44) 50%, rgba(4, 6, 8, .12)),
-    url("music-atmosphere-hq.png") center / cover no-repeat;
+    url("music-atmosphere-runes-notes-v2.png") center / cover no-repeat;
 }
 .music-page > * { position: relative; z-index: 1; }
 .music-page-header { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 76px; padding: 0 6vw; border-bottom: 1px solid var(--line); background: rgba(4, 6, 8, .88); }
