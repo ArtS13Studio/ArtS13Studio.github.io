@@ -68,9 +68,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-brand-copy { display: grid; gap: 2px; line-height: 1; }
 .project-brand-copy strong { color: #d8dbe0; font-family: "Arial Narrow", "Roboto Condensed", Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .24em; white-space: nowrap; }
 .project-brand-copy small { color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: .08em; }
-nav { display: flex; gap: 28px; }
+nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
 nav a { color: var(--steel); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 nav a:hover { color: var(--white); }
+.nav-pending { display: grid; justify-items: center; gap: 2px; color: rgba(183, 192, 204, .72); font-size: 13px; font-weight: 700; letter-spacing: .08em; line-height: 1; text-transform: uppercase; cursor: default; }
+.nav-pending small { color: rgba(132, 143, 157, .72); font-size: 8px; font-weight: 500; letter-spacing: .04em; line-height: 1; text-transform: lowercase; white-space: nowrap; }
 .header-cta { justify-self: end; color: var(--amber); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 
 .hero {
@@ -151,7 +153,14 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .card-link { margin-top: 24px; color: var(--steel); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .card-link b { margin-left: 8px; color: var(--amber); }
 
-.music-section { max-width: none; background: #0a0d10; border-block: 1px solid var(--line); }
+.music-section {
+  max-width: none;
+  border-block: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, #07090b 0%, rgba(7, 9, 11, .9) 12%, rgba(7, 9, 11, .66) 38%, rgba(7, 9, 11, .74) 84%, #07090b 100%),
+    linear-gradient(90deg, rgba(4, 6, 8, .66), rgba(4, 6, 8, .42) 50%, rgba(4, 6, 8, .66)),
+    url("music-atmosphere.jpg") center top / cover no-repeat;
+}
 .music-section > * { max-width: 1300px; margin-left: auto; margin-right: auto; }
 .track-list { border-top: 1px solid var(--line); }
 .track { display: grid; grid-template-columns: 96px minmax(0, 1fr) minmax(280px, 420px); align-items: center; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
