@@ -65,6 +65,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .project-brand { gap: 10px; }
 .project-brand-mark { color: #c6c9ce; font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 38px; font-weight: 400; line-height: .82; letter-spacing: -.08em; text-shadow: 0 0 18px rgba(115, 103, 255, .16); }
+.project-brand-raven {
+  display: block;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(32, 184, 255, .16)) drop-shadow(0 0 14px rgba(168, 85, 247, .1));
+}
 .project-brand-copy { display: grid; gap: 2px; line-height: 1; }
 .project-brand-copy strong { color: #d8dbe0; font-family: "Arial Narrow", "Roboto Condensed", Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .24em; white-space: nowrap; }
 .project-brand-copy small { color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: .08em; }
@@ -229,7 +237,38 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .music-library-hero { max-width: 1480px; margin: 0 auto; padding: 100px 6vw 72px; }
 .music-library-hero h1 { margin-bottom: 24px; font-family: "Russo One", "Bahnschrift", "Arial Narrow", sans-serif; font-size: clamp(58px, 9vw, 136px); font-weight: 400; line-height: .88; letter-spacing: 0; }
 .music-library-hero > p:last-child { max-width: 650px; margin: 0; color: var(--muted); font-size: clamp(17px, 1.6vw, 21px); }
+.album-index {
+  max-width: 1480px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: -28px auto 68px;
+  padding: 0 6vw;
+}
+.album-index-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 8px 18px;
+  overflow: hidden;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  background: linear-gradient(115deg, rgba(14, 18, 24, .9), rgba(15, 12, 28, .82) 58%, rgba(6, 20, 31, .84));
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.album-index-card::before { content: ""; position: absolute; top: 0; right: 0; left: 0; height: 2px; background: var(--accent-gradient); opacity: .7; }
+.album-index-card > span { grid-column: 1 / -1; color: var(--accent-blue); font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.album-index-card strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: clamp(25px, 2.8vw, 38px); font-weight: 400; line-height: 1; letter-spacing: .025em; text-transform: uppercase; }
+.album-index-card small { align-self: end; color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.album-index-card:hover { border-color: rgba(32, 184, 255, .54); box-shadow: 0 18px 42px rgba(0, 0, 0, .28), 0 0 24px rgba(115, 103, 255, .07); transform: translateY(-3px); }
 .music-library { max-width: 1480px; margin: 0 auto; padding: 0 6vw 110px; }
+.album-section { scroll-margin-top: 90px; }
+.album-section + .album-section { margin-top: 100px; padding-top: 72px; border-top: 1px solid var(--line); }
+.album-section-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 560px); align-items: end; gap: 50px; margin-bottom: 32px; }
+.album-section-header h2 { margin: 0; font-size: clamp(42px, 6vw, 82px); line-height: .9; text-transform: uppercase; }
+.album-section-header > p { margin: 0; color: var(--muted); font-size: 15px; }
+.album-section-header .eyebrow { margin-bottom: 10px; }
 .featured-release {
   --release-red: #d4313e;
   position: relative;
@@ -276,6 +315,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .playback-mode-button.is-active { border-color: var(--accent-blue); background: linear-gradient(110deg, rgba(168, 85, 247, .14), rgba(32, 184, 255, .12)); color: var(--white); }
 .playback-mode-status { margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
 .music-library-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.music-library-grid-collaborations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-track { min-width: 0; display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(18, 24, 30, .74), rgba(8, 11, 14, .94)); }
 .library-cover { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid rgba(184, 199, 211, .12); }
 .library-track-copy { padding: 24px 4px 20px; }
@@ -309,7 +349,10 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .track-player-wrap { grid-column: 1 / -1; }
   .music-library-grid { grid-template-columns: 1fr; }
   .music-library-hero { padding: 84px 22px 54px; }
+  .album-index { margin: -20px auto 52px; padding: 0 22px; }
   .music-library { padding: 0 22px 84px; }
+  .album-section + .album-section { margin-top: 72px; padding-top: 52px; }
+  .album-section-header { grid-template-columns: 1fr; gap: 12px; }
   .featured-release { grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 28px; padding: 22px; }
   .featured-release-stitch { display: none; }
   .featured-release-meta { grid-template-columns: 1fr; gap: 8px; }
@@ -328,6 +371,7 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .project-brand-copy strong { font-size: 10px; letter-spacing: .16em; }
   .project-brand-copy small { font-size: 9px; }
   .project-brand-mark { font-size: 34px; }
+  .project-brand-raven { width: 36px; height: 36px; flex-basis: 36px; }
   .header-cta { font-size: 11px; }
   h1 { font-size: clamp(44px, 14vw, 72px); }
   h1 span { margin-top: 8px; }
@@ -344,6 +388,9 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .track-copy h3 { font-size: 22px; }
   .track-copy p { font-size: 13px; }
   .music-page-header .project-brand-copy { display: grid; }
+  .album-index { grid-template-columns: 1fr; margin: -10px auto 48px; padding: 0 22px; }
+  .album-index-card { padding: 18px; }
+  .album-section-header h2 { font-size: 44px; }
   .library-track { display: flex; }
   .featured-release { display: flex; flex-direction: column; gap: 22px; padding: 15px; }
   .featured-release-cover-wrap { width: 100%; }
