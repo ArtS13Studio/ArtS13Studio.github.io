@@ -6,10 +6,12 @@ const tracks = [
   { title: "Пока горим", cover: "music/poka-gorim-cover.png", src: "audio/poka-gorim.mp3" },
   { title: "Последний круг", cover: "music/posledniy-krug-cover.png", src: "audio/posledniy-krug.mp3" },
   { title: "Разные голоса", cover: "music/raznye-golosa-cover.png", src: "audio/raznye-golosa.mp3" },
-  { title: "Маска у цеха", cover: "music/maska-u-tsekha-cover.png", src: "audio/maska-u-tsekha.mp3" },
-  { title: "Пока помнят имена", cover: "music/poka-pomnyat-imena-cover.png", src: "audio/poka-pomnyat-imena.mp3" },
-  { title: "Шествия", cover: "music/shestviya-cover.png", src: "audio/shestviya.mp3" },
+  { title: "Маска у цеха", cover: "music/maska-u-tsekha-cover.png?v=20260901-album-covers1", src: "audio/maska-u-tsekha.mp3" },
+  { title: "Пока помнят имена", cover: "music/poka-pomnyat-imena-cover.png?v=20260901-album-covers1", src: "audio/poka-pomnyat-imena.mp3" },
+  { title: "Шествия", cover: "music/shestviya-cover.png?v=20260901-album-covers1", src: "audio/shestviya.mp3" },
   { title: "#Руна на частоте", cover: "music/runa-na-chastote-cover.png", src: "audio/runa-na-chastote.mp3" },
+  { title: "#Лис, кицунэ и пука", cover: "music/lis-kitsune-i-puka-cover.webp?v=20260901-album-covers1", src: "audio/lis-kitsune-i-puka.mp3" },
+  { title: "#Кузница трёх знаков", cover: "music/kuznitsa-trekh-znakov-cover.webp?v=20260901-album-covers1", src: "audio/kuznitsa-trekh-znakov.mp3" },
 ];
 
 const isMusicLibraryPage = document.querySelector(".music-page");
