@@ -3,21 +3,60 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ArtS13Studio — одежда, музыка и визуальные истории</title>
-    <meta name="description" content="Официальный сайт ArtS13Studio: бренд одежды 13th, музыкальный проект 13 AI the Dark и совместные проекты студии." />
-    <meta property="og:title" content="ArtS13Studio — одежда, музыка и истории" />
-    <meta property="og:description" content="Мастерская ArtS13Studio из Рязани: одежда 13th, музыкальный проект 13 AI the Dark и совместные проекты." />
-    <meta property="og:image" content="assets/og.png" />
+    <title>ArtS13Studio — одежда 13th, музыка и визуальные истории</title>
+    <meta name="description" content="ArtS13Studio — бренд одежды 13th из Рязани, лимитированные футболки, куртки и худи, музыкальный проект 13 AI the Dark и визуальные истории." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#07090b" />
+    <link rel="canonical" href="https://arts13studio.github.io/" />
+    <link rel="alternate" hreflang="ru" href="https://arts13studio.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="ArtS13Studio" />
+    <meta property="og:title" content="ArtS13Studio — одежда 13th, музыка и истории" />
+    <meta property="og:description" content="Лимитированная одежда 13th, музыкальный проект 13 AI the Dark и визуальные истории мастерской из Рязани." />
+    <meta property="og:url" content="https://arts13studio.github.io/" />
+    <meta property="og:image" content="https://arts13studio.github.io/assets/og.png" />
+    <meta property="og:image:alt" content="ArtS13Studio — одежда 13th и музыкальный проект 13 AI the Dark" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ArtS13Studio — одежда 13th" />
+    <meta name="twitter:description" content="Лимитированная одежда, музыка и визуальные истории из Рязани." />
+    <meta name="twitter:image" content="https://arts13studio.github.io/assets/og.png" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="preload" href="assets/fonts/CaesarDressingCyrillic.otf" as="font" type="font/otf" crossorigin />
-    <link rel="stylesheet" href="assets/styles.css?v=20260901-album-index1" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260901-clothing-seo1" />
     <script src="assets/player.js?v=20260901-two-album-releases1" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://arts13studio.github.io/#organization",
+            "name": "ArtS13Studio",
+            "url": "https://arts13studio.github.io/",
+            "logo": "https://arts13studio.github.io/assets/raven-brand-mark.png",
+            "description": "Бренд одежды 13th, музыкальный проект 13 AI the Dark и визуальные истории.",
+            "address": { "@type": "PostalAddress", "addressLocality": "Рязань", "addressCountry": "RU" },
+            "sameAs": ["https://vk.com/arts13studio", "https://www.youtube.com/@13AitheDark"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://arts13studio.github.io/#website",
+            "url": "https://arts13studio.github.io/",
+            "name": "ArtS13Studio",
+            "inLanguage": "ru-RU",
+            "publisher": { "@id": "https://arts13studio.github.io/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <main>
       <header class="site-header">
         <a class="brand project-brand" href="#top" aria-label="13 AI the Dark и ArtS13Studio — на главную"><img class="project-brand-raven" src="assets/raven-brand-mark.png" alt="" aria-hidden="true" /><span class="project-brand-copy"><strong>13 AI THE DARK</strong><small>ArtS13Studio</small></span></a>
         <nav aria-label="Основная навигация">
+          <a href="clothing/">Одежда</a>
           <a href="#about">О студии</a>
           <a href="#music">Музыка</a>
           <span class="nav-pending" aria-disabled="true">Клипы<small>(в разработке)</small></span>
@@ -29,11 +68,11 @@
       <section class="hero" id="top">
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow">Рязань · одежда · музыка · визуальные истории</p>
+          <p class="eyebrow">Рязань · одежда 13th · музыка · визуальные истории</p>
           <h1>Сделано с душой.<span>Холод, который согревает.</span></h1>
-          <p class="hero-copy">ArtS13Studio — небольшая мастерская, где разные направления соединяются в одну историю. Без громких обещаний. Просто продолжаем делать своё.</p>
+          <p class="hero-copy">ArtS13Studio — мастерская одежды 13th. Лимитированные вещи, музыка и визуальные истории складываются здесь в один живой проект.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#about">Смотреть направления</a>
+            <a class="button button-primary" href="clothing/">Смотреть лимитки</a>
             <a class="button button-ghost" href="#music">Слушать музыку</a>
           </div>
         </div>
@@ -57,6 +96,19 @@
         <audio data-home-release-audio preload="metadata" src="assets/audio/runa-na-chastote.mp3"></audio>
       </section>
 
+      <section class="section clothing-preview-section" id="clothing">
+        <div class="section-heading">
+          <div><p class="eyebrow">13th · основа ArtS13Studio</p><h2>Лимитированная одежда</h2></div>
+          <p>Бренд начинался с вещей. Здесь — новая глава лимитированной серии, а полный архив собран в отдельном разделе.</p>
+        </div>
+        <div class="clothing-feature-grid">
+          <article class="clothing-feature-card"><img src="assets/clothing/limited-11.webp" width="1000" height="1000" alt="Куртка 13th Forged, Not Made" loading="lazy" /><div><span>Limited 11 · куртка</span><h3>Forged, Not Made</h3></div></article>
+          <article class="clothing-feature-card"><img src="assets/clothing/limited-12.webp" width="1000" height="1000" alt="Куртка 13th Roots Remember" loading="lazy" /><div><span>Limited 12 · куртка</span><h3>Roots Remember</h3></div></article>
+          <article class="clothing-feature-card"><img src="assets/clothing/limited-13.webp" width="1000" height="1000" alt="Худи 13th Кельтская душа" loading="lazy" /><div><span>Limited 13 · худи</span><h3>Кельтская душа</h3></div></article>
+        </div>
+        <div class="clothing-preview-footer"><a class="button button-primary" href="clothing/">Смотреть все 13 лимиток <span aria-hidden="true">↗</span></a></div>
+      </section>
+
       <section class="section directions-section" id="about">
         <div class="section-heading">
           <div><p class="eyebrow">Один цех — несколько дорог</p><h2>Направления студии</h2></div>
@@ -67,6 +119,7 @@
             <div class="direction-sigil"><span class="direction-mark">13</span><span class="direction-runes" aria-hidden="true">ᛏ ᚺ</span></div>
             <h3>13th</h3>
             <p>Лимитированная одежда, базовая линейка и вещи, которые рождаются внутри цеха.</p>
+            <a class="card-link" href="clothing/">Открыть лимитки <b>↗</b></a>
           </article>
           <article class="direction-card direction-card--music" data-runes="ᚱ · ᚨ · ᚠ">
             <div class="direction-sigil"><span class="direction-mark direction-mark--wing">ᛉ</span><span class="direction-runes" aria-hidden="true">13 AI</span></div>
