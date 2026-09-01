@@ -246,22 +246,46 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   padding: 0 6vw;
 }
 .album-index-card {
+  --album-index-image: none;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 8px 18px;
+  min-height: 190px;
   overflow: hidden;
   padding: 22px 24px;
   border: 1px solid var(--line);
-  background: linear-gradient(115deg, rgba(14, 18, 24, .9), rgba(15, 12, 28, .82) 58%, rgba(6, 20, 31, .84));
+  background: #080b12;
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.album-index-card::before { content: ""; position: absolute; top: 0; right: 0; left: 0; height: 2px; background: var(--accent-gradient); opacity: .7; }
+.album-index-card::before { content: ""; position: absolute; z-index: 2; top: 0; right: 0; left: 0; height: 2px; background: var(--accent-gradient); opacity: .7; }
+.album-index-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image: linear-gradient(105deg, rgba(4, 7, 12, .95) 0%, rgba(9, 9, 20, .8) 54%, rgba(7, 14, 24, .58) 100%), var(--album-index-image);
+  background-position: center;
+  background-size: cover;
+  transition: transform .35s ease, filter .35s ease;
+}
+.album-index-card--singles { --album-index-image: url("music/runa-na-chastote-cover.png"); }
+.album-index-card--singles::after { background-position: center 48%; }
+.album-index-card--primary {
+  --album-index-image: url("music/derevo-s-tremya-kornyami-cover.webp");
+  border-color: rgba(115, 103, 255, .48);
+  box-shadow: inset 0 0 42px rgba(67, 63, 190, .08), 0 12px 35px rgba(0, 0, 0, .22);
+}
+.album-index-card--primary::after { background-position: center 51%; }
+.album-index-card > span, .album-index-card strong, .album-index-card small { position: relative; z-index: 1; }
 .album-index-card > span { grid-column: 1 / -1; color: var(--accent-blue); font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
 .album-index-card strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: clamp(25px, 2.8vw, 38px); font-weight: 400; line-height: 1; letter-spacing: .025em; text-transform: uppercase; }
+.album-index-title span { display: block; }
+.album-index-title span + span { margin-top: .08em; }
 .album-index-card small { align-self: end; color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
 .album-index-card:hover { border-color: rgba(32, 184, 255, .54); box-shadow: 0 18px 42px rgba(0, 0, 0, .28), 0 0 24px rgba(115, 103, 255, .07); transform: translateY(-3px); }
+.album-index-card:hover::after { filter: brightness(1.08) saturate(1.08); transform: scale(1.025); }
 .music-library { max-width: 1480px; margin: 0 auto; padding: 0 6vw 110px; }
 .album-section { scroll-margin-top: 90px; }
 .album-section + .album-section { margin-top: 100px; padding-top: 72px; border-top: 1px solid var(--line); }
@@ -397,7 +421,8 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .track-copy p { font-size: 13px; }
   .music-page-header .project-brand-copy { display: grid; }
   .album-index { grid-template-columns: 1fr; margin: -10px auto 48px; padding: 0 22px; }
-  .album-index-card { padding: 18px; }
+  .album-index-card { grid-template-columns: 1fr; min-height: 174px; padding: 18px; }
+  .album-index-card small { justify-self: start; white-space: normal; }
   .album-section-header h2 { font-size: 44px; }
   .library-track { display: flex; }
   .featured-release { display: flex; flex-direction: column; gap: 22px; padding: 15px; }
