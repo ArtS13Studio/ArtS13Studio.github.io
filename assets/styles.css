@@ -151,6 +151,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .section-heading h2, .contact-section h2 { max-width: 780px; margin-bottom: 0; font-size: clamp(38px, 5vw, 72px); line-height: .96; letter-spacing: -.03em; text-transform: uppercase; }
 .section-heading > p { max-width: 520px; margin: 0; color: var(--muted); }
 .section-heading.compact { align-items: center; }
+.section-heading--single { grid-template-columns: 1fr; }
 
 .directions-section { position: relative; isolation: isolate; }
 .directions-section::before { content: ""; position: absolute; z-index: -1; inset: 6% 2% 0; pointer-events: none; background: radial-gradient(circle at 50% 64%, rgba(61, 73, 158, .12), transparent 42%); filter: blur(20px); }
@@ -187,6 +188,8 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .rune-separator span, .rune-separator b { font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-style: normal; font-weight: 400; line-height: 1; }
 .rune-separator span { font-size: 18px; }
 .rune-separator b { color: rgba(188, 195, 212, .54); font-size: 22px; text-shadow: 0 0 18px rgba(98, 81, 255, .32); }
+.section-separator { margin: 22px auto 28px; }
+.section-separator--clips { margin-top: 34px; margin-bottom: 40px; }
 @media (hover: hover) and (pointer: fine) {
   .direction-card:hover { z-index: 2; transform: translateY(-8px); border-color: rgba(91, 121, 255, .46); background: linear-gradient(145deg, rgba(24, 24, 48, .9), rgba(8, 13, 22, .96)); box-shadow: 0 24px 62px rgba(0, 0, 0, .42), inset 0 0 36px rgba(70, 72, 205, .06); }
   .direction-card:hover::before { opacity: .74; transform: translate3d(0, -2%, 0) scale(1.04); }
