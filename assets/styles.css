@@ -422,6 +422,36 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   .limited-card:hover .limited-card-media img { filter: saturate(1.05) contrast(1.06); transform: scale(1.035); }
 }
 
+/* Клипы */
+.clips-page { position: relative; isolation: isolate; min-height: 100svh; overflow: hidden; background: #05070a; }
+.clips-page::before { content: ""; position: fixed; z-index: 0; inset: 0; pointer-events: none; background: radial-gradient(circle at 18% 24%, rgba(168, 85, 247, .11), transparent 28%), linear-gradient(180deg, rgba(3, 5, 8, .42), rgba(4, 7, 11, .92) 66%, #05070a), url("music-atmosphere-runes-notes-v2.png") center top / cover no-repeat; opacity: .9; }
+.clips-page > * { position: relative; z-index: 1; }
+.clips-page-header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 32px; min-height: 76px; padding: 0 6vw; border-bottom: 1px solid var(--line); background: rgba(4, 6, 8, .9); backdrop-filter: blur(14px); }
+.clips-page-header nav a[aria-current="page"] { color: var(--white); }
+.clips-hero { max-width: 1480px; margin: 0 auto; padding: 92px 6vw 48px; }
+.clips-hero h1 { max-width: 980px; margin: 0 0 20px; font-size: clamp(66px, 9vw, 132px); line-height: .84; text-transform: uppercase; }
+.clips-hero > p:last-child { max-width: 690px; margin: 0; color: var(--muted); font-size: clamp(17px, 1.55vw, 21px); }
+.clips-library { max-width: 1480px; margin: 0 auto; padding: 0 6vw 110px; }
+.clip-feature { position: relative; display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(280px, .7fr); gap: 34px; padding: 28px; border: 1px solid transparent; background: linear-gradient(145deg, rgba(8, 11, 16, .96), rgba(8, 9, 19, .93)) padding-box, var(--accent-gradient) border-box; box-shadow: 0 28px 84px rgba(0, 0, 0, .48), inset 0 0 54px rgba(83, 102, 238, .04); }
+.clip-feature::before { content: "01 · VIDEO"; position: absolute; z-index: 2; top: 18px; right: 20px; color: var(--accent-blue); font-size: 9px; font-weight: 800; letter-spacing: .18em; }
+.clip-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(184, 199, 211, .18); background: #020305; box-shadow: 0 16px 52px rgba(0, 0, 0, .46); }
+.clip-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.clip-copy { align-self: center; padding: 34px 18px 24px 0; }
+.clip-copy h2 { margin: 8px 0 18px; font-size: clamp(48px, 5.2vw, 82px); line-height: .88; text-transform: uppercase; }
+.clip-copy p { margin: 0; color: #b8c0c6; font-size: 15px; }
+.clip-meta { display: grid; gap: 10px; margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
+.clip-meta div { display: grid; grid-template-columns: 96px 1fr; gap: 14px; }
+.clip-meta dt { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.clip-meta dd { margin: 0; color: var(--steel); font-size: 12px; }
+.clip-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.clip-actions .button { min-width: 210px; }
+.home-clips-preview { position: relative; max-width: 1480px; display: grid; grid-template-columns: 190px minmax(0, 1fr) auto; align-items: center; gap: 36px; overflow: hidden; margin: 0 auto 82px; padding: 22px 6vw 22px 22px; border: 1px solid transparent; background: linear-gradient(105deg, rgba(6, 9, 13, .98), rgba(16, 12, 31, .94) 54%, rgba(4, 17, 27, .96)) padding-box, var(--accent-gradient) border-box; box-shadow: 0 26px 76px rgba(0, 0, 0, .34); }
+.home-clips-preview::after { content: "ᚨ · 13 AI · ᚱ"; position: absolute; right: 4%; bottom: 12px; color: rgba(115, 103, 255, .16); font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 13px; letter-spacing: .34em; pointer-events: none; }
+.home-clips-preview img { display: block; width: 190px; aspect-ratio: 1; object-fit: cover; border: 1px solid rgba(184, 199, 211, .18); }
+.home-clips-preview h2 { margin: 4px 0 10px; font-size: clamp(40px, 5vw, 72px); line-height: .88; text-transform: uppercase; }
+.home-clips-preview p:last-child { margin: 0; color: var(--muted); }
+.home-clips-preview .button { position: relative; z-index: 1; min-width: 210px; }
+
 .contact-section { max-width: 1480px; margin: 0 auto 72px; display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 80px; padding: 90px 6vw; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: radial-gradient(circle at 20% 40%, rgba(115, 103, 255, .10), transparent 40%); }
 .contact-links { display: grid; }
 .contact-links a { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--line); color: var(--steel); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -454,6 +484,15 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .limited-collection-heading { grid-template-columns: 1fr; gap: 18px; }
   .limited-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .clothing-contact { grid-template-columns: 1fr; gap: 28px; margin-bottom: 40px; padding: 70px 22px; }
+  .clips-page-header { grid-template-columns: 1fr auto; min-height: 66px; padding: 0 22px; }
+  .clips-page-header nav { display: none; }
+  .clips-hero { padding: 76px 22px 38px; }
+  .clips-library { padding: 0 22px 84px; }
+  .clip-feature { grid-template-columns: 1fr; gap: 0; padding: 18px; }
+  .clip-copy { padding: 28px 4px 8px; }
+  .home-clips-preview { grid-template-columns: 148px minmax(0, 1fr); gap: 24px; margin: 0 22px 68px; padding: 16px; }
+  .home-clips-preview img { width: 148px; }
+  .home-clips-preview .button { grid-column: 1 / -1; width: 100%; }
   .track { grid-template-columns: 76px 1fr; gap: 18px; }
   .track-cover { width: 76px; }
   .track-player-wrap { grid-column: 1 / -1; }
@@ -500,6 +539,19 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   .limited-grid { grid-template-columns: 1fr; }
   .limited-card-copy { min-height: 0; }
   .clothing-contact .button { width: 100%; }
+  .clips-hero h1 { font-size: clamp(62px, 19vw, 90px); }
+  .clips-library { padding-inline: 0; }
+  .clip-feature { padding: 0 0 24px; border-inline: 0; }
+  .clip-feature::before { display: none; }
+  .clip-frame { border-inline: 0; }
+  .clip-copy { padding: 28px 22px 4px; }
+  .clip-copy h2 { font-size: 54px; }
+  .clip-actions { display: grid; }
+  .clip-actions .button { width: 100%; min-width: 0; }
+  .home-clips-preview { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; margin: 0 0 54px; padding: 14px; border-inline: 0; }
+  .home-clips-preview img { width: 92px; }
+  .home-clips-preview h2 { font-size: 36px; }
+  .home-clips-preview p:last-child { font-size: 13px; }
   .release-strip { width: 100%; grid-template-columns: 92px minmax(0, 1fr); gap: 14px; margin: 0; padding: 14px; border-inline: 0; }
   .release-strip-cover-wrap { min-height: 92px; align-self: start; }
   .release-strip-copy h2 { font-size: 34px; }
