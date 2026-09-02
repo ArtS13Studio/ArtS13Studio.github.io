@@ -49,6 +49,7 @@
   <body>
     <noscript><div><img src="https://mc.yandex.ru/watch/112156042" style="position:absolute;left:-9999px" alt="" /></div></noscript>
     <main class="music-page">
+      <!-- Компактная шапка внутренней страницы. -->
       <header class="music-page-header">
         <a class="brand project-brand" href="../" aria-label="13 AI the Dark и ArtS13Studio — на главную">
           <img class="project-brand-raven" src="../assets/raven-brand-mark.png" alt="" aria-hidden="true" />
@@ -57,12 +58,14 @@
         <a class="music-back" href="../#music">На главную <span aria-hidden="true">↙</span></a>
       </header>
 
+      <!-- Заголовок и краткое описание музыкальной библиотеки. -->
       <section class="music-library-hero">
         <p class="eyebrow">13 AI the Dark</p>
         <h1>Вся музыка</h1>
         <p>Отдельные истории собраны в синглах. Большая общая линия начинается с альбома «3 поколения» — пока это его техническое название.</p>
       </section>
 
+      <!-- Быстрый переход к синглам и основному альбому. -->
       <nav class="album-index" aria-label="Разделы музыки">
         <a class="album-index-card album-index-card--singles" href="#album-singles">
           <span>Раздел 01</span>
@@ -76,7 +79,9 @@
         </a>
       </nav>
 
+      <!-- ВАЖНО: data-track-index у доступного трека совпадает с индексом в tracks из player.js. -->
       <section class="music-library" aria-label="Все треки 13 AI the Dark">
+        <!-- Раздел 01: отдельные синглы. -->
         <section class="album-section" id="album-singles" aria-labelledby="album-singles-title">
           <header class="album-section-header">
             <div>
@@ -142,6 +147,7 @@
           </div>
         </section>
 
+        <!-- Раздел 02: основной альбом «3 поколения». -->
         <section class="album-section" id="album-three-generations" aria-labelledby="album-three-generations-title">
           <header class="album-section-header">
             <div>

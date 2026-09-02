@@ -1,4 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+/*
+  КАРТА СТИЛЕЙ
+  1. Шрифт, переменные и базовые элементы.
+  2. Главная: шапка, первый экран, направления, одежда, релиз и музыка.
+  3. Внутренние страницы: музыка, одежда и клипы.
+  4. Общие контакты и подвал.
+  5. Адаптивность: 900px и 560px.
+  6. Музыкальный плеер и финальные фирменные переопределения.
+
+  Цвета лучше менять через переменные :root. После правок CSS меняй параметр
+  ?v=... в HTML, иначе браузер может показать старую версию из кэша.
+*/
+
+/* Фирменный шрифт и общая палитра. */
 @font-face {
   font-family: "Caesar Dressing Cyrillic";
   src: url("fonts/CaesarDressingCyrillic.otf") format("opentype");
@@ -35,6 +49,7 @@ body {
 a { color: inherit; text-decoration: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
 
+/* Главная страница: шапка и первый экран. */
 .site-header {
   position: fixed;
   z-index: 20;
@@ -108,6 +123,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .button-primary:hover { background: var(--amber); }
 .button-ghost { border-color: rgba(244, 241, 235, .28); background: rgba(8, 11, 14, .44); }
 .button-ghost:hover { border-color: var(--white); }
+/* Плашка актуального релиза на главной. */
 .release-strip {
   --release-red: #d4313e;
   position: relative;
@@ -153,6 +169,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .section-heading.compact { align-items: center; }
 .section-heading--single { grid-template-columns: 1fr; }
 
+/* Карточки направлений студии. */
 .directions-section { position: relative; isolation: isolate; }
 .directions-section::before { content: ""; position: absolute; z-index: -1; inset: 6% 2% 0; pointer-events: none; background: radial-gradient(circle at 50% 64%, rgba(61, 73, 158, .12), transparent 42%); filter: blur(20px); }
 .direction-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
@@ -199,6 +216,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .card-link { margin-top: 24px; color: var(--steel); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .card-link b { margin-left: 8px; color: var(--amber); }
 
+/* Три карточки одежды на главной. */
 .clothing-preview-section { position: relative; isolation: isolate; }
 .clothing-preview-section::before { content: ""; position: absolute; z-index: -1; inset: 7% 2%; pointer-events: none; background: radial-gradient(circle at 50% 42%, rgba(93, 69, 190, .14), transparent 50%); filter: blur(18px); }
 .clothing-feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -223,6 +241,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   .clothing-feature-card:hover { border-color: rgba(92, 114, 255, .56); box-shadow: 0 24px 62px rgba(0, 0, 0, .38), 0 0 34px rgba(115, 103, 255, .08); transform: translateY(-7px); }
 }
 
+/* Три ознакомительных трека на главной. */
 .music-section {
   max-width: none;
   border-block: 1px solid var(--line);
@@ -245,6 +264,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .music-preview-footer { display: flex; justify-content: center; margin-top: 38px; }
 .music-preview-footer .button { min-width: min(100%, 310px); gap: 10px; }
 
+/* Полная музыкальная библиотека и альбомы. */
 .music-page { position: relative; isolation: isolate; min-height: 100svh; padding-bottom: 112px; background: var(--black); }
 .music-page::before {
   content: "";
@@ -383,6 +403,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .library-player { margin-top: auto; }
 .music-library-note { margin: 34px 0 0; color: var(--muted); font-size: 11px; letter-spacing: .14em; text-align: center; text-transform: uppercase; }
 
+/* Архив лимитированной одежды. */
 .clothing-page { position: relative; isolation: isolate; min-height: 100svh; overflow: hidden; background: #07090b; }
 .clothing-page::before { content: ""; position: fixed; z-index: 0; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(3, 5, 8, .3) 0, rgba(5, 7, 10, .86) 42%, #07090b 78%), linear-gradient(90deg, rgba(5, 7, 10, .35), rgba(5, 7, 10, .78) 45%, rgba(5, 7, 10, .46)), url("hero-workshop.png") center top / cover no-repeat; opacity: .82; }
 .clothing-page > * { position: relative; z-index: 1; }
@@ -474,6 +495,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   .home-clips-button:hover::before { transform: translateX(100%); }
 }
 
+/* Общий блок контактов и подвал. */
 .contact-section { max-width: 1480px; margin: 0 auto 72px; display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 80px; padding: 90px 6vw; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: radial-gradient(circle at 20% 40%, rgba(115, 103, 255, .10), transparent 40%); }
 .contact-links { display: grid; }
 .contact-links a { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--line); color: var(--steel); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -481,6 +503,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 footer { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 42px; padding: 32px 6vw; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
 .footer-brand { color: var(--white); }
 
+/* Планшеты и узкие окна. */
 @media (max-width: 900px) {
   .site-header { grid-template-columns: 1fr auto; min-height: 66px; padding: 0 20px; }
   nav { display: none; }
@@ -538,6 +561,7 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
   footer { grid-template-columns: 1fr; gap: 12px; padding: 28px 22px; }
 }
 
+/* Телефоны. После любых правок обязательно проверять отсутствие горизонтальной прокрутки. */
 @media (max-width: 560px) {
   .brand > span:last-child { font-size: 13px; }
   .project-brand-copy strong { font-size: 10px; letter-spacing: .16em; }

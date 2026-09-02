@@ -1,7 +1,21 @@
+/*
+  Музыкальный плеер ArtS13Studio.
+
+  На главной этот файл управляет только плашкой нового релиза и следит,
+  чтобы одновременно играл один audio. В music/ он дополнительно создаёт
+  нижний общий плеер.
+
+  ВАЖНО: порядок tracks должен совпадать с data-track-index карточек
+  в music/index.html. Индексы начинаются с нуля.
+*/
+
+// Строим абсолютные пути относительно самого player.js, поэтому скрипт работает
+// и на главной, и во вложенной папке music/.
 const playerScript = document.currentScript;
 const assetsBase = new URL("./", playerScript?.src ?? window.location.href);
 const controlIcon = (name) => new URL(`player-controls/${name}.png`, assetsBase).href;
 
+// Единый каталог доступных аудиофайлов. Будущие треки без готового MP3 сюда не добавлять.
 const tracks = [
   { title: "Пока горим", cover: "music/poka-gorim-cover.png", src: "audio/poka-gorim.mp3" },
   { title: "Последний круг", cover: "music/posledniy-krug-cover.png", src: "audio/posledniy-krug.mp3" },
@@ -14,9 +28,11 @@ const tracks = [
   { title: "#Кузница трёх знаков", cover: "music/kuznitsa-trekh-znakov-cover.webp?v=20260901-album-covers1", src: "audio/kuznitsa-trekh-znakov.mp3" },
 ];
 
+// Класс .music-page есть только у music/index.html.
 const isMusicLibraryPage = document.querySelector(".music-page");
 
 if (!isMusicLibraryPage) {
+  // Логика главной страницы: кнопка Play/Pause у текущего релиза.
   const homeReleaseAudio = document.querySelector("[data-home-release-audio]");
   const homeReleaseButton = document.querySelector("[data-home-release-play]");
 
@@ -38,6 +54,7 @@ if (!isMusicLibraryPage) {
   homeReleaseAudio?.addEventListener("pause", updateHomeReleaseButton);
   homeReleaseAudio?.addEventListener("ended", updateHomeReleaseButton);
 
+  // При запуске нового audio останавливаем все остальные плееры на главной.
   document.addEventListener("play", (event) => {
     const current = event.target;
     if (!(current instanceof HTMLAudioElement)) return;
@@ -47,6 +64,7 @@ if (!isMusicLibraryPage) {
     });
   }, true);
 } else {
+// Разметка общего нижнего плеера добавляется только на странице всей музыки.
 document.body.insertAdjacentHTML("beforeend", `
   <aside class="global-player" aria-label="Музыкальный плеер">
     <div class="global-player-inner">
@@ -86,6 +104,7 @@ const duration = document.querySelector("[data-player-duration]");
 const modeButtons = document.querySelectorAll("[data-player-mode]");
 const trackCards = document.querySelectorAll("[data-track-index]");
 
+// Текущее состояние плеера.
 let currentIndex = 0;
 let playbackMode = "normal";
 
@@ -96,6 +115,7 @@ function formatTime(value) {
   return `${minutes}:${seconds}`;
 }
 
+// Подсвечивает активную карточку и меняет её кнопку Слушать/Пауза.
 function updateTrackCards() {
   trackCards.forEach((card) => {
     const cardIndex = Number(card.dataset.trackIndex);
@@ -119,6 +139,7 @@ function updatePlayerState() {
   updateTrackCards();
 }
 
+// Выбирает трек. Остаток от деления замыкает кнопки назад/вперёд по кругу.
 function selectTrack(index, autoplay = true) {
   currentIndex = (index + tracks.length) % tracks.length;
   const track = tracks[currentIndex];
@@ -134,6 +155,7 @@ function selectTrack(index, autoplay = true) {
   }
 }
 
+// Повторное нажатие на активный режим возвращает обычное воспроизведение.
 function setPlaybackMode(selectedMode) {
   playbackMode = playbackMode === selectedMode ? "normal" : selectedMode;
   modeButtons.forEach((button) => {
@@ -176,6 +198,7 @@ audio.addEventListener("loadedmetadata", () => {
   progress.max = String(audio.duration || 0);
   duration.textContent = formatTime(audio.duration);
 });
+// Поведение после окончания зависит от выбранного режима.
 audio.addEventListener("ended", () => {
   if (playbackMode === "repeat-one") {
     audio.currentTime = 0;
@@ -189,5 +212,6 @@ audio.addEventListener("ended", () => {
   updatePlayerState();
 });
 
+// Загружаем первый трек, но не запускаем его без действия пользователя.
 selectTrack(0, false);
 }
