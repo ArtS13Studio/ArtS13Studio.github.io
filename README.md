@@ -19,11 +19,13 @@ index.html                 главная страница
 music/index.html           вся музыка и альбомы
 clothing/index.html        архив одежды
 video/index.html           клипы
+collaborations/index.html  истории совместных проектов
 assets/styles.css          стили всего сайта
 assets/player.js           логика музыкального плеера
 assets/audio/              MP3-файлы
 assets/music/              обложки треков
 assets/clothing/           изображения одежды
+assets/collaborations/     изображения совместных проектов
 assets/player-controls/    кнопки плеера
 sitemap.xml                страницы для поисковых систем
 robots.txt                 правила индексации
@@ -86,6 +88,12 @@ https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0
 3. Если вещь должна появиться на главной, заменить одну из трёх карточек в блоке `clothing-preview-section` файла `index.html`.
 
 На сайте пока нет цен, корзины и оплаты. Это каталог и архив проекта.
+
+## Как обновить коллаборацию
+
+Страница находится в `collaborations/index.html`, изображения — в `assets/collaborations/`.
+У Волка ссылки пока показаны как неактивные элементы `<span>`. Когда Алексей передаст точные адреса, заменить нужный `<span>` на `<a href="...">`, добавить `target="_blank" rel="noreferrer"` и убрать подпись `скоро`.
+Карточка трека «Разные голоса» ведёт на якорь `#track-raznye-golosa` в музыкальном разделе.
 
 ## Стили
 
