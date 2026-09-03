@@ -858,8 +858,10 @@ h3,
   background: linear-gradient(120deg, rgba(9, 12, 20, .97), rgba(20, 15, 40, .88) 58%, rgba(5, 26, 41, .9)), url("player-background.jpg") center / cover;
 }
 .wolf-shirt-feature::before { content: "ᚷ · ᛗ · ᛞ"; position: absolute; right: 30px; bottom: 20px; color: rgba(91, 103, 255, .14); font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 20px; letter-spacing: .22em; }
-.wolf-shirt-visual { position: relative; height: 610px; margin: 0; overflow: hidden; border-right: 1px solid var(--line); background: radial-gradient(circle at 50% 44%, rgba(65, 81, 255, .2), transparent 52%), rgba(3, 5, 8, .62); }
-.wolf-shirt-visual img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 22px 28px rgba(0, 0, 0, .65)); }
+.wolf-shirt-visual { position: relative; height: 610px; margin: 0; overflow: hidden; border-right: 1px solid var(--line); background: #d8d6d1; }
+.wolf-shirt-visual::before { content: ""; position: absolute; inset: -24px; background: var(--shirt-image) center / cover no-repeat; filter: blur(22px); transform: scale(1.08); opacity: .82; }
+.wolf-shirt-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 8, 14, .08), rgba(5, 8, 14, .16)); }
+.wolf-shirt-visual img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 22px 28px rgba(0, 0, 0, .34)); }
 .collab-frame-number { position: absolute; z-index: 2; top: 20px; left: 22px; color: rgba(213, 220, 234, .34); font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 30px; }
 .wolf-shirt-copy { max-width: 640px; padding: clamp(32px, 5vw, 76px); }
 .wolf-shirt-copy h3, .collab-subheading h3, .collab-links h3 { margin: 0 0 20px; font-size: clamp(42px, 5vw, 72px); line-height: .9; text-transform: uppercase; }
@@ -874,7 +876,7 @@ h3,
 .wolf-merch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .wolf-merch-grid figure { position: relative; min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(5, 8, 12, .96), rgba(14, 17, 27, .88)); }
 .wolf-merch-grid figure::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 42%, rgba(91, 86, 255, .05)); }
-.wolf-merch-grid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-bottom: 1px solid var(--line); }
+.wolf-merch-grid img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain; border-bottom: 1px solid var(--line); }
 .wolf-merch-grid figcaption { position: relative; z-index: 1; min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 20px; }
 .wolf-merch-grid figcaption span, .custom23-shirt-grid figcaption span { color: var(--accent-blue); font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .collab-order-button { width: min(170px, 48%); min-height: 48px; padding: 12px 18px; }
@@ -892,9 +894,10 @@ h3,
 
 .custom23-shirt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .custom23-shirt-grid figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(17, 20, 29, .94), rgba(6, 9, 13, .98)); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
-.custom23-shirt-grid figure > div { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 50% 50%, rgba(52, 61, 130, .18), transparent 62%), #090c10; }
+.custom23-shirt-grid figure > div { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-bottom: 1px solid var(--line); background: #14171b; }
+.custom23-shirt-grid figure > div::before { content: ""; position: absolute; inset: -24px; background: var(--shirt-image) center / cover no-repeat; filter: blur(22px); transform: scale(1.08); opacity: .72; }
 .custom23-shirt-grid figure > div::after { content: "13 × C23"; position: absolute; right: 18px; bottom: 12px; color: rgba(206, 213, 228, .18); font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 18px; letter-spacing: .12em; }
-.custom23-shirt-grid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .45s ease, filter .3s ease; }
+.custom23-shirt-grid img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .45s ease, filter .3s ease; }
 .custom23-shirt-grid figcaption { min-height: 108px; display: grid; align-content: center; gap: 5px; padding: 20px 24px; }
 .custom23-shirt-grid figcaption strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: clamp(27px, 2.8vw, 40px); font-weight: 400; line-height: .92; text-transform: uppercase; }
 .custom23-shirt-grid figcaption small { color: var(--muted); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
