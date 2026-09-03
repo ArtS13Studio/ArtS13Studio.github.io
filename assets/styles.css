@@ -789,6 +789,15 @@ h3,
   backdrop-filter: blur(14px);
 }
 .collaborations-page-header nav a[aria-current="page"] { color: var(--white); }
+.section-page-header {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto minmax(90px, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+.section-page-header nav { justify-content: center; }
+.section-page-header nav a[aria-current="page"] { color: var(--white); }
+.section-page-header > :last-child { justify-self: end; }
 
 .collaborations-hero {
   width: min(100%, 1480px);
@@ -862,13 +871,13 @@ h3,
 .collab-subheading { display: grid; grid-template-columns: 1fr .8fr; align-items: end; gap: 60px; margin: 84px 0 32px; }
 .collab-subheading h3 { margin-bottom: 0; }
 .collab-subheading > p { max-width: 500px; margin: 0; color: var(--muted); }
-.wolf-merch-grid { display: grid; gap: 14px; }
-.wolf-merch-grid figure { position: relative; min-height: 196px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: center; gap: 24px; margin: 0; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(90deg, rgba(5, 8, 12, .96), rgba(14, 17, 27, .88)); }
+.wolf-merch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.wolf-merch-grid figure { position: relative; min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(5, 8, 12, .96), rgba(14, 17, 27, .88)); }
 .wolf-merch-grid figure::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 42%, rgba(91, 86, 255, .05)); }
-.wolf-merch-grid img { display: block; width: 100%; max-height: 178px; object-fit: contain; object-position: left center; }
-.wolf-merch-grid figcaption { position: relative; z-index: 1; display: grid; gap: 7px; padding: 28px 32px 28px 0; }
+.wolf-merch-grid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-bottom: 1px solid var(--line); }
+.wolf-merch-grid figcaption { position: relative; z-index: 1; min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 20px; }
 .wolf-merch-grid figcaption span, .custom23-shirt-grid figcaption span { color: var(--accent-blue); font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-.wolf-merch-grid figcaption strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: 30px; font-weight: 400; line-height: .94; text-transform: uppercase; }
+.collab-order-button { width: min(170px, 48%); min-height: 48px; padding: 12px 18px; }
 
 .collab-links { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 50px; margin-top: 54px; padding: 36px; border: 1px solid rgba(88, 104, 255, .28); background: rgba(8, 11, 18, .8); }
 .collab-links h3 { margin-bottom: 0; font-size: clamp(30px, 3.4vw, 50px); }
@@ -885,8 +894,8 @@ h3,
 .custom23-shirt-grid figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(17, 20, 29, .94), rgba(6, 9, 13, .98)); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
 .custom23-shirt-grid figure > div { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 50% 50%, rgba(52, 61, 130, .18), transparent 62%), #090c10; }
 .custom23-shirt-grid figure > div::after { content: "13 × C23"; position: absolute; right: 18px; bottom: 12px; color: rgba(206, 213, 228, .18); font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 18px; letter-spacing: .12em; }
-.custom23-shirt-grid img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .45s ease, filter .3s ease; }
-.custom23-shirt-grid figcaption { min-height: 124px; display: grid; align-content: center; gap: 5px; padding: 20px 24px; }
+.custom23-shirt-grid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .45s ease, filter .3s ease; }
+.custom23-shirt-grid figcaption { min-height: 108px; display: grid; align-content: center; gap: 5px; padding: 20px 24px; }
 .custom23-shirt-grid figcaption strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: clamp(27px, 2.8vw, 40px); font-weight: 400; line-height: .92; text-transform: uppercase; }
 .custom23-shirt-grid figcaption small { color: var(--muted); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
 
@@ -908,8 +917,8 @@ h3,
 }
 
 @media (max-width: 900px) {
-  .collaborations-page-header { grid-template-columns: 1fr auto; min-height: 66px; padding: 0 22px; }
-  .collaborations-page-header nav { display: none; }
+  .section-page-header { grid-template-columns: 1fr auto; min-height: 66px; padding: 0 22px; }
+  .section-page-header nav { display: none; }
   .collaborations-hero { min-height: 620px; grid-template-columns: 1fr minmax(240px, .55fr); padding: 72px 22px 36px; }
   .collaborations-hero-art { min-height: 470px; }
   .collaborations-orbit { width: 350px; }
@@ -917,7 +926,6 @@ h3,
   .collab-case-heading { grid-template-columns: 1fr; gap: 20px; }
   .wolf-shirt-feature { grid-template-columns: minmax(240px, .7fr) minmax(0, 1fr); min-height: 520px; }
   .wolf-shirt-visual { height: 520px; }
-  .wolf-merch-grid figure { grid-template-columns: minmax(0, 1fr) 240px; }
   .collab-links { grid-template-columns: 1fr; gap: 26px; }
   .collab-socials { justify-content: flex-start; }
   .collab-track { grid-template-columns: 240px minmax(0, 1fr); }
@@ -941,9 +949,10 @@ h3,
   .collab-facts div { grid-template-columns: 1fr; gap: 2px; }
   .collab-subheading { grid-template-columns: 1fr; gap: 16px; margin: 68px 0 26px; padding: 0 22px; }
   .wolf-merch-grid { gap: 10px; }
+  .wolf-merch-grid { grid-template-columns: 1fr; }
   .wolf-merch-grid figure { min-height: 0; display: block; border-inline: 0; }
-  .wolf-merch-grid img { min-height: 142px; object-position: center; }
-  .wolf-merch-grid figcaption { padding: 0 22px 22px; }
+  .wolf-merch-grid img { min-height: 0; object-position: center; }
+  .wolf-merch-grid figcaption { padding: 16px 22px; }
   .collab-links { margin-top: 38px; padding: 30px 22px; border-inline: 0; }
   .collab-socials { display: grid; grid-template-columns: 1fr 1fr; }
   .collab-socials > span { min-width: 0; justify-content: space-between; padding-inline: 12px; }
