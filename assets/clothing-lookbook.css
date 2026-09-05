@@ -24,21 +24,26 @@
 .lookbook-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 34px; }
 .clothing-page .lookbook-heading h2, .clothing-page .limited-collection-heading h2 { font-size: clamp(36px, 4.5vw, 66px); line-height: 1.18; margin: 0; }
 .lookbook-heading > p { margin: 0; color: #9aa8b4; font-size: 15px; }
-.lookbook-frames { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.lookbook-frames { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .lookbook-frames a { min-width: 0; }
 .lookbook-frames img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: #10151b; }
 .lookbook-frames span { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 12px; color: #bdc7d0; }
 .lookbook-frames b { color: var(--accent-blue); font-size: 18px; font-weight: 400; }
 .lookbook-footnote { margin: 20px 0 0; font-size: 12px; color: #8696a4; }
 .clothing-page .clothing-stories { padding-top: 36px; }
-.clothing-story-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
-.clothing-story { min-width: 0; background: #0b1017; }
+.clothing-story-grid { display: grid; gap: 70px; }
+.clothing-story { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; min-width: 0; gap: clamp(24px, 4vw, 64px); border-top: 1px solid #34394c; padding-top: 30px; scroll-margin-top: 30px; }
 .clothing-story img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
-.clothing-story > div { padding: 26px; }
-.clothing-story div > span { color: var(--accent-blue); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
-.clothing-page .clothing-story h3 { font-size: clamp(28px, 3vw, 44px); line-height: 1.2; margin: 10px 0; }
-.clothing-story p { font-size: 14px; color: #9aa8b4; min-height: 42px; }
-.clothing-story b { display: inline-block; border-bottom: 1px solid #4d527a; padding-block: 12px 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.clothing-story--reverse .story-scene { order: 2; }
+.story-scene { min-width: 0; }
+.story-copy { min-width: 0; }
+.story-copy > span { color: var(--accent-blue); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+.clothing-page .clothing-story h3 { font-size: clamp(32px, 4.2vw, 62px); line-height: 1.18; margin: 18px 0; }
+.clothing-story p { max-width: 430px; font-size: 15px; line-height: 1.75; color: #a8b5c1; }
+.story-selection { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 28px 0 18px; }
+.story-selection--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.story-selection a { min-width: 0; }
+.story-selection span { display: block; margin-top: 9px; font-size: 11px; color: #b8c4d1; line-height: 1.4; }
 .clothing-page .limited-collection { scroll-margin-top: 28px; background: transparent; border-top: 1px solid var(--line); box-shadow: none; }
 .limited-collection-heading { gap: 36px; margin-bottom: 32px; }
 .clothing-filter-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 38px; }
@@ -73,9 +78,10 @@ body.clothing-gallery-open { overflow: hidden; }
 .clothing-gallery-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, .4fr); gap: 30px; }
 .gallery-viewer { min-width: 0; }
 .gallery-stage { height: min(62dvh, 720px); overflow: auto; background: #080c11; touch-action: pan-y pinch-zoom; }
-.gallery-image { display: block; height: 100%; width: 100%; object-fit: contain; cursor: zoom-in; }
+.gallery-canvas { position: relative; overflow: hidden; margin-inline: auto; }
+.gallery-image { position: absolute; display: block; max-width: none; cursor: zoom-in; }
 .gallery-stage.is-zoomed { touch-action: pan-x pan-y pinch-zoom; }
-.gallery-stage.is-zoomed .gallery-image { height: auto; width: 180%; max-width: none; object-fit: unset; cursor: zoom-out; }
+.gallery-stage.is-zoomed .gallery-image { cursor: zoom-out; }
 .gallery-controls { display: flex; align-items: center; gap: 10px; padding-top: 14px; }
 .gallery-counter { font-size: 12px; color: #a8b7c5; min-width: 40px; text-align: center; }
 .clothing-gallery .gallery-zoom { margin-left: auto; font-size: 12px; }
@@ -85,11 +91,13 @@ body.clothing-gallery-open { overflow: hidden; }
 .clothing-gallery .gallery-thumbnail { min-width: 0; padding: 2px; border: 1px solid transparent; background: #080c11; }
 .gallery-thumbnail[aria-pressed="true"] { border-color: #a583ff !important; }
 .gallery-thumbnail img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+.gallery-thumbnail span { display: block; padding: 6px 0; font-size: 10px; color: #c4cddb; }
 .gallery-original { display: inline-block; margin-block: 26px 12px; padding-bottom: 8px; border-bottom: 1px solid #5a618a; font-size: 12px; }
 .gallery-disclaimer { font-size: 11px !important; line-height: 1.6; }
 .gallery-image-error { padding: 12px; background: #282036; font-size: 13px; }
 @media (hover: hover) and (pointer: fine) {
-  .lookbook-link:hover, .clothing-story:hover b { color: var(--accent-blue); border-color: #836ab6; }
+  .lookbook-link:hover { color: var(--accent-blue); border-color: #836ab6; }
+  .story-selection a:hover span { color: #fff; }
   .clothing-page .limited-card:hover { transform: none; box-shadow: none; }
   .clothing-page .limited-card:hover img { filter: none; transform: none; }
   .clothing-page .limited-card-media:hover .clothing-card-open { background: #352747; }
@@ -104,9 +112,7 @@ body.clothing-gallery-open { overflow: hidden; }
   .clothing-page .clothing-hero h1 { font-size: clamp(40px, 6vw, 64px); margin-block: 12px 16px; }
   .clothing-hero-intro { margin-bottom: 14px; }
   .lookbook-link { font-size: 10px; padding-block: 8px; }
-  .lookbook-frames { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .clothing-story-grid { gap: 16px; }
-  .clothing-story > div { padding: 20px 16px; }
+  .clothing-story-grid { gap: 50px; }
   .clothing-filter-bar { align-items: start; flex-direction: column; gap: 14px; }
 }
 @media (max-width: 900px) {
@@ -131,25 +137,23 @@ body.clothing-gallery-open { overflow: hidden; }
   .lookbook-link { font-size: 12px; padding-block: 12px; }
   .clothing-hero-caption { position: static; order: 2; padding: 0 22px 22px; font-size: 9px; }
   .lookbook-divider { margin-top: 10px; }
-  .clothing-story-grid { grid-template-columns: 1fr; }
-  .clothing-story { display: grid; grid-template-columns: minmax(130px, .65fr) minmax(0, 1fr); align-items: center; }
-  .clothing-page .clothing-story h3 { font-size: 28px; }
-  .clothing-story p { min-height: 0; font-size: 12px; }
-  .clothing-story b { font-size: 9px; }
+  .lookbook-frames { grid-template-columns: 1fr; gap: 28px; }
+  .clothing-story { grid-template-columns: 1fr; gap: 24px; }
+  .clothing-story--reverse .story-scene { order: 0; }
+  .clothing-page .clothing-story h3 { font-size: 40px; }
+  .story-selection { margin-top: 22px; }
   .clothing-page .limited-collection-heading h2 { font-size: 40px; }
   .clothing-gallery { padding: 16px; width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
   .clothing-gallery-layout { display: block; }
   .gallery-stage { height: 48dvh; }
   .gallery-details { margin-top: 24px; }
   .gallery-caption { margin-top: 18px; }
-  .gallery-thumbnails { display: flex; }
-  .clothing-gallery .gallery-thumbnail { width: 64px; flex-shrink: 1; }
+  .gallery-thumbnails { display: flex; flex-wrap: wrap; }
+  .clothing-gallery .gallery-thumbnail { width: 64px; flex-shrink: 0; }
   .gallery-original { margin-top: 18px; }
   .gallery-details #gallery-description { margin-top: 0; }
 }
 @media (max-width: 420px) {
-  .clothing-story { display: block; }
-  .clothing-story > div { padding: 22px; }
   .clothing-filters button { padding-inline: 14px; }
   .lookbook-frames { gap: 14px 10px; }
   .lookbook-frames span { font-size: 10px; }

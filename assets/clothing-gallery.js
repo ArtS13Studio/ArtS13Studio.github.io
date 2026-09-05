@@ -20,21 +20,52 @@
     });
   });
 
-  // Добавлять новые съёмки сюда. Порядок совпадает с data-start у четырёх ссылок лукбука.
+  // Чередование МЕЖДУ вещами: Till — Алексей и Виктория, Northblood — Лис и Элис,
+  // Northern Wind — только Элис. У одной вещи не меняем состав моделей между кадрами.
   const till = galleries.get('limited-06');
   if (till) {
     till.images[0].src = '../assets/clothing/lookbook/till-original.webp';
-    [
-      ['front', 'Вид спереди · модель'],
-      ['front-angle', 'Спереди в три четверти · Элис'],
-      ['back', 'Вид со спины · модель'],
-      ['back-angle', 'Сзади в три четверти · Элис']
-    ].forEach(([file, caption]) => till.images.push({
-      src: `../assets/clothing/lookbook/till-${file}.webp`,
-      alt: `Till Ragnarök — ${caption.toLowerCase()}`,
-      caption
-    }));
+    till.images.push({ src: '../assets/clothing/lookbook/hero-alexey-viktoria.webp', alt: 'Алексей и Виктория в футболках 13th в студии', caption: 'В студии · Алексей и Виктория', editorial: true });
   }
+  [
+    ['limited-07', 'northblood-original', [
+      ['northblood-lis-alice-front', 'Спереди · Лис и Элис']
+    ]],
+    ['limited-08', 'northern-wind-original', [
+      ['northern-wind-alice-front', 'Спереди · Элис'],
+      ['northern-wind-alice-back', 'Со спины · Элис']
+    ]]
+  ].forEach(([key, original, frames]) => {
+    const gallery = galleries.get(key);
+    if (!gallery) return;
+    gallery.images[0].src = `../assets/clothing/lookbook/${original}.webp`;
+    frames.forEach(([file, caption]) => gallery.images.push({ src: `../assets/clothing/lookbook/${file}.webp`, alt: `${gallery.title} — ${caption.toLowerCase()}`, caption, editorial: true }));
+  });
+
+  // Координаты фрагментов исходного макета, а НЕ новые фотографии и не перерисованные принты.
+  // x/y/w/h — доли полного изображения. Первый кадр всегда сохраняет оригинал целиком.
+  const pairViews = {
+    front: { x: 0, y: .13, w: .54, h: .82 },
+    back: { x: .47, y: .13, w: .53, h: .82 }
+  };
+  galleries.forEach((gallery, key) => {
+    const base = gallery.images[0];
+    const number = Number(key.replace('limited-', ''));
+    const paired = (number >= 6 && number <= 13) || key.startsWith('wolf-') || key.startsWith('custom23-');
+    if (paired) {
+      let detail = { x: .55, y: .24, w: .37, h: .4 };
+      if (number >= 11) detail = { x: .59, y: .33, w: .3, h: .38 };
+      if (key.startsWith('wolf-')) detail = { x: .65, y: .28, w: .26, h: .36 };
+      if (key.startsWith('custom23-')) detail = { x: .59, y: .27, w: .31, h: .36 };
+      [
+        ['Спереди · фрагмент макета', 'Спереди', pairViews.front],
+        ['Сзади · фрагмент макета', 'Сзади', pairViews.back],
+        ['Принт крупно · исходный макет', 'Принт', detail]
+      ].forEach(([caption, label, view]) => gallery.images.push({ ...base, caption, label, view }));
+    } else {
+      gallery.images.push({ ...base, caption: 'Детали · исходное изображение', label: 'Детали', view: { x: .12, y: .2, w: .76, h: .52 } });
+    }
+  });
 
   function applyFilter(type, updateUrl = true) {
     const selected = filters.some(button => button.dataset.filter === type) ? type : 'all';
@@ -67,6 +98,7 @@
   const description = dialog.querySelector('#gallery-description');
   const stage = dialog.querySelector('.gallery-stage');
   const image = dialog.querySelector('.gallery-image');
+  const canvas = dialog.querySelector('.gallery-canvas');
   const caption = dialog.querySelector('.gallery-caption');
   const counter = dialog.querySelector('.gallery-counter');
   const thumbnails = dialog.querySelector('.gallery-thumbnails');
@@ -82,12 +114,28 @@
   let pointerStart = null;
   let suppressClick = false;
 
+  function renderImage() {
+    if (!current || !image.naturalWidth || !stage.clientWidth) return;
+    const view = current.images[index].view || { x: 0, y: 0, w: 1, h: 1 };
+    const width = image.naturalWidth * view.w;
+    const height = image.naturalHeight * view.h;
+    const scale = Math.min(stage.clientWidth / width, stage.clientHeight / height) * (stage.classList.contains('is-zoomed') ? 2.2 : 1);
+    canvas.style.width = `${width * scale}px`;
+    canvas.style.height = `${height * scale}px`;
+    canvas.style.marginTop = `${Math.max(0, (stage.clientHeight - height * scale) / 2)}px`;
+    image.style.width = `${image.naturalWidth * scale}px`;
+    image.style.height = `${image.naturalHeight * scale}px`;
+    image.style.left = `${-view.x * image.naturalWidth * scale}px`;
+    image.style.top = `${-view.y * image.naturalHeight * scale}px`;
+  }
+
   function setZoom(enabled) {
     stage.classList.toggle('is-zoomed', enabled);
     zoom.setAttribute('aria-pressed', String(enabled));
     zoom.textContent = enabled ? 'Уменьшить' : 'Увеличить';
-    stage.scrollTop = 0;
-    stage.scrollLeft = 0;
+    renderImage();
+    stage.scrollTop = enabled ? (stage.scrollHeight - stage.clientHeight) / 2 : 0;
+    stage.scrollLeft = enabled ? (stage.scrollWidth - stage.clientWidth) / 2 : 0;
   }
 
   function showSlide(number) {
@@ -104,8 +152,9 @@
     thumbnails.querySelectorAll('button').forEach((button, i) => {
       button.setAttribute('aria-pressed', String(i === index));
     });
-    disclaimer.textContent = current.images.length > 1
+    disclaimer.textContent = frame.editorial
       ? 'Кадры на моделях — цифровые визуализации. Для точного рисунка смотрите исходный макет.'
+      : frame.view ? 'Приближённый фрагмент оригинала. Рисунок не изменён; полный макет — в первом кадре.'
       : 'Изображение показано целиком, без обрезки. Используйте увеличение, чтобы рассмотреть детали.';
   }
 
@@ -128,6 +177,11 @@
       thumb.width = 100;
       thumb.height = 100;
       button.append(thumb);
+      if (frame.label) {
+        const label = document.createElement('span');
+        label.textContent = frame.label;
+        button.append(label);
+      }
       button.addEventListener('click', () => showSlide(i));
       thumbnails.append(button);
     });
@@ -136,6 +190,7 @@
     document.body.classList.add('clothing-gallery-open');
     dialog.showModal();
     dialog.scrollTop = 0;
+    renderImage();
     return true;
   }
 
@@ -161,21 +216,24 @@
   next.addEventListener('click', () => showSlide(index + 1));
   zoom.addEventListener('click', () => setZoom(!stage.classList.contains('is-zoomed')));
   image.addEventListener('error', () => { error.hidden = false; });
-  image.addEventListener('load', () => { error.hidden = true; });
+  image.addEventListener('load', () => { error.hidden = true; renderImage(); });
+  if (typeof ResizeObserver === 'function') new ResizeObserver(renderImage).observe(stage);
+  else window.addEventListener('resize', renderImage);
   image.addEventListener('click', () => {
     if (suppressClick) { suppressClick = false; return; }
     setZoom(!stage.classList.contains('is-zoomed'));
   });
   dialog.addEventListener('keydown', event => {
+    if (event.target === stage && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      setZoom(!stage.classList.contains('is-zoomed'));
+      return;
+    }
     // В увеличенном изображении стрелки сохраняют прокрутку, а кнопки переключают ракурсы.
     if (stage.classList.contains('is-zoomed')) return;
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
       event.preventDefault();
       showSlide(index + (event.key === 'ArrowRight' ? 1 : -1));
-    }
-    if (event.target === stage && (event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault();
-      setZoom(true);
     }
   });
   // Горизонтальный свайп меняет кадр; вертикальная прокрутка и pinch-zoom остаются нативными.
