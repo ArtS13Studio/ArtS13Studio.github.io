@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Лимитированная одежда 13th — ArtS13Studio</title>
-    <meta name="description" content="Архив лимитированной одежды 13th от ArtS13Studio: футболки, куртки и худи с северной графикой, рунами и авторскими принтами." />
+    <title>Наш бренд 13th — одежда и коллекции ArtS13Studio</title>
+    <meta name="description" content="Одежда 13th: футболки, куртки и худи с северной графикой. Лукбук, детали принтов и коллаборации ArtS13Studio." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#07090b" />
     <link rel="canonical" href="https://arts13studio.github.io/clothing/" />
@@ -12,18 +12,20 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="ArtS13Studio" />
-    <meta property="og:title" content="Лимитированная одежда 13th — ArtS13Studio" />
-    <meta property="og:description" content="Тринадцать лимитированных вещей из истории бренда 13th." />
+    <meta property="og:title" content="Наш бренд 13th — ArtS13Studio" />
+    <meta property="og:description" content="Одежда, северная графика и истории совместных проектов." />
     <meta property="og:url" content="https://arts13studio.github.io/clothing/" />
-    <meta property="og:image" content="https://arts13studio.github.io/assets/clothing/limited-13.webp" />
-    <meta property="og:image:alt" content="Лимитированное худи 13th «Кельтская душа»" />
+    <meta property="og:image" content="https://arts13studio.github.io/assets/clothing/lookbook/hero-alice-v3.webp" />
+    <meta property="og:image:alt" content="Элис и модель в футболках 13th у мастерской" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Лимитированная одежда 13th" />
-    <meta name="twitter:description" content="Архив лимитированных вещей ArtS13Studio." />
-    <meta name="twitter:image" content="https://arts13studio.github.io/assets/clothing/limited-13.webp" />
+    <meta name="twitter:title" content="Наш бренд 13th" />
+    <meta name="twitter:description" content="Лукбук, детали одежды и коллаборации ArtS13Studio." />
+    <meta name="twitter:image" content="https://arts13studio.github.io/assets/clothing/lookbook/hero-alice-v3.webp" />
     <link rel="icon" href="../assets/favicon.svg" />
     <link rel="preload" href="../assets/fonts/CaesarDressingCyrillic.otf" as="font" type="font/otf" crossorigin />
     <link rel="stylesheet" href="../assets/styles.css?v=20260903-collaborations3" />
+    <link rel="stylesheet" href="../assets/clothing-lookbook.css?v=20260905-1" />
+    <script defer src="../assets/clothing-gallery.js?v=20260905-1"></script>
     <!-- Yandex.Metrika counter: basic page-view statistics only -->
     <script>
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=112156042","ym");
@@ -39,7 +41,7 @@
         "isPartOf": { "@type": "WebSite", "name": "ArtS13Studio", "url": "https://arts13studio.github.io/" },
         "mainEntity": {
           "@type": "ItemList",
-          "numberOfItems": 13,
+          "numberOfItems": 20,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Limited Edition 01" },
             { "@type": "ListItem", "position": 2, "name": "Limited Edition 02" },
@@ -53,7 +55,14 @@
             { "@type": "ListItem", "position": 10, "name": "Valkyrie" },
             { "@type": "ListItem", "position": 11, "name": "Forged, Not Made" },
             { "@type": "ListItem", "position": 12, "name": "Roots Remember" },
-            { "@type": "ListItem", "position": 13, "name": "Кельтская душа" }
+            { "@type": "ListItem", "position": 13, "name": "Кельтская душа" },
+            { "@type": "ListItem", "position": 14, "name": "Футболка Волка" },
+            { "@type": "ListItem", "position": 15, "name": "Мерч Волка" },
+            { "@type": "ListItem", "position": 16, "name": "Мерч Волка" },
+            { "@type": "ListItem", "position": 17, "name": "Персональный принт Custom23" },
+            { "@type": "ListItem", "position": 18, "name": "Персональный принт Custom23" },
+            { "@type": "ListItem", "position": 19, "name": "Персональный принт Custom23" },
+            { "@type": "ListItem", "position": 20, "name": "Персональный принт Custom23" }
           ]
         }
       }
@@ -77,42 +86,94 @@
         <a class="clothing-back" href="../">На главную <span>↗</span></a>
       </header>
 
-      <!-- Вступительный экран архива 13th. -->
-      <section class="clothing-hero">
+      <!-- Большой лукбук: отдельный picture сохраняет лица и футболки на телефоне. -->
+      <section class="clothing-hero clothing-hero--lookbook" aria-labelledby="clothing-title">
+        <picture class="clothing-hero-image">
+          <img src="../assets/clothing/lookbook/hero-alice-v3.webp" width="1774" height="887" alt="Элис и модель в чёрных футболках 13th в уютной студии с тёплым светом" fetchpriority="high" />
+        </picture>
         <div class="clothing-hero-copy">
-          <p class="eyebrow">13th · архив лимитированной серии</p>
-          <h1>Одежда<br />с характером</h1>
-          <p>ArtS13Studio начинался с одежды. Здесь собраны тринадцать лимитированных вещей — от первых белых футболок до курток и худи новой главы.</p>
+          <p class="eyebrow">ArtS13Studio · наш бренд</p>
+          <h1 id="clothing-title">Одежда<br /> с характером</h1>
+          <p class="clothing-hero-intro">Северная графика.<br />Свои знаки. Своя история.</p>
+          <a class="lookbook-link" href="#collection">Смотреть коллекцию <span aria-hidden="true">↘</span></a>
         </div>
-        <div class="clothing-hero-emblem" aria-hidden="true">
-          <span class="clothing-emblem-runes">ᚨ ᚱ ᛏ ᛊ · ᛏ ᚺ</span>
-          <img src="../assets/raven-brand-mark.png" alt="" />
-          <strong>13th</strong>
-          <small>limited archive · 01—13</small>
+        <span class="clothing-hero-caption">13th / Till Ragnarök</span>
+      </section>
+
+      <div class="lookbook-divider" aria-hidden="true"><i></i><span>ᚨ</span><b>13</b><span>ᚱ</span><i></i></div>
+
+      <!-- Четыре самостоятельных ракурса одной вещи. Персонажи в кадрах вымышленные. -->
+      <section class="clothing-lookbook" aria-labelledby="lookbook-title">
+        <header class="lookbook-heading">
+          <div><p class="eyebrow">В деталях · футболка 13th</p><h2 id="lookbook-title">Till Ragnarök</h2></div>
+          <p>Белое плетение, ворон и красный акцент.<br />Одна вещь — с разных сторон.</p>
+        </header>
+        <div class="lookbook-frames">
+          <a href="../assets/clothing/lookbook/till-front.webp" data-open-gallery="limited-06" data-start="1"><img src="../assets/clothing/lookbook/till-front.webp" width="1254" height="1254" alt="Футболка Till Ragnarök на модели, вид спереди" loading="lazy" /><span>Спереди <b aria-hidden="true">↗</b></span></a>
+          <a href="../assets/clothing/lookbook/till-front-angle.webp" data-open-gallery="limited-06" data-start="2"><img src="../assets/clothing/lookbook/till-front-angle.webp" width="1254" height="1254" alt="Элис в футболке Till Ragnarök, вид спереди в три четверти" loading="lazy" /><span>В три четверти <b aria-hidden="true">↗</b></span></a>
+          <a href="../assets/clothing/lookbook/till-back.webp" data-open-gallery="limited-06" data-start="3"><img src="../assets/clothing/lookbook/till-back.webp" width="1254" height="1254" alt="Ворон на спинке футболки Till Ragnarök, вид сзади" loading="lazy" /><span>Со спины <b aria-hidden="true">↗</b></span></a>
+          <a href="../assets/clothing/lookbook/till-back-angle.webp" data-open-gallery="limited-06" data-start="4"><img src="../assets/clothing/lookbook/till-back-angle.webp" width="1254" height="1254" alt="Элис в футболке Till Ragnarök, вид сзади в три четверти" loading="lazy" /><span>Другой ракурс <b aria-hidden="true">↗</b></span></a>
+        </div>
+        <p class="lookbook-footnote">Цифровой лукбук с вымышленными моделями. Исходный макет — в галерее вещи.</p>
+      </section>
+
+      <!-- Истории ведут к существующим разделам, а не к заказу или оплате. -->
+      <section class="clothing-stories" aria-labelledby="stories-title">
+        <header class="lookbook-heading"><div><p class="eyebrow">За каждым принтом</p><h2 id="stories-title">Своя история</h2></div></header>
+        <div class="clothing-story-grid">
+          <a class="clothing-story" href="#collection">
+            <img src="../assets/clothing/limited-06.webp" alt="Северная графика 13th: плетение и ворон" width="900" height="900" loading="lazy" />
+            <div><span>13th</span><h3>Северная линия</h3><p>Плетения, птицы и знаки, с которых началась история вещей.</p><b>К коллекции ↗</b></div>
+          </a>
+          <a class="clothing-story" href="../collaborations/#wolf">
+            <img src="../assets/collaborations/wolf-big-and-fluffy.webp" alt="Белая футболка с космическим Волком" width="1800" height="1800" loading="lazy" />
+            <div><span>13th × Волк</span><h3>Волк</h3><p>Личная футболка и два продолжения в мерче Влада.</p><b>Открыть историю ↗</b></div>
+          </a>
+          <a class="clothing-story" href="../collaborations/#custom23">
+            <img src="../assets/collaborations/custom23-shirt-01.webp" alt="Персональный автомобильный принт Custom23" width="1800" height="1800" loading="lazy" />
+            <div><span>13th × Custom23</span><h3>Custom23</h3><p>Четыре персональных принта. Автомобили, искусство и команда.</p><b>Открыть историю ↗</b></div>
+          </a>
         </div>
       </section>
 
-      <!-- Карточки лимиток. Порядковые номера выводятся стилями автоматически. -->
-      <section class="limited-collection" aria-labelledby="limited-title">
+      <!-- Без JavaScript видны все вещи, ссылки открывают оригинальные изображения. -->
+      <section class="limited-collection" id="collection" aria-labelledby="limited-title">
         <div class="limited-collection-heading">
-          <div><p class="eyebrow">Коллекция 01–13</p><h2 id="limited-title">Лимитки 13th</h2></div>
-          <p>Каждая вещь создавалась как отдельная история: со своим знаком, ритмом и характером. Это архив бренда, а не витрина массового производства.</p>
+          <div><p class="eyebrow">Одежда и совместные проекты</p><h2 id="limited-title">Коллекция 13th</h2></div>
+          <p>Футболки, куртки и худи. Откройте вещь, чтобы рассмотреть принт и доступные ракурсы.</p>
         </div>
 
+        <div class="clothing-filter-bar" hidden>
+          <div class="clothing-filters" role="group" aria-label="Тип одежды">
+            <button type="button" data-filter="all" aria-pressed="true">Все</button>
+            <button type="button" data-filter="tshirts" aria-pressed="false">Футболки</button>
+            <button type="button" data-filter="hoodies" aria-pressed="false">Худи</button>
+            <button type="button" data-filter="jackets" aria-pressed="false">Куртки</button>
+            <button type="button" data-filter="collaborations" aria-pressed="false">Коллаборации</button>
+          </div>
+          <p class="clothing-results" role="status" aria-live="polite"></p>
+        </div>
         <div class="limited-grid">
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-01.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 01 с северным орнаментом" loading="eager" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 01</h2><p>Контрастная белая основа и крупный орнамент вдоль боковой линии.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-02.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 02 с графикой рукопожатия" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 02</h2><p>Графика встречи и красный рунический акцент на светлой ткани.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-03.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 03 с северной ладьёй" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 03</h2><p>Северная ладья и холодный синий цвет как знак движения вперёд.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-04.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 04 с рунами" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 04</h2><p>Минималистичная композиция: свободное поле и рваный ритм рун по краям.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-05.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 05 с вороном, деревом и валькнутом" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 05</h2><p>Ворон, дерево и геометрический знак собраны в спокойной асимметрии.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-06.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 06 Till Ragnarök" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Till Ragnarök</h2><p>Чёрная основа, белое плетение и крупный образ ворона на спине.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-07.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 07 Northblood" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Northblood</h2><p>Вертикальный тотем, северные птицы и красная надпись на рукаве.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-08.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 08 Northern Wind" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Northern Wind</h2><p>Ладья, белая линейная графика и холодный синий акцент.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-09.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 09 Berserk" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Berserk</h2><p>Два топора, диагональная руническая строка и резкий красный цвет.</p></div></article>
-          <article class="limited-card"><div class="limited-card-media"><img src="../assets/clothing/limited-10.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 10 Valkyrie" loading="lazy" /></div><div class="limited-card-copy"><span>Архив · футболка</span><h2>Valkyrie</h2><p>Женский образ, рунический круг и фиолетовый акцент.</p></div></article>
-          <article class="limited-card limited-card--new"><div class="limited-card-media"><img src="../assets/clothing/limited-11.webp" width="1000" height="1000" alt="Чёрная куртка 13th Limited Edition 11 Forged, Not Made" loading="lazy" /></div><div class="limited-card-copy"><span>Новая глава · куртка</span><h2>Forged, Not Made</h2><p>Вещь о том, что характер не получают готовым — его выковывают.</p></div></article>
-          <article class="limited-card limited-card--new"><div class="limited-card-media"><img src="../assets/clothing/limited-12.webp" width="1000" height="1000" alt="Чёрная куртка 13th Limited Edition 12 Roots Remember" loading="lazy" /></div><div class="limited-card-copy"><span>Новая глава · куртка</span><h2>Roots Remember</h2><p>Корни помнят, дороги меняются. Дерево соединяет прошлое и путь вперёд.</p></div></article>
-          <article class="limited-card limited-card--new"><div class="limited-card-media"><img src="../assets/clothing/limited-13.webp" width="1000" height="1000" alt="Чёрное худи 13th Limited Edition 13 Кельтская душа" loading="lazy" /></div><div class="limited-card-copy"><span>Новая глава · худи</span><h2>Кельтская душа</h2><p>Ворон, цепи и металлический орнамент в самой плотной вещи серии.</p></div></article>
+          <article class="limited-card" id="item-01" data-category="tshirts" data-gallery="limited-01"><a class="limited-card-media" href="../assets/clothing/limited-01.webp" data-open-gallery="limited-01" aria-label="Рассмотреть вещь 01"><img src="../assets/clothing/limited-01.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 01 с северным орнаментом" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 01</h2><p>Контрастная белая основа и крупный орнамент вдоль боковой линии.</p></div></article>
+          <article class="limited-card" id="item-02" data-category="tshirts" data-gallery="limited-02"><a class="limited-card-media" href="../assets/clothing/limited-02.webp" data-open-gallery="limited-02" aria-label="Рассмотреть вещь 02"><img src="../assets/clothing/limited-02.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 02 с графикой рукопожатия" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 02</h2><p>Графика встречи и красный рунический акцент на светлой ткани.</p></div></article>
+          <article class="limited-card" id="item-03" data-category="tshirts" data-gallery="limited-03"><a class="limited-card-media" href="../assets/clothing/limited-03.webp" data-open-gallery="limited-03" aria-label="Рассмотреть вещь 03"><img src="../assets/clothing/limited-03.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 03 с северной ладьёй" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 03</h2><p>Северная ладья и холодный синий цвет как знак движения вперёд.</p></div></article>
+          <article class="limited-card" id="item-04" data-category="tshirts" data-gallery="limited-04"><a class="limited-card-media" href="../assets/clothing/limited-04.webp" data-open-gallery="limited-04" aria-label="Рассмотреть вещь 04"><img src="../assets/clothing/limited-04.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 04 с рунами" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 04</h2><p>Минималистичная композиция: свободное поле и рваный ритм рун по краям.</p></div></article>
+          <article class="limited-card" id="item-05" data-category="tshirts" data-gallery="limited-05"><a class="limited-card-media" href="../assets/clothing/limited-05.webp" data-open-gallery="limited-05" aria-label="Рассмотреть вещь 05"><img src="../assets/clothing/limited-05.webp" width="800" height="1200" alt="Белая футболка 13th Limited Edition 05 с вороном, деревом и валькнутом" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Limited 05</h2><p>Ворон, дерево и геометрический знак собраны в спокойной асимметрии.</p></div></article>
+          <article class="limited-card" id="item-06" data-category="tshirts" data-gallery="limited-06"><a class="limited-card-media" href="../assets/clothing/limited-06.webp" data-open-gallery="limited-06" aria-label="Рассмотреть вещь 06"><img src="../assets/clothing/limited-06.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 06 Till Ragnarök" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Till Ragnarök</h2><p>Чёрная основа, белое плетение и крупный образ ворона на спине.</p></div></article>
+          <article class="limited-card" id="item-07" data-category="tshirts" data-gallery="limited-07"><a class="limited-card-media" href="../assets/clothing/limited-07.webp" data-open-gallery="limited-07" aria-label="Рассмотреть вещь 07"><img src="../assets/clothing/limited-07.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 07 Northblood" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Northblood</h2><p>Вертикальный тотем, северные птицы и красная надпись на рукаве.</p></div></article>
+          <article class="limited-card" id="item-08" data-category="tshirts" data-gallery="limited-08"><a class="limited-card-media" href="../assets/clothing/limited-08.webp" data-open-gallery="limited-08" aria-label="Рассмотреть вещь 08"><img src="../assets/clothing/limited-08.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 08 Northern Wind" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Northern Wind</h2><p>Ладья, белая линейная графика и холодный синий акцент.</p></div></article>
+          <article class="limited-card" id="item-09" data-category="tshirts" data-gallery="limited-09"><a class="limited-card-media" href="../assets/clothing/limited-09.webp" data-open-gallery="limited-09" aria-label="Рассмотреть вещь 09"><img src="../assets/clothing/limited-09.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 09 Berserk" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Berserk</h2><p>Два топора, диагональная руническая строка и резкий красный цвет.</p></div></article>
+          <article class="limited-card" id="item-10" data-category="tshirts" data-gallery="limited-10"><a class="limited-card-media" href="../assets/clothing/limited-10.webp" data-open-gallery="limited-10" aria-label="Рассмотреть вещь 10"><img src="../assets/clothing/limited-10.webp" width="900" height="900" alt="Чёрная футболка 13th Limited Edition 10 Valkyrie" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Архив · футболка</span><h2>Valkyrie</h2><p>Женский образ, рунический круг и фиолетовый акцент.</p></div></article>
+          <article class="limited-card limited-card--new" id="item-11" data-category="jackets" data-gallery="limited-11"><a class="limited-card-media" href="../assets/clothing/limited-11.webp" data-open-gallery="limited-11" aria-label="Рассмотреть вещь 11"><img src="../assets/clothing/limited-11.webp" width="1000" height="1000" alt="Чёрная куртка 13th Limited Edition 11 Forged, Not Made" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Новая глава · куртка</span><h2>Forged, Not Made</h2><p>Вещь о том, что характер не получают готовым — его выковывают.</p></div></article>
+          <article class="limited-card limited-card--new" id="item-12" data-category="jackets" data-gallery="limited-12"><a class="limited-card-media" href="../assets/clothing/limited-12.webp" data-open-gallery="limited-12" aria-label="Рассмотреть вещь 12"><img src="../assets/clothing/limited-12.webp" width="1000" height="1000" alt="Чёрная куртка 13th Limited Edition 12 Roots Remember" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Новая глава · куртка</span><h2>Roots Remember</h2><p>Корни помнят, дороги меняются. Дерево соединяет прошлое и путь вперёд.</p></div></article>
+          <article class="limited-card limited-card--new" id="item-13" data-category="hoodies" data-gallery="limited-13"><a class="limited-card-media" href="../assets/clothing/limited-13.webp" data-open-gallery="limited-13" aria-label="Рассмотреть вещь 13"><img src="../assets/clothing/limited-13.webp" width="1000" height="1000" alt="Чёрное худи 13th Limited Edition 13 Кельтская душа" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Новая глава · худи</span><h2>Кельтская душа</h2><p>Ворон, цепи и металлический орнамент в самой плотной вещи серии.</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="wolf-personal"><a class="limited-card-media" href="../assets/collaborations/wolf-big-and-fluffy.webp" data-open-gallery="wolf-personal" aria-label="Рассмотреть: Футболка Волка"><img src="../assets/collaborations/wolf-big-and-fluffy.webp" width="1800" height="1800" alt="Белая футболка Волка, передняя и задняя стороны" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Футболка Волка</h2><p>Личная история «Большой и пушистый».</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="wolf-graphite"><a class="limited-card-media" href="../assets/collaborations/wolf-merch-graphite.webp" data-open-gallery="wolf-graphite" aria-label="Рассмотреть: Мерч Волка"><img src="../assets/collaborations/wolf-merch-graphite.webp" width="1800" height="1800" alt="Белая футболка мерча Волка с графитовым принтом" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Мерч Волка</h2><p>Графитовый вариант принта.</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="wolf-blue"><a class="limited-card-media" href="../assets/collaborations/wolf-merch-pendalf.webp" data-open-gallery="wolf-blue" aria-label="Рассмотреть: Мерч Волка"><img src="../assets/collaborations/wolf-merch-pendalf.webp" width="1800" height="1800" alt="Белая футболка мерча Волка с синим принтом" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Мерч Волка</h2><p>Синий вариант принта.</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="custom23-1"><a class="limited-card-media" href="../assets/collaborations/custom23-shirt-01.webp" data-open-gallery="custom23-1" aria-label="Рассмотреть: Персональный принт Custom23"><img src="../assets/collaborations/custom23-shirt-01.webp" width="1800" height="1800" alt="Футболка Custom23, персональный принт: вариант 1, спереди и сзади" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Персональный принт Custom23</h2><p>ArtS13Studio × Custom23.</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="custom23-2"><a class="limited-card-media" href="../assets/collaborations/custom23-shirt-02.webp" data-open-gallery="custom23-2" aria-label="Рассмотреть: Персональный принт Custom23"><img src="../assets/collaborations/custom23-shirt-02.webp" width="1800" height="1800" alt="Футболка Custom23, персональный принт: вариант 2, спереди и сзади" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Персональный принт Custom23</h2><p>ArtS13Studio × Custom23.</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="custom23-3"><a class="limited-card-media" href="../assets/collaborations/custom23-shirt-03.webp" data-open-gallery="custom23-3" aria-label="Рассмотреть: Персональный принт Custom23"><img src="../assets/collaborations/custom23-shirt-03.webp" width="1800" height="1800" alt="Футболка Custom23, персональный принт: вариант 3, спереди и сзади" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Персональный принт Custom23</h2><p>ArtS13Studio × Custom23.</p></div></article>
+          <article class="limited-card" data-category="tshirts collaborations" data-gallery="custom23-4"><a class="limited-card-media" href="../assets/collaborations/custom23-shirt-04.webp" data-open-gallery="custom23-4" aria-label="Рассмотреть: Персональный принт Custom23"><img src="../assets/collaborations/custom23-shirt-04.webp" width="1800" height="1800" alt="Футболка Custom23, персональный принт: вариант 4, спереди и сзади" loading="lazy" /><span class="clothing-card-open" aria-hidden="true">Рассмотреть ↗</span></a><div class="limited-card-copy"><span>Коллаборация · футболка</span><h2>Персональный принт Custom23</h2><p>ArtS13Studio × Custom23.</p></div></article>
         </div>
         <p class="limited-note">Коллекция показана как история бренда. Новые вещи и материалы будут добавляться по мере готовности.</p>
       </section>
@@ -125,5 +186,28 @@
 
       <footer><div class="brand footer-brand"><span class="brand-mark">13</span><span>ArtS13Studio</span></div><p>Одежда. Музыка. Истории. Рязань.</p><p>© 2026</p></footer>
     </main>
+    <!-- Одна доступная галерея на все карточки: закрытие, клавиатура и увеличение. -->
+    <dialog class="clothing-gallery" aria-labelledby="gallery-title" aria-describedby="gallery-description">
+      <div class="clothing-gallery-top"><div><p class="eyebrow">13th · детали вещи</p><h2 id="gallery-title"></h2></div><button class="gallery-close" type="button" aria-label="Закрыть галерею" autofocus>×</button></div>
+      <div class="clothing-gallery-layout">
+        <div class="gallery-viewer">
+          <div class="gallery-stage" tabindex="0" aria-label="Изображение вещи. Стрелки влево и вправо переключают ракурсы."><img class="gallery-image" alt="" /></div>
+          <p class="gallery-image-error" role="status" hidden>Изображение не загрузилось. Можно открыть оригинал по ссылке ниже.</p>
+          <div class="gallery-controls">
+            <button type="button" class="gallery-prev" aria-label="Предыдущий ракурс">←</button>
+            <span class="gallery-counter" role="status" aria-live="polite"></span>
+            <button type="button" class="gallery-next" aria-label="Следующий ракурс">→</button>
+            <button type="button" class="gallery-zoom" aria-pressed="false">Увеличить</button>
+          </div>
+        </div>
+        <aside class="gallery-details">
+          <p id="gallery-description"></p>
+          <p class="gallery-caption"></p>
+          <div class="gallery-thumbnails" role="group" aria-label="Доступные ракурсы"></div>
+          <a class="gallery-original" target="_blank" rel="noopener" href="../assets/clothing/limited-06.webp">Открыть изображение ↗</a>
+          <p class="gallery-disclaimer"></p>
+        </aside>
+      </div>
+    </dialog>
   </body>
 </html>
