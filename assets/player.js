@@ -17,7 +17,7 @@ const controlIcon = (name) => new URL(`player-controls/${name}.png`, assetsBase)
 
 // Единый каталог доступных аудиофайлов. Будущие треки без готового MP3 сюда не добавлять.
 const tracks = [
-  { title: "#Код ворона", cover: "music/kod-vorona-cover.webp?v=20260905-release1", src: "audio/kod-vorona.mp3" },
+  { title: "#Код ворона", cover: "music/kod-vorona-cover.webp?v=20260909-dark-music1", src: "audio/kod-vorona.mp3?v=20260909-dark-music1" },
   { title: "#Руна на частоте", cover: "music/runa-na-chastote-cover.png", src: "audio/runa-na-chastote.mp3" },
   { title: "Пока горим", cover: "music/poka-gorim-cover.png", src: "audio/poka-gorim.mp3" },
   { title: "Последний круг", cover: "music/posledniy-krug-cover.png", src: "audio/posledniy-krug.mp3" },
