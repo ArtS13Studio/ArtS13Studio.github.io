@@ -105,18 +105,19 @@ nav a:hover { color: var(--white); }
   align-items: center;
   overflow: hidden;
   padding: 132px 8vw 88px;
-  background-image: url("hero-workshop.png");
+  background-image: url("clothing/lookbook/hero-alexey-viktoria.webp");
   background-position: center;
   background-size: cover;
 }
-.hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4, 6, 8, .75) 0%, rgba(4, 6, 8, .3) 48%, rgba(4, 6, 8, .35) 100%), linear-gradient(0deg, #07090b 0%, transparent 34%); }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4, 6, 8, .92) 0%, rgba(4, 6, 8, .72) 42%, rgba(4, 6, 8, .18) 76%, rgba(4, 6, 8, .34) 100%), linear-gradient(0deg, #07090b 0%, transparent 38%); }
 .hero-content { position: relative; z-index: 2; width: min(100%, 820px); min-width: 0; }
 .eyebrow { margin: 0 0 18px; color: var(--amber); font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
 h1, h2, h3, p { margin-top: 0; }
 h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88; letter-spacing: -.045em; text-transform: uppercase; }
 .hero-content h1 { font-family: "Russo One", "Bahnschrift", "Arial Narrow", sans-serif; font-weight: 400; line-height: 1.08; letter-spacing: .005em; font-synthesis: none; text-wrap: balance; }
 .hero-content h1 span { display: block; color: #cbd2d6; text-shadow: 0 2px 22px rgba(4, 6, 8, .72); }
-.hero-copy { max-width: 650px; margin-bottom: 36px; color: #c4c9cc; font-size: clamp(17px, 1.6vw, 21px); }
+.hero-service { width: fit-content; margin: 0 0 18px; padding: 8px 12px; border-left: 2px solid var(--accent-blue); background: rgba(7, 9, 11, .48); color: var(--white); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.hero-copy { max-width: 650px; margin-bottom: 30px; color: #c4c9cc; font-size: clamp(17px, 1.6vw, 21px); }
 .hero-actions { display: flex; flex-wrap: wrap; width: 100%; max-width: 100%; gap: 12px; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; min-height: 52px; padding: 10px clamp(14px, 4vw, 24px); border: 1px solid transparent; font-size: 12px; font-weight: 800; line-height: 1.25; letter-spacing: .1em; text-align: center; text-transform: uppercase; white-space: normal; overflow-wrap: anywhere; transition: .2s ease; }
 .button-primary { background: var(--white); color: var(--black); }
