@@ -25,7 +25,7 @@
   const till = galleries.get('limited-06');
   if (till) {
     till.images[0].src = '../assets/clothing/lookbook/till-original.webp';
-    till.images.push({ src: '../assets/clothing/lookbook/hero-alexey-viktoria.webp', alt: 'Алексей и Виктория в футболках 13th в студии', caption: 'В студии · Алексей и Виктория', editorial: true });
+    till.images.push({ src: '../assets/clothing/lookbook/hero-alexey-viktoria.webp?v=20260914-tattoo1', alt: 'Алексей и Виктория в футболках 13th в студии', caption: 'В студии · Алексей и Виктория', editorial: true });
   }
   [
     ['limited-07', 'northblood-original', [
