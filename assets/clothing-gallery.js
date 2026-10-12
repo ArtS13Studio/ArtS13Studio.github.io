@@ -15,6 +15,8 @@
     link.setAttribute('aria-label', `Рассмотреть: ${title}`);
     galleries.set(card.dataset.gallery, {
       title,
+      type: card.dataset.category.includes('jackets') ? 'Куртка' : card.dataset.category.includes('hoodies') ? 'Худи' : 'Футболка',
+      project: card.dataset.category.includes('collaborations') ? 'Коллаборация ArtS13Studio' : 'Дизайн коллекции 13th',
       description: card.querySelector('.limited-card-copy p').textContent,
       images: [{ src: img.getAttribute('src'), alt: img.alt, caption: 'Исходное изображение вещи' }]
     });
@@ -165,6 +167,9 @@
     opener = link;
     title.textContent = current.title;
     description.textContent = current.description;
+    dialog.querySelector('#gallery-garment-type').textContent = current.type;
+    dialog.querySelector('#gallery-project-type').textContent = current.project;
+    dialog.querySelector('#gallery-order-note').textContent = 'Напишите нам «' + current.title + '» — уточним возможность изготовления, основу, размер, стоимость и срок.';
     thumbnails.replaceChildren();
     current.images.forEach((frame, i) => {
       const button = document.createElement('button');

@@ -23,6 +23,8 @@
     <link rel="icon" href="../assets/favicon.svg" />
     <link rel="preload" href="../assets/fonts/CaesarDressingCyrillic.otf" as="font" type="font/otf" crossorigin />
     <link rel="stylesheet" href="../assets/styles.css?v=20260914-dark-album1" />
+    <link rel="stylesheet" href="../assets/studio-navigation.css?v=20261012-brand1" />
+    <script src="../assets/studio-navigation.js?v=20261012-brand1" defer></script>
     <!-- Yandex.Metrika counter: basic page-view statistics only -->
     <script>
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=112156042","ym");
@@ -33,17 +35,27 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/112156042" style="position:absolute;left:-9999px" alt="" /></div></noscript>
     <main class="collaborations-page">
       <!-- Шапка раздела коллабораций. -->
-      <header class="collaborations-page-header section-page-header">
-        <a class="brand project-brand" href="../" aria-label="ArtS13Studio — на главную"><img class="project-brand-raven" src="../assets/raven-brand-mark.png" alt="" aria-hidden="true" /><span class="project-brand-copy"><strong>ArtS13Studio</strong><small>Студия · Рязань</small></span></a>
-        <nav aria-label="Навигация по сайту">
-          <a href="../clothing/">Одежда 13th</a>
-          <a aria-current="page" href="./">Коллаборации</a>
+      <header class="studio-header">
+        <a class="studio-logo" href="../" aria-label="ArtS13Studio — на главную"><img src="../assets/raven-brand-mark.png" width="42" height="42" alt="" /><span><strong>ArtS<span>13</span>Studio</strong><small>Авторская студия · Рязань</small></span></a>
+        <nav class="studio-desktop-nav" aria-label="Основная навигация">
+          <a href="../clothing/">Коллекция 13th</a>
+          <a href="../#merch">Свой мерч</a>
+          <a href="../collaborations/" aria-current="page">Коллаборации</a>
           <a href="../#about">О студии</a>
-          <a href="../music/">Музыка</a>
-          <a href="../video/">Клипы</a>
-          <span class="nav-pending" aria-disabled="true">Фото<small>(в разработке)</small></span>
         </nav>
-        <a class="clothing-back" href="../">На главную <span aria-hidden="true">↗</span></a>
+        <a class="studio-contact-link" href="../#contacts">Обсудить идею <span aria-hidden="true">↗</span></a>
+        <details class="studio-mobile-menu">
+          <summary>Меню <span aria-hidden="true">＋</span></summary>
+          <nav aria-label="Мобильная навигация">
+            <a href="../clothing/">Коллекция 13th</a>
+          <a href="../#merch">Свой мерч</a>
+          <a href="../collaborations/" aria-current="page">Коллаборации</a>
+          <a href="../#about">О студии</a>
+            <a href="../#contacts">Обсудить идею</a>
+            <a href="../music/">Музыка 13 AI the Dark</a>
+            <a href="../video/">Клипы</a>
+          </nav>
+        </details>
       </header>
 
       <!-- Первый экран: смысл совместных проектов и быстрый переход к историям. -->

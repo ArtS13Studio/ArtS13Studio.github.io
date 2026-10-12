@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ArtS13Studio — студия и бренд одежды 13th</title>
-    <meta name="description" content="ArtS13Studio — студия из Рязани. Главное публичное направление — бренд одежды 13th: лимитированные вещи с собственной графикой, дизайн и печать авторского мерча. Музыка и визуальные истории — другие направления студии." />
+    <title>13th — авторская одежда и мерч | ArtS13Studio</title>
+    <meta name="description" content="13th — бренд авторской одежды ArtS13Studio. Футболки, худи, куртки с собственной графикой. Дизайн и печать мерча для людей, команд и проектов. Рязань." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#07090b" />
     <link rel="canonical" href="https://arts13studio.github.io/" />
@@ -12,19 +12,21 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="ArtS13Studio" />
-    <meta property="og:title" content="ArtS13Studio — студия и бренд одежды 13th" />
-    <meta property="og:description" content="13th — главное направление студии: лимитированная одежда, собственная графика, дизайн и печать авторского мерча." />
+    <meta property="og:title" content="13th — одежда с характером | ArtS13Studio" />
+    <meta property="og:description" content="Авторская одежда 13th, северная графика и совместные истории. Дизайн и печать своего мерча в ArtS13Studio." />
     <meta property="og:url" content="https://arts13studio.github.io/" />
     <meta property="og:image" content="https://arts13studio.github.io/assets/clothing/lookbook/hero-alexey-viktoria.webp?v=20260914-tattoo1" />
-    <meta property="og:image:alt" content="Алексей и Виктория в одежде 13th — главное публичное направление ArtS13Studio" />
+    <meta property="og:image:alt" content="Алексей и Виктория в футболках 13th — цифровой лукбук ArtS13Studio" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ArtS13Studio — студия и одежда 13th" />
+    <meta name="twitter:title" content="13th — авторская одежда и мерч | ArtS13Studio" />
     <meta name="twitter:description" content="Одежда с собственной графикой, дизайн и печать авторского мерча в Рязани." />
     <meta name="twitter:image" content="https://arts13studio.github.io/assets/clothing/lookbook/hero-alexey-viktoria.webp?v=20260914-tattoo1" />
     <link rel="icon" href="assets/favicon.svg" />
     <link rel="preload" href="assets/fonts/CaesarDressingCyrillic.otf" as="font" type="font/otf" crossorigin />
     <link rel="stylesheet" href="assets/styles.css?v=20260914-dark-album1" />
-    <script src="assets/player.js?v=20260909-dark-music1" defer></script>
+    <link rel="stylesheet" href="assets/studio-navigation.css?v=20261012-brand1" />
+    <link rel="stylesheet" href="assets/home-brand.css?v=20261012-brand1" />
+    <script src="assets/studio-navigation.js?v=20261012-brand1" defer></script>
     <!-- Yandex.Metrika counter: basic page-view statistics only -->
     <script>
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=112156042","ym");
@@ -40,7 +42,7 @@
             "name": "ArtS13Studio",
             "url": "https://arts13studio.github.io/",
             "logo": "https://arts13studio.github.io/assets/raven-brand-mark.png",
-            "description": "ArtS13Studio — студия из Рязани. Главное публичное направление — бренд одежды 13th: лимитированные вещи, дизайн и печать авторского мерча. Также студия развивает музыку и визуальные истории.",
+            "description": "ArtS13Studio — авторская студия из Рязани. Бренд одежды 13th, дизайн и печать мерча, коллаборации и музыкальный проект 13 AI the Dark.",
             "address": { "@type": "PostalAddress", "addressLocality": "Рязань", "addressCountry": "RU" },
             "sameAs": ["https://vk.ru/arts13studio", "https://www.youtube.com/@13AitheDark"]
           },
@@ -56,164 +58,120 @@
       }
     </script>
   </head>
-  <body>
+  <body class="brand-home">
+    <a class="studio-skip-link" href="#main-content">К содержимому</a>
     <noscript><div><img src="https://mc.yandex.ru/watch/112156042" style="position:absolute;left:-9999px" alt="" /></div></noscript>
-    <main>
-      <!-- Шапка главной страницы: логотип, навигация и контакты. -->
-      <header class="site-header">
-        <a class="brand project-brand" href="#top" aria-label="ArtS13Studio — на главную"><img class="project-brand-raven" src="assets/raven-brand-mark.png" alt="" aria-hidden="true" /><span class="project-brand-copy"><strong>ArtS13Studio</strong><small>Студия · Рязань</small></span></a>
-        <nav aria-label="Основная навигация">
-          <a href="clothing/">Одежда 13th</a>
+    <header class="studio-header">
+        <a class="studio-logo" href="./" aria-label="ArtS13Studio — на главную"><img src="assets/raven-brand-mark.png" width="42" height="42" alt="" /><span><strong>ArtS<span>13</span>Studio</strong><small>Авторская студия · Рязань</small></span></a>
+        <nav class="studio-desktop-nav" aria-label="Основная навигация">
+          <a href="clothing/">Коллекция 13th</a>
+          <a href="#merch">Свой мерч</a>
           <a href="collaborations/">Коллаборации</a>
           <a href="#about">О студии</a>
-          <a href="#music">Музыка</a>
-          <a href="video/">Клипы</a>
-          <span class="nav-pending" aria-disabled="true">Фото<small>(в разработке)</small></span>
         </nav>
-        <a class="header-cta" href="#contacts">Контакты</a>
+        <a class="studio-contact-link" href="#contacts">Обсудить идею <span aria-hidden="true">↗</span></a>
+        <details class="studio-mobile-menu">
+          <summary>Меню <span aria-hidden="true">＋</span></summary>
+          <nav aria-label="Мобильная навигация">
+            <a href="clothing/">Коллекция 13th</a>
+          <a href="#merch">Свой мерч</a>
+          <a href="collaborations/">Коллаборации</a>
+          <a href="#about">О студии</a>
+            <a href="#contacts">Обсудить идею</a>
+            <a href="music/">Музыка 13 AI the Dark</a>
+            <a href="video/">Клипы</a>
+          </nav>
+        </details>
       </header>
-
-      <!-- Первый экран: одежда 13th и авторский мерч — главное направление студии. -->
-      <section class="hero" id="top">
-        <div class="hero-shade"></div>
-        <div class="hero-content">
-          <p class="eyebrow">ArtS13Studio · главное публичное направление</p>
-          <h1>Одежда 13th.<span>Сделано с душой.</span></h1>
-          <p class="hero-service">Дизайн и печать авторского мерча</p>
-          <p class="hero-copy">ArtS13Studio объединяет разные направления. Первым мы представляем бренд одежды 13th с лимитированными вещами и собственной графикой. Музыка 13 AI the Dark и визуальные истории — другие направления студии.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="clothing/">Смотреть одежду <span aria-hidden="true">↗</span></a>
-            <a class="button button-ghost" href="https://vk.ru/arts13studio" target="_blank" rel="noreferrer">Обсудить свой мерч <span aria-hidden="true">↗</span></a>
-          </div>
+    <main id="main-content">
+      <section class="brand-hero" id="top" aria-labelledby="brand-title">
+        <img class="brand-hero-image" src="assets/clothing/lookbook/hero-alexey-viktoria.webp?v=20260914-tattoo1" width="1774" height="887" alt="Алексей и Виктория в футболках 13th в цифровом лукбуке студии" fetchpriority="high" />
+        <div class="brand-hero-copy">
+          <p class="brand-eyebrow">Авторская одежда ArtS13Studio</p>
+          <h1 id="brand-title"><span class="brand-wordmark">13<span>th</span></span><span class="brand-hero-title">Одежда<br />с характером</span></h1>
+          <p class="brand-hero-description">Своя графика. Северные образы.<br />Вещи, в которых узнаёшь себя.</p>
+          <div class="brand-actions"><a class="brand-button brand-button-light" href="clothing/">Смотреть коллекцию <span aria-hidden="true">↗</span></a><a class="brand-text-link" href="#merch">Обсудить свой мерч <span aria-hidden="true">↗</span></a></div>
         </div>
+        <div class="brand-hero-caption"><span>13th / Till Ragnarök</span><span>Цифровой лукбук</span></div>
       </section>
 
-      <!-- Три основных направления ArtS13Studio. -->
-      <section class="section directions-section" id="about">
-        <div class="section-heading">
-          <div><p class="eyebrow">Главное публичное направление</p><h2>В центре — одежда 13th</h2></div>
-          <p>ArtS13Studio — основа и общая студия. Для аудитории на первом плане стоит бренд одежды 13th; музыка 13 AI the Dark, коллаборации и визуальные истории остаются самостоятельными направлениями студии.</p>
-        </div>
-        <div class="direction-grid">
-          <article class="direction-card direction-card--fashion" data-runes="ᛏ · ᚺ · ᚱ">
-            <div class="direction-sigil"><span class="direction-mark">13</span><span class="direction-runes" aria-hidden="true">ᛏ ᚺ</span></div>
-            <h3>13th</h3>
-            <p>Лимитированная одежда с собственной графикой, дизайн и печать авторского мерча.</p>
-            <a class="card-link" href="clothing/">Смотреть одежду <b>↗</b></a>
+      <section class="brand-section brand-selection" id="clothing" aria-labelledby="selection-title">
+        <div class="brand-section-heading"><div><p class="brand-eyebrow">01 / Коллекция 13th</p><h2 id="selection-title">Найди свою вещь</h2></div><p>От лаконичного знака до сложной графики.<br />Шесть характеров одной коллекции.</p></div>
+        <nav class="brand-categories" aria-label="Категории одежды"><a href="clothing/#collection">Вся коллекция <span>↗</span></a><a href="clothing/?type=tshirts#collection">Футболки</a><a href="clothing/?type=hoodies#collection">Худи</a><a href="clothing/?type=jackets#collection">Куртки</a></nav>
+        <div class="wear-picks"><article class="wear-pick">
+            <a href="clothing/#item-06" aria-label="Рассмотреть Till Ragnarök">
+              <div class="wear-pick-image"><img src="assets/clothing/lookbook/till-original.webp" width="1000" height="1000" alt="Футболка 13th Till Ragnarök, макет спереди и сзади" loading="lazy" decoding="async" /><span class="wear-pick-open" aria-hidden="true">Рассмотреть ↗</span></div>
+              <div class="wear-pick-label"><span>Футболка · 13th</span><span>Дизайн коллекции</span></div>
+              <h3>Till Ragnarök</h3><p>Белое плетение и ворон на чёрной основе.</p>
+            </a>
           </article>
-          <article class="direction-card direction-card--music" data-runes="ᚱ · ᚨ · ᚠ">
-            <div class="direction-sigil"><span class="direction-mark direction-mark--wing">ᛉ</span><span class="direction-runes" aria-hidden="true">13 AI</span></div>
-            <h3>13 AI the Dark</h3>
-            <p>Музыкальное продолжение мира 13th: Dark Alternative Rock, технологии и холодная северная атмосфера.</p>
+          <article class="wear-pick">
+            <a href="clothing/#item-07" aria-label="Рассмотреть Northblood">
+              <div class="wear-pick-image"><img src="assets/clothing/lookbook/northblood-original.webp" width="1000" height="1000" alt="Футболка 13th Northblood, макет спереди и сзади" loading="lazy" decoding="async" /><span class="wear-pick-open" aria-hidden="true">Рассмотреть ↗</span></div>
+              <div class="wear-pick-label"><span>Футболка · 13th</span><span>Дизайн коллекции</span></div>
+              <h3>Northblood</h3><p>Северный орнамент и красный акцент.</p>
+            </a>
           </article>
-          <article class="direction-card direction-card--collab" data-runes="ᚷ · ᛗ · ᛞ">
-            <div class="direction-sigil"><span class="direction-mark direction-mark--union">∞</span><span class="direction-runes" aria-hidden="true">ᚷ ᛗ</span></div>
-            <h3>Коллаборации</h3>
-            <p>Совместные вещи, мерч для команд и визуальные проекты с теми, кто близок по духу.</p>
-            <a class="card-link" href="collaborations/">Открыть истории <b>↗</b></a>
+          <article class="wear-pick">
+            <a href="clothing/#item-08" aria-label="Рассмотреть Northern Wind">
+              <div class="wear-pick-image"><img src="assets/clothing/lookbook/northern-wind-original.webp" width="1000" height="1000" alt="Футболка 13th Northern Wind, макет спереди и сзади" loading="lazy" decoding="async" /><span class="wear-pick-open" aria-hidden="true">Рассмотреть ↗</span></div>
+              <div class="wear-pick-label"><span>Футболка · 13th</span><span>Дизайн коллекции</span></div>
+              <h3>Northern Wind</h3><p>Ладья, тонкие линии и холодный синий.</p>
+            </a>
           </article>
-        </div>
-      </section>
-
-      <!-- Превью одежды: только три выбранные лимитки, полный архив находится в clothing/. -->
-      <section class="section clothing-preview-section" id="clothing">
-        <div class="section-heading section-heading--single">
-          <div><p class="eyebrow">13th · главное публичное направление</p><h2>Лимитированная одежда</h2></div>
-        </div>
-        <div class="clothing-feature-grid">
-          <article class="clothing-feature-card"><a href="clothing/#item-11" aria-label="Рассмотреть вещь"><img src="assets/clothing/limited-11.webp" width="1000" height="1000" alt="Куртка 13th Forged, Not Made" loading="lazy" /></a><div><span>Limited 11 · куртка</span><h3><a href="clothing/#item-11">Forged, Not Made</a></h3></div></article>
-          <article class="clothing-feature-card"><a href="clothing/#item-12" aria-label="Рассмотреть вещь"><img src="assets/clothing/limited-12.webp" width="1000" height="1000" alt="Куртка 13th Roots Remember" loading="lazy" /></a><div><span>Limited 12 · куртка</span><h3><a href="clothing/#item-12">Roots Remember</a></h3></div></article>
-          <article class="clothing-feature-card"><a href="clothing/#item-13" aria-label="Рассмотреть вещь"><img src="assets/clothing/limited-13.webp" width="1000" height="1000" alt="Худи 13th Кельтская душа" loading="lazy" /></a><div><span>Limited 13 · худи</span><h3><a href="clothing/#item-13">Кельтская душа</a></h3></div></article>
-        </div>
-        <div class="clothing-preview-footer"><a class="button section-open-button" href="clothing/"><span>Открыть раздел одежды</span><b aria-hidden="true">↗</b></a></div>
-      </section>
-
-      <!-- Плашка текущего музыкального релиза на главной. -->
-      <section class="release-strip" aria-labelledby="home-release-title">
-        <div class="release-strip-cover-wrap">
-          <img class="release-strip-cover" src="assets/music/kod-vorona-cover.webp?v=20260909-dark-music1" alt="Обложка трека «Код ворона»" />
-          <span class="release-strip-number" aria-hidden="true">11</span>
-        </div>
-        <div class="release-strip-copy">
-          <p class="release-kicker"><span aria-hidden="true"></span> Новый релиз · 13 AI the Dark</p>
-          <h2 id="home-release-title">#Код ворона</h2>
-          <p>Не приказ и не предупреждение — зашифрованный голос среди помех. Ответ всё равно приходится находить самому.</p>
-        </div>
-        <div class="release-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="release-strip-actions">
-          <button class="track-play-button home-release-play-button" type="button" data-home-release-play aria-label="Слушать трек «Код ворона»"><img class="track-play-button-icon" src="assets/player-controls/play.png" alt="" aria-hidden="true" /><span class="track-play-button-label">Слушать</span></button>
-          <a class="release-link" href="music/#release-kod-vorona">Открыть релиз <span aria-hidden="true">↗</span></a>
-        </div>
-        <audio data-home-release-audio preload="metadata" src="assets/audio/kod-vorona.mp3?v=20260909-dark-music1"></audio>
-      </section>
-
-      <!-- Атмосферный тизер грядущего альбома. Позже в визуальную часть можно подставить готовую обложку. -->
-      <section class="dark-album-teaser" aria-labelledby="dark-album-title">
-        <div class="dark-album-art" aria-hidden="true">
-          <span class="dark-album-code">SIGNAL 13 · INCOMING</span>
-          <span class="dark-album-orbit"></span>
-          <img src="assets/raven-brand-mark.png" alt="" />
-          <span class="dark-album-rune">ᚨ</span>
-          <span class="dark-album-artist">13 AI<br />THE DARK</span>
-          <span class="dark-album-frequency">13.13 / DARK CHANNEL</span>
-        </div>
-        <div class="dark-album-copy">
-          <p class="dark-album-kicker"><span aria-hidden="true"></span> Скоро · 13 AI the Dark</p>
-          <h2 id="dark-album-title"><span>#Dark</span> music</h2>
-          <p class="dark-album-lead">Грядущий альбом уже собирается из отдельных историй.</p>
-          <p>Один холодный импульс, разные голоса и знаки среди помех. Первый сигнал уже прозвучал — продолжение близко.</p>
-          <div class="dark-album-status"><span>Альбом готовится</span><b>Дата будет объявлена</b></div>
-        </div>
-      </section>
-
-      <div class="rune-separator section-separator" aria-hidden="true"><i></i><span>ᚨ</span><b>13</b><span>ᚱ</span><i></i></div>
-
-      <!-- Три ознакомительных трека. Полная библиотека находится в music/. -->
-      <section class="section music-section" id="music">
-        <div class="section-heading compact">
-          <div><p class="eyebrow">13 AI the Dark</p><h2>Музыка для знакомства</h2></div>
-          <p>Три первых трека оставляем здесь как превью. Полная музыкальная библиотека находится в отдельном разделе.</p>
-        </div>
-        <div class="track-list">
-          <article class="track">
-            <div class="track-cover"><img class="track-cover-image" src="assets/music/poka-gorim-cover.png" alt="Обложка трека «Пока горим»" loading="lazy" /></div>
-            <div class="track-copy"><span>13 AI the Dark</span><h3>Пока горим</h3><p>Первый шаг. Начало истории.</p></div>
-            <div class="track-player-wrap"><audio class="track-player" controls preload="metadata" src="assets/audio/poka-gorim.mp3">Ваш браузер не поддерживает встроенный аудиоплеер.</audio></div>
+          <article class="wear-pick">
+            <a href="clothing/#item-11" aria-label="Рассмотреть Forged, Not Made">
+              <div class="wear-pick-image"><img src="assets/clothing/limited-11.webp" width="1000" height="1000" alt="Куртка 13th Forged, Not Made, макет спереди и сзади" loading="lazy" decoding="async" /><span class="wear-pick-open" aria-hidden="true">Рассмотреть ↗</span></div>
+              <div class="wear-pick-label"><span>Куртка · 13th</span><span>Дизайн коллекции</span></div>
+              <h3>Forged, Not Made</h3><p>Графика о характере, который выковывают.</p>
+            </a>
           </article>
-          <article class="track">
-            <div class="track-cover"><img class="track-cover-image" src="assets/music/posledniy-krug-cover.png" alt="Обложка трека «Последний круг»" loading="lazy" /></div>
-            <div class="track-copy"><span>13 AI the Dark</span><h3>Последний круг</h3><p>Скорость, выбор и точка невозврата.</p></div>
-            <div class="track-player-wrap"><audio class="track-player" controls preload="metadata" src="assets/audio/posledniy-krug.mp3">Ваш браузер не поддерживает встроенный аудиоплеер.</audio></div>
+          <article class="wear-pick">
+            <a href="clothing/#item-12" aria-label="Рассмотреть Roots Remember">
+              <div class="wear-pick-image"><img src="assets/clothing/limited-12.webp" width="1000" height="1000" alt="Куртка 13th Roots Remember, макет спереди и сзади" loading="lazy" decoding="async" /><span class="wear-pick-open" aria-hidden="true">Рассмотреть ↗</span></div>
+              <div class="wear-pick-label"><span>Куртка · 13th</span><span>Дизайн коллекции</span></div>
+              <h3>Roots Remember</h3><p>Дерево, корни и память о своём пути.</p>
+            </a>
           </article>
-          <article class="track">
-            <div class="track-cover"><img class="track-cover-image" src="assets/music/raznye-golosa-cover.png" alt="Обложка трека «Разные голоса»" loading="lazy" /></div>
-            <div class="track-copy"><span>13 AI the Dark</span><h3>Разные голоса</h3><p>Коллаборация с Custom23.</p></div>
-            <div class="track-player-wrap"><audio class="track-player" controls preload="metadata" src="assets/audio/raznye-golosa.mp3">Ваш браузер не поддерживает встроенный аудиоплеер.</audio></div>
-          </article>
+          <article class="wear-pick">
+            <a href="clothing/#item-13" aria-label="Рассмотреть Кельтская душа">
+              <div class="wear-pick-image"><img src="assets/clothing/limited-13.webp" width="1000" height="1000" alt="Худи 13th Кельтская душа, макет спереди и сзади" loading="lazy" decoding="async" /><span class="wear-pick-open" aria-hidden="true">Рассмотреть ↗</span></div>
+              <div class="wear-pick-label"><span>Худи · 13th</span><span>Дизайн коллекции</span></div>
+              <h3>Кельтская душа</h3><p>Ворон и сложное металлическое плетение.</p>
+            </a>
+          </article></div>
+        <div class="brand-section-bottom"><p>Макеты коллекции. В галереях — принты и доступные ракурсы.</p><a class="brand-text-link" href="clothing/">Вся одежда 13th <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <section class="brand-story" aria-labelledby="north-title">
+        <figure class="brand-story-image"><img src="assets/clothing/lookbook/northblood-lis-alice-front.webp" width="1254" height="1254" alt="Northblood в цифровом лукбуке: Лис и Элис, вид спереди" loading="lazy" decoding="async" /><figcaption>Northblood / цифровой лукбук</figcaption></figure>
+        <div class="brand-story-copy"><p class="brand-eyebrow">02 / За каждым принтом — история</p><h2 id="north-title">Север<br />в деталях</h2><p class="brand-lead">Плетение, которое хочется рассмотреть. Знак, который становится своим.</p><p>Ворон, дерево, ветер и переплетённые линии — образы северной серии 13th. У каждой вещи свой рисунок и настроение, а вместе они складываются в узнаваемую историю.</p><div class="brand-story-names"><span>Till Ragnarök</span><span>Northblood</span><span>Northern Wind</span></div><a class="brand-text-link" href="clothing/#story-north">Рассмотреть северную серию <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <section class="brand-section brand-merch" id="merch" aria-labelledby="merch-title">
+        <div class="brand-section-heading"><div><p class="brand-eyebrow">03 / Авторский мерч</p><h2 id="merch-title">Твоя история.<br />Наш рисунок.</h2></div><div><p class="brand-lead">Дизайн и печать авторского мерча</p><p>Для себя, команды или проекта. Начинаем с вашей идеи и собираем графику, которая передаёт именно ваш характер.</p><a class="brand-text-link" href="#contacts">Обсудить идею <span aria-hidden="true">↗</span></a></div></div>
+        <div class="brand-collabs">
+          <a class="brand-collab" href="collaborations/#wolf"><img src="assets/collaborations/wolf-big-and-fluffy.webp" width="1800" height="1800" alt="Макет личной футболки Волка «Большой и пушистый», две стороны" loading="lazy" decoding="async" /><div><p class="brand-eyebrow">13th × Волк</p><h3>Личная история</h3><p>«Большой и пушистый» — характер человека в собственном принте.</p><span class="brand-text-link">Посмотреть проект <span aria-hidden="true">↗</span></span></div></a>
+          <a class="brand-collab" href="collaborations/#custom23"><img src="assets/collaborations/custom23-shirt-01.webp" width="1800" height="1800" alt="Макет футболки Custom23 с автомобильной графикой, две стороны" loading="lazy" decoding="async" /><div><p class="brand-eyebrow">13th × Custom23</p><h3>Одна команда.<br />Разные характеры.</h3><p>Четыре персональных рисунка, объединённых общей историей.</p><span class="brand-text-link">Посмотреть проект <span aria-hidden="true">↗</span></span></div></a>
         </div>
-        <div class="music-preview-footer"><a class="button section-open-button" href="music/"><span>Открыть музыку</span><b aria-hidden="true">↗</b></a></div>
+        <ol class="brand-process" aria-label="Как создаётся мерч"><li><span>01</span><h3>Идея</h3><p>Обсуждаем, для кого вещь, её настроение и ваши референсы.</p></li><li><span>02</span><h3>Макет</h3><p>Собираем рисунок и показываем его расположение на одежде.</p></li><li><span>03</span><h3>Согласование</h3><p>Уточняем основу, размеры, количество, стоимость и сроки.</p></li><li><span>04</span><h3>Изготовление</h3><p>После согласования готовим принт и переходим к нанесению.</p></li></ol>
       </section>
 
-      <div class="rune-separator section-separator section-separator--clips" aria-hidden="true"><i></i><span>ᚠ</span><b>13</b><span>ᛉ</span><i></i></div>
-
-      <!-- Превью последнего клипа. Сам YouTube-плеер находится в video/. -->
-      <section class="home-clips-preview" aria-labelledby="home-clips-title">
-        <img src="assets/music/poka-gorim-cover.png" alt="Обложка клипа «Пока горим»" loading="lazy" />
-        <div>
-          <p class="eyebrow">Первый официальный клип · 13 AI the Dark</p>
-          <h2 id="home-clips-title">#Пока горим</h2>
-          <p>История трека продолжается в видео.</p>
-        </div>
-        <a class="button home-clips-button" href="video/"><span>Смотреть клип</span><b aria-hidden="true">↗</b></a>
+      <section class="brand-studio" id="about" aria-labelledby="studio-title">
+        <div class="brand-studio-mark" aria-hidden="true"><img src="assets/raven-brand-mark.png" width="240" height="256" alt="" loading="lazy" /><span>ArtS13Studio</span><small>Рязань · своя графика · свои истории</small></div>
+        <div class="brand-studio-copy"><p class="brand-eyebrow">04 / Студия, в которой рождается 13th</p><h2 id="studio-title">Сделано<br />с душой.</h2><p class="brand-lead">ArtS13Studio объединяет людей и идеи. 13th превращает их в одежду.</p><p>Мы работаем с авторской графикой, дизайном и печатью мерча. Нас интересуют вещи с личным смыслом: от небольшого знака до подробной композиции, которую хочется рассматривать.</p><a class="brand-text-link" href="https://vk.ru/arts13studio" target="_blank" rel="noreferrer">Жизнь студии во ВКонтакте <span aria-hidden="true">↗</span></a></div>
       </section>
 
-      <!-- Контакты и внешние площадки проекта. -->
-      <section class="contact-section" id="contacts">
-        <div><p class="eyebrow">Свой образ на ткани</p><h2>Обсудим дизайн и печать авторского мерча.</h2></div>
-        <div class="contact-links"><a href="https://vk.ru/arts13studio" target="_blank" rel="noreferrer">Написать во ВКонтакте <span>↗</span></a><a href="https://www.youtube.com/@13AitheDark" target="_blank" rel="noreferrer">YouTube <span>↗</span></a></div>
-      </section>
+      <section class="brand-section brand-questions" aria-labelledby="questions-title"><div><p class="brand-eyebrow">Перед первым сообщением</p><h2 id="questions-title">Начнём<br />с простого</h2></div><div class="brand-faq">
+        <details><summary>Можно прийти со своим рисунком?<span aria-hidden="true">＋</span></summary><p>Да. Пришлите рисунок или референсы и расскажите, на какой вещи хотите его видеть. Посмотрим, что потребуется для подготовки макета к печати.</p></details>
+        <details><summary>Как обсудить вещь из коллекции?<span aria-hidden="true">＋</span></summary><p>Откройте понравившуюся модель и напишите нам её название. Уточним возможность изготовления, основу, размер и расположение принта. Изображения в каталоге показывают дизайн; наличие и параметры обсуждаем отдельно.</p></details>
+        <details><summary>Что нужно для расчёта мерча?<span aria-hidden="true">＋</span></summary><p>Расскажите о типе одежды, количестве вещей, рисунке и желаемом сроке. Если пока есть только идея, начнём с неё. Стоимость и сроки согласуем по конкретному проекту.</p></details>
+      </div></section>
 
-      <footer><div class="brand footer-brand"><span class="brand-mark">13</span><span>ArtS13Studio</span></div><p>Одежда 13th. Музыка. Истории. Рязань.</p><p>© 2026</p></footer>
+      <section class="brand-contact" id="contacts" aria-labelledby="contact-title"><div><p class="brand-eyebrow">Есть своя идея?</p><h2 id="contact-title">Давай сделаем<br />её осязаемой.</h2><p>Пришли название вещи, свой рисунок или пару слов о будущем мерче.</p></div><a class="brand-button brand-button-light" href="https://vk.ru/arts13studio" target="_blank" rel="noreferrer">Написать во ВКонтакте <span aria-hidden="true">↗</span></a></section>
+
+      <section class="brand-sound" id="music" aria-labelledby="sound-title"><img src="assets/music/kod-vorona-cover.webp?v=20260909-dark-music1" width="96" height="96" alt="Обложка «Кода ворона», 13 AI the Dark" loading="lazy" /><div><p class="brand-eyebrow">Музыкальное направление ArtS13Studio</p><h2 id="sound-title">13 AI the Dark</h2><p>«Код ворона» уже звучит. Альбом #Dark music готовится.</p></div><div class="brand-sound-links"><a class="brand-text-link" href="music/">Слушать музыку <span aria-hidden="true">↗</span></a><a href="video/">Смотреть клипы ↗</a></div></section>
     </main>
+    <footer class="brand-footer"><a class="brand-footer-name" href="#top">ArtS13Studio</a><p>13th — авторская одежда и мерч</p><a href="clothing/">Коллекция</a><a href="#merch">Свой мерч</a><span>Рязань · © 2026</span></footer>
   </body>
 </html>
