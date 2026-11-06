@@ -18,7 +18,7 @@
       type: card.dataset.category.includes('jackets') ? 'Куртка' : card.dataset.category.includes('hoodies') ? 'Худи' : 'Футболка',
       project: card.dataset.category.includes('collaborations') ? 'Коллаборация ArtS13Studio' : 'Дизайн коллекции 13th',
       description: card.querySelector('.limited-card-copy p').textContent,
-      images: [{ src: img.getAttribute('src'), alt: img.alt, caption: 'Исходное изображение вещи' }]
+      images: [{ src: img.getAttribute('src'), alt: img.alt, caption: card.dataset.art ? 'Макет · принт на груди' : 'Исходное изображение вещи' }, ...(card.dataset.art ? [{src: card.dataset.art, alt: `${title} — оригинальный рисунок`, caption: 'Принт крупно · исходный рисунок', label: 'Принт'}] : [])]
     });
   });
 
@@ -51,6 +51,7 @@
     back: { x: .47, y: .13, w: .53, h: .82 }
   };
   galleries.forEach((gallery, key) => {
+    if (key.startsWith('autumn-')) return;
     const base = gallery.images[0];
     const number = Number(key.replace('limited-', ''));
     const paired = (number >= 6 && number <= 13) || key.startsWith('wolf-') || key.startsWith('custom23-');

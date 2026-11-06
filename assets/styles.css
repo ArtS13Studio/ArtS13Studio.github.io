@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 /*
   КАРТА СТИЛЕЙ
   1. Шрифт, переменные и базовые элементы.
@@ -15,10 +14,10 @@
 /* Фирменный шрифт и общая палитра. */
 @font-face {
   font-family: "Caesar Dressing Cyrillic";
-  src: url("fonts/CaesarDressingCyrillic.otf") format("opentype");
+  src: url("fonts/CaesarDressingCyrillic.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
-  font-display: block;
+  font-display: swap;
 }
 
 :root {
@@ -114,7 +113,7 @@ nav a:hover { color: var(--white); }
 .eyebrow { margin: 0 0 18px; color: var(--amber); font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
 h1, h2, h3, p { margin-top: 0; }
 h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88; letter-spacing: -.045em; text-transform: uppercase; }
-.hero-content h1 { font-family: "Russo One", "Bahnschrift", "Arial Narrow", sans-serif; font-weight: 400; line-height: 1.08; letter-spacing: .005em; font-synthesis: none; text-wrap: balance; }
+.hero-content h1 { font-family: "Caesar Dressing Cyrillic", serif; font-weight: 400; line-height: 1.08; letter-spacing: .005em; font-synthesis: none; text-wrap: balance; }
 .hero-content h1 span { display: block; color: #cbd2d6; text-shadow: 0 2px 22px rgba(4, 6, 8, .72); }
 .hero-service { width: fit-content; margin: 0 0 18px; padding: 8px 12px; border-left: 2px solid var(--accent-blue); background: rgba(7, 9, 11, .48); color: var(--white); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .hero-copy { max-width: 650px; margin-bottom: 30px; color: #c4c9cc; font-size: clamp(17px, 1.6vw, 21px); }
@@ -197,7 +196,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
   bottom: 12px;
   z-index: -1;
   color: rgba(255, 255, 255, .035);
-  font-family: "Russo One", sans-serif;
+  font-family: "Caesar Dressing Cyrillic", serif;
   font-size: clamp(70px, 10vw, 150px);
   line-height: .8;
   letter-spacing: -.07em;
@@ -292,7 +291,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 }
 .dark-album-kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--dark-red); font-size: 10px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
 .dark-album-kicker span { width: 38px; height: 1px; background: var(--dark-red); box-shadow: 0 0 10px rgba(239, 36, 57, .5); }
-.dark-album-copy h2 { margin: 0 0 22px; font-family: "Russo One", "Arial Narrow", sans-serif; font-size: clamp(54px, 6.7vw, 96px); font-weight: 400; line-height: .82; letter-spacing: -.045em; text-transform: uppercase; }
+.dark-album-copy h2 { margin: 0 0 22px; font-family: "Caesar Dressing Cyrillic", serif; font-size: clamp(54px, 6.7vw, 96px); font-weight: 400; line-height: .82; letter-spacing: -.045em; text-transform: uppercase; }
 .dark-album-copy h2 span { display: block; color: #f1f2f2; text-shadow: 3px 0 0 rgba(239, 36, 57, .32), -2px 0 0 rgba(32, 184, 255, .2); }
 .dark-album-copy h2 span::first-letter { color: var(--dark-red); }
 .dark-album-lead { max-width: 650px; margin: 0 0 10px; color: #e3e6e8; font-size: clamp(18px, 2vw, 25px); line-height: 1.25; }
@@ -421,7 +420,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .music-back { color: var(--amber); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .music-back span { margin-left: 8px; }
 .music-library-hero { max-width: 1480px; margin: 0 auto; padding: 100px 6vw 72px; }
-.music-library-hero h1 { margin-bottom: 24px; font-family: "Russo One", "Bahnschrift", "Arial Narrow", sans-serif; font-size: clamp(58px, 9vw, 136px); font-weight: 400; line-height: .88; letter-spacing: 0; }
+.music-library-hero h1 { margin-bottom: 24px; font-family: "Caesar Dressing Cyrillic", serif; font-size: clamp(58px, 9vw, 136px); font-weight: 400; line-height: .88; letter-spacing: 0; }
 .music-library-hero > p:last-child { max-width: 650px; margin: 0; color: var(--muted); font-size: clamp(17px, 1.6vw, 21px); }
 .album-index {
   max-width: 1480px;
@@ -466,7 +465,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .album-index-card--primary::after { background-position: center 51%; }
 .album-index-card > span, .album-index-card strong, .album-index-card small { position: relative; z-index: 1; }
 .album-index-card > span { grid-column: 1 / -1; color: var(--accent-blue); font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-.album-index-card strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: clamp(25px, 2.8vw, 38px); font-weight: 400; line-height: 1; letter-spacing: .025em; text-transform: uppercase; }
+.album-index-card strong { font-family: "Caesar Dressing Cyrillic", serif; font-size: clamp(25px, 2.8vw, 38px); font-weight: 400; line-height: 1; letter-spacing: .025em; text-transform: uppercase; }
 .album-index-title span { display: block; }
 .album-index-title span + span { margin-top: .08em; }
 .album-index-card small { align-self: end; color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
@@ -782,7 +781,7 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
 }
 
 /* Общий музыкальный плеер — только в разделе музыки */
-.track-play-button { min-width: 138px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 18px; border: 1px solid rgba(184, 199, 211, .26); background: linear-gradient(90deg, rgba(5, 8, 12, .9), rgba(8, 10, 17, .72), rgba(5, 8, 12, .9)), url("player-background.jpg") center 55% / cover no-repeat; color: var(--steel); font-family: "Caesar Dressing Cyrillic", "Russo One", "Bahnschrift", sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .04em; line-height: 1; text-transform: uppercase; cursor: pointer; }
+.track-play-button { min-width: 138px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 18px; border: 1px solid rgba(184, 199, 211, .26); background: linear-gradient(90deg, rgba(5, 8, 12, .9), rgba(8, 10, 17, .72), rgba(5, 8, 12, .9)), url("player-background.jpg") center 55% / cover no-repeat; color: var(--steel); font-family: "Caesar Dressing Cyrillic", serif; font-size: 16px; font-weight: 400; letter-spacing: .04em; line-height: 1; text-transform: uppercase; cursor: pointer; }
 .track-play-button-icon { width: 32px; height: 32px; flex: 0 0 32px; object-fit: contain; border: 0; background: transparent; transition: transform .2s ease, filter .2s ease; }
 .track-play-button-label { color: inherit; line-height: 1; }
 .track-play-button:hover, .is-current .track-play-button { border-color: var(--accent); border-image: var(--accent-gradient) 1; color: var(--white); }
@@ -818,9 +817,9 @@ footer { display: grid; grid-template-columns: 1fr auto auto; align-items: cente
 .global-player-options { display: grid; justify-items: end; gap: 8px; }
 .global-player-modes { display: flex; justify-content: flex-end; gap: 8px; }
 .global-player-modes .player-mode-button { position: relative; width: 120px; height: 40px; grid-template-columns: 30px 1fr; gap: 7px; overflow: hidden; padding: 4px 13px 4px 10px; border: 1px solid rgba(83, 130, 255, .38); background: linear-gradient(100deg, rgba(8, 11, 17, .94), rgba(20, 15, 38, .78) 54%, rgba(7, 20, 35, .88)), url("player-background.jpg") center 54% / cover no-repeat; box-shadow: inset 0 0 18px rgba(32, 184, 255, .035); color: var(--steel); transition: transform .18s ease, border-color .18s ease, filter .18s ease, box-shadow .18s ease; }
-.player-mode-icon { display: grid; place-items: center; width: 27px; height: 27px; background-image: var(--accent-gradient); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: 25px; line-height: 1; filter: drop-shadow(0 0 5px rgba(32, 184, 255, .18)); }
+.player-mode-icon { display: grid; place-items: center; width: 27px; height: 27px; background-image: var(--accent-gradient); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; font-family: "Caesar Dressing Cyrillic", serif; font-size: 25px; line-height: 1; filter: drop-shadow(0 0 5px rgba(32, 184, 255, .18)); }
 .player-mode-icon-list { padding-bottom: 4px; font-size: 27px; }
-.global-player-modes .player-mode-label { color: var(--steel); font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: 13px; font-weight: 400; letter-spacing: .055em; line-height: 1; text-align: left; text-transform: uppercase; }
+.global-player-modes .player-mode-label { color: var(--steel); font-family: "Caesar Dressing Cyrillic", serif; font-size: 13px; font-weight: 400; letter-spacing: .055em; line-height: 1; text-align: left; text-transform: uppercase; }
 .global-player-modes .player-mode-button:hover { border-color: rgba(32, 184, 255, .72); color: var(--white); filter: brightness(1.1); transform: scale(1.035); }
 .global-player-modes .player-mode-button:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 3px; }
 .global-player-modes .player-mode-button.is-active { border-color: var(--accent-blue); border-image: var(--accent-gradient) 1; background: linear-gradient(105deg, rgba(51, 20, 88, .98), rgba(24, 31, 86, .94) 55%, rgba(7, 61, 91, .96)), url("player-background.jpg") center 54% / cover no-repeat; box-shadow: inset 0 0 22px rgba(115, 103, 255, .2), 0 0 18px rgba(32, 184, 255, .18); }
@@ -870,7 +869,7 @@ h3,
 .featured-release-copy h2,
 .library-track-copy h2,
 .global-player-track strong {
-  font-family: "Caesar Dressing Cyrillic", "Russo One", "Bahnschrift", "Arial Narrow", sans-serif;
+  font-family: "Caesar Dressing Cyrillic", serif;
   font-weight: 400;
   font-synthesis: none;
 }
@@ -1047,7 +1046,7 @@ h3,
 .custom23-shirt-grid figure > div::after { content: "13 × C23"; position: absolute; right: 18px; bottom: 12px; color: rgba(206, 213, 228, .18); font-family: "Caesar Dressing Cyrillic", Georgia, serif; font-size: 18px; letter-spacing: .12em; }
 .custom23-shirt-grid img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .45s ease, filter .3s ease; }
 .custom23-shirt-grid figcaption { min-height: 108px; display: grid; align-content: center; gap: 5px; padding: 20px 24px; }
-.custom23-shirt-grid figcaption strong { font-family: "Caesar Dressing Cyrillic", "Russo One", sans-serif; font-size: clamp(27px, 2.8vw, 40px); font-weight: 400; line-height: .92; text-transform: uppercase; }
+.custom23-shirt-grid figcaption strong { font-family: "Caesar Dressing Cyrillic", serif; font-size: clamp(27px, 2.8vw, 40px); font-weight: 400; line-height: .92; text-transform: uppercase; }
 .custom23-shirt-grid figcaption small { color: var(--muted); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
 
 .collab-track { position: relative; display: grid; grid-template-columns: minmax(230px, 360px) minmax(0, 1fr) 150px; align-items: center; gap: clamp(28px, 5vw, 72px); margin-top: 64px; padding: 24px; overflow: hidden; border: 1px solid transparent; border-image: var(--accent-gradient) 1; background: linear-gradient(105deg, rgba(8, 11, 17, .98), rgba(24, 15, 45, .92) 55%, rgba(6, 31, 47, .94)), url("player-background.jpg") center / cover; }

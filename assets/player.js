@@ -13,18 +13,24 @@
 // и на главной, и во вложенной папке music/.
 const playerScript = document.currentScript;
 const assetsBase = new URL("./", playerScript?.src ?? window.location.href);
-const controlIcon = (name) => new URL(`player-controls/${name}.png`, assetsBase).href;
+const controlIcon = (name) => new URL(`controls/${name}.svg`, assetsBase).href;
 
 // Единый каталог доступных аудиофайлов. Будущие треки без готового MP3 сюда не добавлять.
 const tracks = [
-  { title: "#Код ворона", cover: "music/kod-vorona-cover.webp?v=20260909-dark-music1", src: "audio/kod-vorona.mp3?v=20260909-dark-music1" },
-  { title: "#Руна на частоте", cover: "music/runa-na-chastote-cover.png", src: "audio/runa-na-chastote.mp3" },
-  { title: "Пока горим", cover: "music/poka-gorim-cover.png", src: "audio/poka-gorim.mp3" },
-  { title: "Последний круг", cover: "music/posledniy-krug-cover.png", src: "audio/posledniy-krug.mp3" },
-  { title: "Разные голоса", cover: "music/raznye-golosa-cover.png", src: "audio/raznye-golosa.mp3" },
-  { title: "Шествия", cover: "music/shestviya-cover.png?v=20260901-album-covers1", src: "audio/shestviya.mp3" },
-  { title: "Маска у цеха", cover: "music/maska-u-tsekha-cover.png?v=20260901-album-covers1", src: "audio/maska-u-tsekha.mp3" },
-  { title: "Пока помнят имена", cover: "music/poka-pomnyat-imena-cover.png?v=20260901-album-covers1", src: "audio/poka-pomnyat-imena.mp3" },
+  { title: "#Код ворона", cover: "music/kod-vorona-cover.webp?v=20261106-studio4", src: "audio/kod-vorona.mp3?v=20261106-studio4" },
+  { title: "До последнего света", cover: "music/do-poslednego-sveta-cover.webp?v=20261106-studio4", src: "audio/do-poslednego-sveta.mp3?v=20261106-studio4" },
+  { title: "С разных сторон", cover: "music/s-raznykh-storon-cover.webp?v=20261106-studio4", src: "audio/s-raznykh-storon.mp3?v=20261106-studio4" },
+  { title: "Море не делит", cover: "music/more-ne-delit-cover.webp?v=20261106-studio4", src: "audio/more-ne-delit.mp3?v=20261106-studio4" },
+  { title: "На плечах", cover: "music/na-plechakh-cover.webp?v=20261106-studio4", src: "audio/na-plechakh.mp3?v=20261106-studio4" },
+  { title: "Зверь в проводах", cover: "music/zver-v-provodakh-cover.webp?v=20261106-studio4", src: "audio/zver-v-provodakh.mp3?v=20261106-studio4" },
+  { title: "Мы ещё здесь", cover: "music/my-eshche-zdes-cover.webp?v=20261106-studio4", src: "audio/my-eshche-zdes.mp3?v=20261106-studio4" },
+  { title: "#Руна на частоте", cover: "music/runa-na-chastote-cover.webp", src: "audio/runa-na-chastote.mp3" },
+  { title: "Пока горим", cover: "music/poka-gorim-cover.webp", src: "audio/poka-gorim.mp3" },
+  { title: "Последний круг", cover: "music/posledniy-krug-cover.webp", src: "audio/posledniy-krug.mp3" },
+  { title: "Разные голоса", cover: "music/raznye-golosa-cover.webp", src: "audio/raznye-golosa.mp3" },
+  { title: "Шествия", cover: "music/shestviya-cover.webp?v=20260901-album-covers1", src: "audio/shestviya.mp3" },
+  { title: "Маска у цеха", cover: "music/maska-u-tsekha-cover.webp?v=20260901-album-covers1", src: "audio/maska-u-tsekha.mp3" },
+  { title: "Пока помнят имена", cover: "music/poka-pomnyat-imena-cover.webp?v=20260901-album-covers1", src: "audio/poka-pomnyat-imena.mp3" },
   { title: "#Стражи порога", cover: "music/strazhi-poroga-cover.webp?v=20260901-album-covers1", src: "audio/strazhi-poroga.mp3" },
   { title: "#Лис, кицунэ и пука", cover: "music/lis-kitsune-i-puka-cover.webp?v=20260901-album-covers1", src: "audio/lis-kitsune-i-puka.mp3" },
   { title: "#Кузница трёх знаков", cover: "music/kuznitsa-trekh-znakov-cover.webp?v=20260901-album-covers1", src: "audio/kuznitsa-trekh-znakov.mp3" },
@@ -72,7 +78,7 @@ document.body.insertAdjacentHTML("beforeend", `
     <div class="global-player-inner">
       <div class="global-player-track">
         <img data-player-cover src="" alt="" />
-        <div><span>Сейчас играет</span><strong data-player-title></strong></div>
+        <div><span data-player-status role="status" aria-live="polite">Готов к прослушиванию</span><strong data-player-title></strong></div>
       </div>
       <div class="global-player-transport">
         <button type="button" data-player-previous aria-label="Предыдущий трек" title="Предыдущий трек"><img class="global-player-control-icon" src="${controlIcon("previous")}" alt="" aria-hidden="true" /></button>
@@ -101,6 +107,7 @@ document.body.insertAdjacentHTML("beforeend", `
 `);
 
 const audio = document.querySelector("[data-global-audio]");
+const playerStatus = document.querySelector("[data-player-status]");
 const cover = document.querySelector("[data-player-cover]");
 const title = document.querySelector("[data-player-title]");
 const toggle = document.querySelector("[data-player-toggle]");
@@ -125,6 +132,7 @@ let lastAudibleVolume = 1;
 let audioContext = null;
 let audioSource = null;
 let gainNode = null;
+let selectionId = 0;
 
 // На мобильных Safari HTMLMediaElement.volume работает только как 0 или 100%.
 // GainNode даёт настоящее плавное изменение громкости во всех современных браузерах.
@@ -192,26 +200,76 @@ function updateTrackCards() {
 
 function updatePlayerState() {
   const playing = !audio.paused;
+  if ("mediaSession" in navigator) navigator.mediaSession.playbackState = playing ? "playing" : "paused";
   toggleIcon.src = controlIcon(playing ? "pause" : "play");
   toggle.setAttribute("aria-label", playing ? "Пауза" : "Воспроизвести");
   toggle.setAttribute("title", playing ? "Пауза" : "Воспроизвести");
   updateTrackCards();
 }
 
-// Выбирает трек. Остаток от деления замыкает кнопки назад/вперёд по кругу.
+function setStatus(text, isError = false) {
+  playerStatus.textContent = text;
+  playerStatus.classList.toggle('is-error', isError);
+}
+
+async function playSelected() {
+  const requestId = selectionId;
+  ensureAudioGraph();
+  if (audio.error) audio.load();
+  setStatus('Загрузка…');
+  try {
+    await audio.play();
+  } catch (error) {
+    // Смена трека или пауза отменяет старый play(): это не ошибка нового трека.
+    if (requestId !== selectionId || error.name === 'AbortError') return;
+    setStatus(error.name === 'NotAllowedError' ? 'Нажмите ▶ для запуска' : 'Не удалось загрузить. Нажмите ▶ ещё раз', true);
+    updatePlayerState();
+  }
+}
+
+function updatePosition() {
+  const length = Number.isFinite(audio.duration) ? audio.duration : 0;
+  progress.max = String(length);
+  progress.disabled = length <= 0;
+  progress.value = String(length ? Math.min(audio.currentTime, length) : 0);
+  currentTime.textContent = formatTime(audio.currentTime);
+  duration.textContent = formatTime(length);
+  progress.setAttribute('aria-valuetext', `${formatTime(audio.currentTime)} из ${formatTime(length)}`);
+  if ('mediaSession' in navigator && navigator.mediaSession.setPositionState && length > 0) {
+    try { navigator.mediaSession.setPositionState({ duration: length, playbackRate: audio.playbackRate, position: Math.min(length, audio.currentTime) }); } catch {}
+  }
+}
+
+function seekTo(value) {
+  if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+  const target = Number(value);
+  if (!Number.isFinite(target)) return;
+  audio.currentTime = Math.min(audio.duration, Math.max(0, target));
+  updatePosition();
+}
+
+// Ручные кнопки переключают по кругу. Подряд останавливается в конце списка.
 function selectTrack(index, autoplay = true) {
-  currentIndex = (index + tracks.length) % tracks.length;
+  if (!Number.isInteger(index)) return;
+  selectionId++;
+  currentIndex = ((index % tracks.length) + tracks.length) % tracks.length;
   const track = tracks[currentIndex];
+  audio.pause();
   audio.src = new URL(track.src, assetsBase).href;
   cover.src = new URL(track.cover, assetsBase).href;
+  cover.alt = `Обложка: ${track.title}`;
   title.textContent = track.title;
-  progress.value = "0";
-  currentTime.textContent = "0:00";
-  duration.textContent = "0:00";
-  updateTrackCards();
-  if (autoplay) {
-    audio.play().catch(updatePlayerState);
+  progress.value = '0';
+  progress.max = '0';
+  progress.disabled = true;
+  currentTime.textContent = duration.textContent = '0:00';
+  setStatus('Готов к прослушиванию');
+  updatePlayerState();
+  if ('mediaSession' in navigator && 'MediaMetadata' in window) {
+    navigator.mediaSession.metadata = new MediaMetadata({ title: track.title, artist: '13 AI the Dark', album: currentIndex < 7 ? '#Dark Music' : currentIndex >= 11 ? '3 поколения' : 'Синглы', artwork: [{ src: cover.src }] });
+    try { navigator.mediaSession.setPositionState?.(); } catch {}
   }
+  if (autoplay) playSelected();
 }
 
 function setPlaybackMode(selectedMode) {
@@ -241,7 +299,7 @@ trackCards.forEach((card) => {
     ensureAudioGraph();
     const index = Number(card.dataset.trackIndex);
     if (index === currentIndex) {
-      if (audio.paused) audio.play().catch(updatePlayerState);
+      if (audio.paused) playSelected();
       else audio.pause();
       return;
     }
@@ -251,7 +309,7 @@ trackCards.forEach((card) => {
 
 toggle.addEventListener("click", () => {
   ensureAudioGraph();
-  if (audio.paused) audio.play().catch(updatePlayerState);
+  if (audio.paused) playSelected();
   else audio.pause();
 });
 previous.addEventListener("click", () => {
@@ -271,26 +329,33 @@ mute.addEventListener("click", () => {
   applyPlayerVolume(playerVolume === 0 ? lastAudibleVolume : 0);
 });
 
-progress.addEventListener("input", () => {
-  audio.currentTime = Number(progress.value);
-});
-audio.addEventListener("play", updatePlayerState);
-audio.addEventListener("pause", updatePlayerState);
-audio.addEventListener("volumechange", updateVolumeState);
-audio.addEventListener("timeupdate", () => {
-  progress.value = String(audio.currentTime);
-  currentTime.textContent = formatTime(audio.currentTime);
-});
-audio.addEventListener("loadedmetadata", () => {
-  progress.max = String(audio.duration || 0);
-  duration.textContent = formatTime(audio.duration);
-});
+progress.addEventListener('input', () => seekTo(progress.value));
+audio.addEventListener('play', updatePlayerState);
+audio.addEventListener('playing', () => { setStatus('Сейчас играет'); updatePlayerState(); });
+audio.addEventListener('pause', () => { if (!audio.error) setStatus('На паузе'); updatePlayerState(); });
+audio.addEventListener('waiting', () => { if (!audio.paused) setStatus('Загрузка…'); });
+audio.addEventListener('error', () => { setStatus('Не удалось загрузить. Нажмите ▶ ещё раз', true); updatePlayerState(); });
+audio.addEventListener('volumechange', updateVolumeState);
+audio.addEventListener('timeupdate', updatePosition);
+audio.addEventListener('loadedmetadata', updatePosition);
+audio.addEventListener('durationchange', updatePosition);
+if ('mediaSession' in navigator) {
+  const handlers = {
+    play: playSelected, pause: () => audio.pause(),
+    previoustrack: () => selectTrack(currentIndex - 1), nexttrack: () => selectTrack(currentIndex + 1),
+    seekto: event => seekTo(event.seekTime),
+    seekbackward: event => seekTo(audio.currentTime - (event.seekOffset || 10)),
+    seekforward: event => seekTo(audio.currentTime + (event.seekOffset || 10))
+  };
+  Object.entries(handlers).forEach(([action, handler]) => { try { navigator.mediaSession.setActionHandler(action, handler); } catch {} });
+}
 // Поведение после окончания зависит от выбранного режима.
 audio.addEventListener("ended", () => {
   if (playbackMode === "sequential" && currentIndex < tracks.length - 1) {
     selectTrack(currentIndex + 1);
     return;
   }
+  setStatus("Плейлист завершён");
   updatePlayerState();
 });
 

@@ -167,8 +167,8 @@ body.clothing-gallery-open { overflow: hidden; }
 .gallery-garment-info dt { color: #9ca8a9; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
 .gallery-garment-info dd { margin: 7px 0 0; color: #e0e3df; font-size: 13px; line-height: 1.4; }
 .gallery-discuss { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; background: #e5e3d9; color: #121719; font: 600 13px/1.4 Arial, sans-serif; }
-.gallery-discuss:hover { background: #cba48f; }
+.gallery-discuss:hover { background: #ed0928; }
 .gallery-order-note { margin: 13px 0 26px; color: #aab6b6; font-size: 12px; line-height: 1.6; }
 .clothing-page .limited-card { scroll-margin-top: 30px; }
-.clothing-page .limited-card:target .limited-card-media { outline: 2px solid #cba48f; outline-offset: 5px; }
+.clothing-page .limited-card:target .limited-card-media { outline: 2px solid #ed0928; outline-offset: 5px; }
 .clothing-page .limited-card:target { background: rgba(203, 164, 143, .04); }

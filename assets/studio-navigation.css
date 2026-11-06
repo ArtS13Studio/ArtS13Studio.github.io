@@ -1,5 +1,5 @@
 /* Общая навигация: одежда и мерч на первом плане, доступное меню без JavaScript. */
-:root { --studio-red: #c24943; --studio-paper: #ede8df; }
+:root { --studio-red: #ed0928; --studio-paper: #ede8df; }
 html { scroll-padding-top: 100px; }
 .studio-skip-link { position: fixed; top: 8px; left: 16px; z-index: 100; padding: 14px 20px; background: var(--studio-paper); color: #101010; transform: translateY(-180%); }
 .studio-skip-link:focus { transform: translateY(0); }
@@ -20,15 +20,15 @@ html { scroll-padding-top: 100px; }
 .studio-logo img { object-fit: contain; filter: saturate(.4); }
 .studio-logo > span { display: grid; gap: 4px; }
 .studio-logo strong { font: 400 25px/1 "Caesar Dressing Cyrillic", serif; letter-spacing: .015em; font-synthesis: none; }
-.studio-logo strong span { color: #cf665e; }
+.studio-logo strong span { color: #ed0928; }
 .studio-logo small { color: #9fa5a7; font-size: 9px; line-height: 1.3; letter-spacing: .1em; }
 .studio-desktop-nav { display: flex; gap: clamp(16px, 2.1vw, 36px); }
 .studio-desktop-nav a { display: flex; align-items: center; min-height: 44px; color: #c5c7c7; font: 600 12px/1.3 Arial, sans-serif; letter-spacing: .035em; text-transform: none; }
 .studio-desktop-nav a:hover, .studio-desktop-nav a[aria-current="page"] { color: #fff5e7; text-decoration: underline; text-decoration-color: var(--studio-red); text-underline-offset: 8px; }
 .studio-contact-link { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; color: #e9e2d6; font-size: 12px; white-space: nowrap; }
-.studio-contact-link span { color: #cf665e; font-size: 18px; }
+.studio-contact-link span { color: #ed0928; font-size: 18px; }
 .studio-mobile-menu { display: none; }
-.studio-header :focus-visible { outline: 2px solid #db8376; outline-offset: 5px; }
+.studio-header :focus-visible { outline: 2px solid #ed0928; outline-offset: 5px; }
 @media (max-width: 1040px) {
   .studio-header { min-height: 74px; gap: 16px; padding-inline: 22px; }
   .studio-desktop-nav { display: none; }
@@ -40,7 +40,7 @@ html { scroll-padding-top: 100px; }
   .studio-mobile-menu[open] > summary span { transform: rotate(45deg); }
   .studio-mobile-menu nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; gap: 0; max-height: calc(100svh - 80px); overflow-y: auto; padding: 14px 22px 24px; background: #111516; border-bottom: 1px solid #555b5b; box-shadow: 0 18px 25px #0008; }
   .studio-mobile-menu nav a { display: block; padding: 15px 0; border-bottom: 1px solid #2c3233; color: #e4e2dd; font: 500 15px/1.4 Arial, sans-serif; text-transform: none; letter-spacing: .01em; }
-  .studio-mobile-menu nav a[aria-current="page"] { color: #dc887a; }
+  .studio-mobile-menu nav a[aria-current="page"] { color: #ed0928; }
 }
 @media (max-width: 560px) {
   .studio-header { padding: 12px 18px; min-height: 72px; }
