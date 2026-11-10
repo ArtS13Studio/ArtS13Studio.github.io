@@ -17,13 +17,13 @@ const controlIcon = (name) => new URL(`controls/${name}.svg`, assetsBase).href;
 
 // Единый каталог доступных аудиофайлов. Будущие треки без готового MP3 сюда не добавлять.
 const tracks = [
-  { title: "#Код ворона", cover: "music/kod-vorona-cover.webp?v=20261106-studio4", src: "audio/kod-vorona.mp3?v=20261106-studio4" },
-  { title: "До последнего света", cover: "music/do-poslednego-sveta-cover.webp?v=20261106-studio4", src: "audio/do-poslednego-sveta.mp3?v=20261106-studio4" },
-  { title: "С разных сторон", cover: "music/s-raznykh-storon-cover.webp?v=20261106-studio4", src: "audio/s-raznykh-storon.mp3?v=20261106-studio4" },
-  { title: "Море не делит", cover: "music/more-ne-delit-cover.webp?v=20261106-studio4", src: "audio/more-ne-delit.mp3?v=20261106-studio4" },
-  { title: "На плечах", cover: "music/na-plechakh-cover.webp?v=20261106-studio4", src: "audio/na-plechakh.mp3?v=20261106-studio4" },
-  { title: "Зверь в проводах", cover: "music/zver-v-provodakh-cover.webp?v=20261106-studio4", src: "audio/zver-v-provodakh.mp3?v=20261106-studio4" },
-  { title: "Мы ещё здесь", cover: "music/my-eshche-zdes-cover.webp?v=20261106-studio4", src: "audio/my-eshche-zdes.mp3?v=20261106-studio4" },
+  { title: "#Код ворона", cover: "music/kod-vorona-cover.webp?v=20261110-info1", src: "audio/kod-vorona.mp3?v=20261110-info1" },
+  { title: "До последнего света", cover: "music/do-poslednego-sveta-cover.webp?v=20261110-info1", src: "audio/do-poslednego-sveta.mp3?v=20261110-info1" },
+  { title: "С разных сторон", cover: "music/s-raznykh-storon-cover.webp?v=20261110-info1", src: "audio/s-raznykh-storon.mp3?v=20261110-info1" },
+  { title: "Море не делит", cover: "music/more-ne-delit-cover.webp?v=20261110-info1", src: "audio/more-ne-delit.mp3?v=20261110-info1" },
+  { title: "На плечах", cover: "music/na-plechakh-cover.webp?v=20261110-info1", src: "audio/na-plechakh.mp3?v=20261110-info1" },
+  { title: "Зверь в проводах", cover: "music/zver-v-provodakh-cover.webp?v=20261110-info1", src: "audio/zver-v-provodakh.mp3?v=20261110-info1" },
+  { title: "Мы ещё здесь", cover: "music/my-eshche-zdes-cover.webp?v=20261110-info1", src: "audio/my-eshche-zdes.mp3?v=20261110-info1" },
   { title: "#Руна на частоте", cover: "music/runa-na-chastote-cover.webp", src: "audio/runa-na-chastote.mp3" },
   { title: "Пока горим", cover: "music/poka-gorim-cover.webp", src: "audio/poka-gorim.mp3" },
   { title: "Последний круг", cover: "music/posledniy-krug-cover.webp", src: "audio/posledniy-krug.mp3" },

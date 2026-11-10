@@ -1,0 +1,91 @@
+/* Справочные страницы и связь: общая типографика и материалы студии. */
+.analytics-choice[hidden], [data-analytics-settings][hidden] { display: none !important; }
+.analytics-choice { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 14px 28px; width: min(1160px,90%); margin: 18px auto; padding: 20px 24px; border: 1px solid #53616a; border-left: 3px solid #ed0928; background: linear-gradient(110deg,#152129f2,#080d11f7),url('controls/silver-feather-plaque.webp') right center/auto 100% no-repeat; }
+.analytics-choice h2 { font: 400 26px/1.2 var(--brand-title); margin: 0 0 8px; color: #f3f6f8; }
+.analytics-choice p { font: 400 13px/1.7 var(--brand-body); margin: 0; color: #cbd5dc; }
+.analytics-choice a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.analytics-actions button, .analytics-settings { cursor: pointer; color: #eef3f6; background: #18242c; border: 1px solid #687c88; padding: 12px 15px; min-height: 44px; font: 500 13px/1.4 var(--brand-body); }
+.analytics-actions button:hover, .analytics-settings:hover { border-color: #ed0928; background: #243640; }
+.analytics-actions button:focus-visible, .analytics-settings:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.studio-footer .analytics-settings { margin-top: 6px; background: transparent; }
+@media (max-width: 850px) { .analytics-choice { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 560px) { .analytics-choice { width: auto; margin: 14px 18px; padding: 16px; } .analytics-actions { display: grid; grid-template-columns: minmax(0,1fr); } }
+.studio-footer {
+  display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 30px;
+  padding: 42px clamp(22px, 5vw, 84px); margin: 0;
+  border-top: 1px solid #384146; background: #080d11; text-align: left;
+  color: #bac4cb; font: 400 13px/1.75 var(--brand-body); align-items: start;
+}
+.studio-footer p { margin: 8px 0; }
+.studio-footer a { overflow-wrap: anywhere; }
+.studio-footer .footer-wordmark { font: 400 30px/1.2 var(--brand-title); color: #fff; }
+.studio-footer nav { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.studio-footer nav a { min-height: 36px; padding-block: 6px; }
+.studio-footer a:hover, .service-inline-link:hover { color: #fff; text-decoration: underline; text-decoration-color: #ed0928; text-underline-offset: 5px; }
+.footer-legal strong { font-weight: 600; color: #edf0f2; }
+.service-contact-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+.service-inline-link { color: #e1e8ee; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #7f949e; }
+.service-main { width: min(1160px, 90%); margin: 0 auto; padding: 58px 0 90px; }
+.service-breadcrumb { display: inline-flex; align-items: center; min-height: 44px; color: #c1cbd2; font-size: 13px; }
+.service-hero { position: relative; padding: 22px 0 40px; margin-bottom: 30px; border-bottom: 1px solid #475159; }
+.service-hero::after { content: ''; position: absolute; pointer-events: none; right: 0; bottom: -18px; width: 240px; height: 80px; background: url('controls/autumn-plaque.webp') center/contain no-repeat; opacity: .8; }
+.service-kicker { color: #ed0928; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.service-hero h1 { margin: 14px 0 20px; max-width: 850px; font-size: clamp(40px, 5.8vw, 76px); line-height: 1.05; }
+.service-hero > p:last-child { max-width: 700px; color: #c2ccd2; line-height: 1.8; }
+.service-tabs { display: flex; flex-wrap: wrap; gap: 10px; padding: 8px 0 28px; }
+.service-tabs a { border: 1px solid #44535d; border-radius: 3px; padding: 11px 17px; color: #e2e9ed; font-size: 13px; }
+.service-tabs a:hover { border-color: #ed0928; }
+.service-layout { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 45px; align-items: start; }
+.service-copy { min-width: 0; }
+.service-copy section { padding: 8px 0 26px; border-bottom: 1px solid #26333b; margin-bottom: 22px; scroll-margin-top: 24px; }
+.service-copy h2 { font-size: clamp(28px, 3vw, 38px); margin: 14px 0 20px; line-height: 1.2; }
+.service-copy h3 { font-size: 25px; }
+.service-copy p, .service-copy li { color: #c8d1d6; font-size: 15px; line-height: 1.85; }
+.service-copy li + li { margin-top: 10px; }
+.service-copy ol, .service-copy ul { padding-left: 22px; }
+.service-copy strong { color: #f4f6f8; font-weight: 650; }
+.service-copy a:not(.button) { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #748997; }
+.service-aside { min-width: 0; width: 100%; padding: 27px; border: 1px solid #48545d; background: linear-gradient(155deg,#19242ee8,#080c12f5); }
+.service-aside h2 { font-size: 30px; margin: 16px 0; }
+.service-aside p { font-size: 13px; color: #c7d0d6; line-height: 1.75; }
+.service-aside a { overflow-wrap: anywhere; }
+.service-aside .button { display: flex; padding-inline: 34px; font-size: 19px; min-height: 92px; }
+.service-details { margin: 20px 0 30px; }
+.service-details > div { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 16px; padding: 15px 0; border-bottom: 1px solid #31404b; }
+.service-details dt { font-size: 13px; color: #aebdc7; }
+.service-details dd { margin: 0; color: #edf0f3; overflow-wrap: anywhere; }
+.service-note { border-left: 2px solid #ed0928; padding: 12px 20px; background: #101921; }
+.catalog-card-actions { margin-top: 20px; padding-top: 14px; border-top: 1px solid #40505b; }
+.catalog-card-actions .catalog-reference { display: block; color: #b6c4cd; font: 400 11px/1.6 var(--brand-body); letter-spacing: .02em; }
+.catalog-card-actions .catalog-discuss { display: flex; align-items: center; min-height: 48px; font: 400 19px/1.3 var(--brand-title); color: #fff; }
+.catalog-discuss::after { content: '↗'; margin-left: auto; color: #ed0928; font-family: var(--brand-body); }
+.catalog-discuss:hover { text-decoration: underline; text-underline-offset: 5px; }
+.gallery-service-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-block: 18px; }
+.gallery-copy-link { padding: 10px 14px; min-height: 44px; font: 500 13px/1.4 var(--brand-body); border: 1px solid #536874; border-radius: 3px; background: #111c24; color: #f4f6f8; cursor: pointer; }
+.gallery-copy-link:hover { border-color: #ed0928; }
+.gallery-copy-status { min-height: 1.6em; font: 400 12px/1.6 var(--brand-body); color: #c4d0d8; }
+.gallery-garment-info dd { overflow-wrap: anywhere; }
+.gallery-garment-info > div:last-child { grid-column: 1/-1; }
+.clothing-gallery .gallery-discuss { display: flex; align-items: center; justify-content: center; min-height: 96px; padding: 22px 45px; color: #f4f6f8; text-shadow: 0 2px 4px #000; font: 400 20px/1.25 var(--brand-title); text-align: center; background: url('controls/silver-feather-plaque.webp') center/100% 100% no-repeat; }
+.clothing-gallery .gallery-discuss:hover { filter: brightness(1.18); }
+.clip-frame.video-awaiting { aspect-ratio: auto; }
+.video-launch { position: relative; display: grid; place-content: center; text-align: center; padding: clamp(20px,4vw,55px); min-height: 360px; background: linear-gradient(#060b10c9,#060b10e0),url('music/poka-gorim-cover.webp') center/cover; }
+.video-launch strong { font: 400 clamp(28px,3vw,42px)/1.2 var(--brand-title); }
+.video-launch p { max-width: 490px; font-size: 13px; color: #d0d9df; }
+.video-launch button { margin: 0 auto; cursor: pointer; }
+.video-launch > a { font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 850px) {
+  .studio-footer { grid-template-columns: 1fr 1fr; }
+  .studio-footer .footer-legal { grid-column: 1/-1; }
+  .service-layout { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .service-aside { max-width: 540px; }
+}
+@media (max-width: 560px) {
+  .studio-footer { grid-template-columns: 1fr; gap: 20px; }
+  .service-main { width: auto; margin-inline: 22px; padding-top: 24px; }
+  .service-hero::after { width: 180px; height: 60px; }
+  .service-details > div { grid-template-columns: 1fr; gap: 4px; }
+  .service-tabs a { flex: 1 1 auto; text-align: center; }
+  .video-launch { min-height: 320px; padding: 20px; }
+}

@@ -15,6 +15,10 @@
     link.setAttribute('aria-label', `Рассмотреть: ${title}`);
     galleries.set(card.dataset.gallery, {
       title,
+      reference: card.dataset.reference,
+      personal: card.dataset.personal === 'true',
+      url: new URL(`../clothing/#${card.id}`, location.href).href,
+      email: card.querySelector('.catalog-discuss').getAttribute('href'),
       type: card.dataset.category.includes('jackets') ? 'Куртка' : card.dataset.category.includes('hoodies') ? 'Худи' : 'Футболка',
       project: card.dataset.category.includes('collaborations') ? 'Коллаборация ArtS13Studio' : 'Дизайн коллекции 13th',
       description: card.querySelector('.limited-card-copy p').textContent,
@@ -111,6 +115,8 @@
   const previous = dialog.querySelector('.gallery-prev');
   const next = dialog.querySelector('.gallery-next');
   const zoom = dialog.querySelector('.gallery-zoom');
+  const copyButton = dialog.querySelector('.gallery-copy-link');
+  const copyStatus = dialog.querySelector('.gallery-copy-status');
   let current = null;
   let index = 0;
   let opener = null;
@@ -170,7 +176,13 @@
     description.textContent = current.description;
     dialog.querySelector('#gallery-garment-type').textContent = current.type;
     dialog.querySelector('#gallery-project-type').textContent = current.project;
-    dialog.querySelector('#gallery-order-note').textContent = 'Напишите нам «' + current.title + '» — уточним возможность изготовления, основу, размер, стоимость и срок.';
+    dialog.querySelector('#gallery-reference').textContent = current.reference;
+    dialog.querySelector('.gallery-email').href = current.email;
+    dialog.querySelector('.gallery-discuss').textContent = current.personal ? 'Обсудить свой мерч во ВКонтакте ↗' : 'Обсудить во ВКонтакте ↗';
+    dialog.querySelector('#gallery-order-note').textContent = current.personal
+      ? 'Пример персонального проекта. Можно обсудить собственную идею в похожем направлении — этот рисунок не предлагается как готовая вещь для всех.'
+      : 'Напишите нам «' + current.title + '» — уточним возможность изготовления, основу, размер, стоимость и срок. Это обсуждение, а не оформление покупки.';
+    copyStatus.textContent = '';
     thumbnails.replaceChildren();
     current.images.forEach((frame, i) => {
       const button = document.createElement('button');
@@ -206,6 +218,18 @@
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
       if (openGallery(link)) event.preventDefault();
     });
+  });
+  copyButton.addEventListener('click', async () => {
+    if (!current) return;
+    const selected = current;
+    const text = `${selected.title} · ${selected.reference}\n${selected.url}`;
+    try {
+      if (!navigator.clipboard || !window.isSecureContext) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(text);
+      if (current === selected) copyStatus.textContent = 'Название и ссылка скопированы. Их можно отправить в сообщении.';
+    } catch (_) {
+      if (current === selected) copyStatus.textContent = `Не удалось скопировать автоматически. Выделите этот текст: ${text}`;
+    }
   });
   dialog.querySelector('.gallery-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
