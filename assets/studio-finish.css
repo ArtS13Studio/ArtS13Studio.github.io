@@ -70,8 +70,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .autumn-pick { display: block; position: relative; padding-bottom: 15px; border-bottom: 1px solid #4b4e4b; color: #eee6dc; }
 .autumn-pick img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: contain; background: #151919; }
 .autumn-pick > span { display: block; margin: 18px 0 9px; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #ed0928; }
-.autumn-pick h3 { padding-right: 25px; }
-.autumn-pick b { position: absolute; right: 0; bottom: 17px; font-size: 24px; color: #ed0928; }
+.autumn-pick h3 { padding-right: 0; }
 .autumn-pick:hover { border-color: #ed0928; }
 .autumn-intro { padding: 26px; margin: 22px 0 30px; border: 1px solid #495250; border-left: 3px solid #ed0928; background: linear-gradient(120deg,#111c2b,#0a0f16); }
 .autumn-intro h3 { margin: 0 0 14px; font-size: clamp(28px,3vw,40px); }

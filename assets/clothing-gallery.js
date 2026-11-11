@@ -178,7 +178,7 @@
     dialog.querySelector('#gallery-project-type').textContent = current.project;
     dialog.querySelector('#gallery-reference').textContent = current.reference;
     dialog.querySelector('.gallery-email').href = current.email;
-    dialog.querySelector('.gallery-discuss').textContent = current.personal ? 'Обсудить свой мерч во ВКонтакте ↗' : 'Обсудить во ВКонтакте ↗';
+    dialog.querySelector('.gallery-discuss').textContent = current.personal ? 'Обсудить свой мерч во ВКонтакте' : 'Обсудить во ВКонтакте';
     dialog.querySelector('#gallery-order-note').textContent = current.personal
       ? 'Пример персонального проекта. Можно обсудить собственную идею в похожем направлении — этот рисунок не предлагается как готовая вещь для всех.'
       : 'Напишите нам «' + current.title + '» — уточним возможность изготовления, основу, размер, стоимость и срок. Это обсуждение, а не оформление покупки.';

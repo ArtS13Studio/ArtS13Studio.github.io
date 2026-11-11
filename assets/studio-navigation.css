@@ -29,7 +29,7 @@ html { scroll-padding-top: 100px; }
 .studio-contact-link span { color: #ed0928; font-size: 18px; }
 .studio-mobile-menu { display: none; }
 .studio-header :focus-visible { outline: 2px solid #ed0928; outline-offset: 5px; }
-@media (max-width: 1040px) {
+@media (max-width: 1160px) {
   .studio-header { min-height: 74px; gap: 16px; padding-inline: 22px; }
   .studio-desktop-nav { display: none; }
   .studio-contact-link { margin-left: auto; }
@@ -52,4 +52,13 @@ html { scroll-padding-top: 100px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .studio-mobile-menu > summary span { transition: none; }
+}
+
+/* Читаемая шапка на компьютере; при недостатке места раскрывается компактное меню. */
+@media (min-width: 1161px) {
+  .studio-logo strong { font-size: 28px; }
+  .studio-logo small { font-size: 10px; }
+  .studio-desktop-nav { gap: clamp(18px, 1.6vw, 30px); }
+  .studio-desktop-nav a { font-size: 15px; line-height: 1.4; }
+  .studio-contact-link { font-size: 14px; }
 }
