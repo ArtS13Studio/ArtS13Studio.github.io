@@ -15,14 +15,16 @@
   // Fetch in the head, concurrently with HTML and fonts, not after DOMContentLoaded.
   const scene=new Image(); scene.fetchPriority='high'; scene.decoding='async';
   scene.className='northern-entry-scene'; scene.alt=''; scene.setAttribute('aria-hidden','true');
-  const soundtrack=new Audio(new URL('poka-gorim-intro.mp3',base).href);
-  soundtrack.preload='auto'; // Eight seconds only, already at half volume with a fading tail.
+  const soundtrack=new Audio(new URL('poka-gorim-intro.mp3?v=2',base).href);
+  soundtrack.preload='auto'; // Eight seconds, baked at 25% of the source volume with a fading tail.
   let overlay, stopSnow, observer, originalFocus, startTime=0, started=false, closing=false;
+  let playPending=false;
   let loadTimeout, finishTimeout, removeTimeout;
   const inertElements=new Map();
   const release=()=>{
     clearTimeout(loadTimeout);clearTimeout(finishTimeout);clearTimeout(removeTimeout);
     stopSnow?.(); soundtrack.pause(); soundtrack.removeAttribute('src');soundtrack.load();
+    overlay?.removeEventListener('pointerup',onInteraction);overlay?.removeEventListener('keydown',onInteraction);
     observer?.disconnect();root.classList.remove('northern-entry-pending');
     document.removeEventListener('keydown',onKey);document.removeEventListener('visibilitychange',onVisibility);
     window.removeEventListener('pagehide',immediateExit);motion.removeEventListener('change',immediateExit);
@@ -41,18 +43,23 @@
   const onKey=event=>{
     if(event.key!=='Tab')return;
     event.preventDefault();
-    const button=overlay.querySelector('button:not([hidden])');(button||overlay).focus({preventScroll:true});
+    overlay.focus({preventScroll:true});
   };
   const startMusic=async()=>{
-    if(closing||!started)return;
+    if(closing||!started||playPending||!soundtrack.paused)return;
     const elapsed=(performance.now()-startTime)/1000;
     if(elapsed>=7.3)return;
+    playPending=true;
     try {
       soundtrack.currentTime=elapsed;await soundtrack.play();
       if(closing){soundtrack.pause();return;}
-      overlay.querySelector('button').hidden=true;
-    } catch(_) {if(!closing)overlay.querySelector('button').hidden=false;}
+      overlay.removeEventListener('pointerup',onInteraction);overlay.removeEventListener('keydown',onInteraction);
+    } catch(_) {
+      // Respect browser autoplay policy. A genuine interaction may unlock sound;
+      // the entrance still finishes on schedule if playback remains blocked.
+    } finally {playPending=false;}
   };
+  const onInteraction=event=>{if(event.isTrusted)startMusic();};
   const start=()=>{
     if(!overlay||!scene.complete||!scene.naturalWidth||closing||started)return;
     try{
@@ -78,8 +85,9 @@
     overlay=document.createElement('div');overlay.className='northern-entry';overlay.tabIndex=-1;
     overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
     overlay.setAttribute('aria-label','Добро пожаловать в ArtS13Studio. Заставка длится восемь секунд.');
-    overlay.innerHTML='<canvas class="northern-entry-snow" aria-hidden="true"></canvas><div class="northern-entry-brand"><strong>ArtS<span>13</span>Studio</strong><p>Северная душа. Своя история.</p></div><div class="northern-entry-actions"><button class="northern-entry-sound" type="button" hidden>Включить музыку</button></div>';
-    overlay.prepend(scene);overlay.querySelector('button').addEventListener('click',startMusic);
+    overlay.innerHTML='<canvas class="northern-entry-snow" aria-hidden="true"></canvas><div class="northern-entry-brand"><strong>ArtS<span>13</span>Studio</strong><p>Северная душа. Своя история.</p></div>';
+    overlay.prepend(scene);
+    overlay.addEventListener('pointerup',onInteraction);overlay.addEventListener('keydown',onInteraction);
     // Slow assets cannot hold the page hostage; content remains visible until ready.
     loadTimeout=setTimeout(immediateExit,5000);start();
   };
