@@ -458,7 +458,7 @@ h1 { margin-bottom: 24px; font-size: clamp(52px, 7.5vw, 116px); line-height: .88
 .album-index-card--singles { --album-index-image: url("music/runa-na-chastote-cover.png"); }
 .album-index-card--singles::after { background-position: center 48%; }
 .album-index-card--primary {
-  --album-index-image: url("music/derevo-s-tremya-kornyami-cover.webp");
+  --album-index-image: url("music/shestviya-cover.webp");
   border-color: rgba(115, 103, 255, .48);
   box-shadow: inset 0 0 42px rgba(67, 63, 190, .08), 0 12px 35px rgba(0, 0, 0, .22);
 }

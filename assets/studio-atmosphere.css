@@ -1,0 +1,44 @@
+/* A single campaign scene replaces the boxed logo / two-print board. */
+.studio-story-grid { grid-template-columns: minmax(0,1.17fr) minmax(0,1fr); gap: clamp(30px,4vw,66px); align-items: start; }
+.studio-campaign { margin: 0; position: relative; min-width: 0; align-self: center; }
+.studio-campaign-visual { position: relative; isolation: isolate; background: #101117; }
+.studio-campaign-visual picture, .studio-campaign-visual img { display: block; width: 100%; height: auto; }
+.studio-campaign-visual::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg,#0c1117 0%,transparent 13%,transparent 85%,#0c111780); }
+.studio-campaign-wordmark { position: absolute; z-index: 1; top: 2.3%; left: 0; right: 0; text-align: center; color: #f5f5f3; text-shadow: 0 2px 14px #000; font: 400 clamp(27px,3.15vw,52px)/1.1 var(--brand-title); letter-spacing: .015em; }
+.studio-campaign-wordmark span { color: #ed0928; }
+.studio-campaign figcaption { margin-top: 12px; color: #bfcbd3; font: 400 12px/1.7 var(--brand-body); }
+.studio-campaign figcaption small { display: block; color: #8496a4; font-size: 10px; }
+.studio-campaign-links { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
+.studio-campaign-links a { border-top: 1px solid #485761; padding: 15px 0 8px; color: #eff3f6; }
+.studio-campaign-links small { display: block; color: #a8b8c6; font: 400 10px/1.6 var(--brand-body); letter-spacing: .08em; text-transform: uppercase; }
+.studio-campaign-links strong { display: block; margin-top: 5px; font: 400 clamp(20px,2vw,28px)/1.2 var(--brand-title); }
+.studio-campaign-links a:hover strong { color: #ed0928; }
+.studio-campaign-links a:focus-visible { outline: 2px solid #e4edf4; outline-offset: 5px; }
+.brand-studio-copy h2 { font-size: clamp(37px,4.4vw,63px); }
+/* The hero reveals the scene; lower cards sit on a calm, readable surface. */
+.music-page::before { background: linear-gradient(180deg,#03080d10 0%,#05090d52 55%,#070b11d9 100%),url('atmosphere/forest-recording-room.webp') center top / cover no-repeat; }
+.music-library-hero { min-height: 450px; padding-top: 108px; padding-bottom: 82px; }
+.music-library-hero h1 { text-shadow: 0 5px 40px #000; }
+.music-library-hero > p:last-child { max-width: 610px; color: #d3dce4; text-shadow: 0 2px 8px #000; }
+.music-page .library-track { background: #080f15eF; }
+.music-page .album-section-header { text-shadow: 0 2px 10px #000; }
+.album-index-card[href='#album-three-generations'] { --album-index-image: url('music/shestviya-cover.webp'); }
+.album-index-card[href='#album-dark-music'] { --album-index-image: url('music/kod-vorona-cover.webp'); }
+.album-index-card[href='#album-singles'] { --album-index-image: url('music/runa-na-chastote-cover.webp'); }
+@media (min-width: 1500px) { .music-library-hero { min-height: 510px; } }
+@media (max-width: 1040px) {
+  .studio-story-grid { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .studio-campaign { max-width: 780px; width: 100%; margin-inline: auto; }
+  .studio-campaign-wordmark { font-size: clamp(27px,5vw,48px); }
+  .brand-studio-copy { max-width: 780px; margin-inline: auto; }
+}
+@media (max-width: 640px) {
+  .studio-campaign-wordmark { font-size: clamp(23px,6.8vw,37px); }
+  .studio-campaign-links { gap: 16px; }
+  .studio-campaign-links strong { font-size: 22px; }
+  .studio-campaign figcaption { font-size: 11px; }
+  .music-page::before { background: linear-gradient(180deg,#03080d66,#060a10a6 55%,#070b11f2),url('atmosphere/forest-recording-room-small.webp') 75% top / auto 100svh no-repeat; }
+  .music-library-hero { min-height: 390px; padding: 74px 22px 66px; }
+  .music-library-hero h1 { font-size: clamp(60px,13vw,85px); }
+  .music-library-hero > p:last-child { font-size: 16px; max-width: 360px; }
+}
