@@ -26,28 +26,6 @@
     });
   });
 
-  // Чередование МЕЖДУ вещами: Till — Алексей и Виктория, Northblood — Лис и Элис,
-  // Northern Wind — только Элис. У одной вещи не меняем состав моделей между кадрами.
-  const till = galleries.get('limited-06');
-  if (till) {
-    till.images[0].src = '../assets/clothing/lookbook/till-original.webp';
-    till.images.push({ src: '../assets/clothing/lookbook/hero-alexey-viktoria.webp?v=20260914-tattoo1', alt: 'Алексей и Виктория в футболках 13th в студии', caption: 'В студии · Алексей и Виктория', editorial: true });
-  }
-  [
-    ['limited-07', 'northblood-original', [
-      ['northblood-lis-alice-front', 'Спереди · Лис и Элис']
-    ]],
-    ['limited-08', 'northern-wind-original', [
-      ['northern-wind-alice-front', 'Спереди · Элис'],
-      ['northern-wind-alice-back', 'Со спины · Элис']
-    ]]
-  ].forEach(([key, original, frames]) => {
-    const gallery = galleries.get(key);
-    if (!gallery) return;
-    gallery.images[0].src = `../assets/clothing/lookbook/${original}.webp`;
-    frames.forEach(([file, caption]) => gallery.images.push({ src: `../assets/clothing/lookbook/${file}.webp`, alt: `${gallery.title} — ${caption.toLowerCase()}`, caption, editorial: true }));
-  });
-
   // Координаты фрагментов исходного макета, а НЕ новые фотографии и не перерисованные принты.
   // x/y/w/h — доли полного изображения. Первый кадр всегда сохраняет оригинал целиком.
   const pairViews = {
@@ -70,32 +48,71 @@
         ['Принт крупно · исходный макет', 'Принт', detail]
       ].forEach(([caption, label, view]) => gallery.images.push({ ...base, caption, label, view }));
     } else {
-      gallery.images.push({ ...base, caption: 'Детали · исходное изображение', label: 'Детали', view: { x: .12, y: .2, w: .76, h: .52 } });
+      gallery.images.push({ ...base, caption: 'Детали · исходное изображение', label: 'Детали', view: { x: .08, y: .16, w: .84, h: .73 } });
     }
   });
 
+  const search = document.querySelector('#catalog-query');
+  const empty = document.querySelector('.catalog-empty');
+  const normalize = value => value.toLocaleLowerCase('ru').replace(/ё/g, 'е').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const searchable = new Map(cards.map(card => [card, normalize([
+    card.querySelector('h2').textContent, card.querySelector('.limited-card-copy').textContent, card.dataset.reference
+  ].join(' '))]));
+  let selected = 'all';
+
   function applyFilter(type, updateUrl = true) {
-    const selected = filters.some(button => button.dataset.filter === type) ? type : 'all';
+    selected = filters.some(button => button.dataset.filter === type) ? type : 'all';
+    const terms = normalize(search?.value || '').split(' ').filter(Boolean);
     let visible = 0;
     cards.forEach(card => {
-      const show = selected === 'all' || card.dataset.category.split(' ').includes(selected);
+      const show = (selected === 'all' || card.dataset.category.split(' ').includes(selected)) && terms.every(term => searchable.get(card).includes(term));
       card.hidden = !show;
       if (show) visible += 1;
     });
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === selected)));
     results.textContent = `Показано: ${visible} из ${cards.length}`;
+    if (empty) empty.hidden = visible !== 0;
     if (updateUrl) {
       const url = new URL(location.href);
       if (selected === 'all') url.searchParams.delete('type');
       else url.searchParams.set('type', selected);
+      if (search?.value.trim()) url.searchParams.set('q', search.value.trim());
+      else url.searchParams.delete('q');
+      const target = cards.find(card => '#' + card.id === url.hash);
+      if (target?.hidden) url.hash = 'collection';
       history.replaceState(null, '', url);
     }
   }
   if (filterBar && results) {
     filterBar.hidden = false;
-    applyFilter(new URL(location.href).searchParams.get('type') || 'all', false);
+    const searchBox = document.querySelector('.catalog-search');
+    if (searchBox) searchBox.hidden = false;
+    const revealLinkedCard = () => {
+      const target = cards.find(card => '#' + card.id === location.hash);
+      if (!target) return;
+      if (target.hidden) {
+        if (search) search.value = '';
+        applyFilter('all');
+      }
+      requestAnimationFrame(() => target.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    };
+    const restore = () => {
+      const params = new URL(location.href).searchParams;
+      if (search) search.value = (params.get('q') || '').slice(0, 100);
+      applyFilter(params.get('type') || 'all', false);
+      revealLinkedCard();
+    };
+    restore();
     filters.forEach(button => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
-    window.addEventListener('popstate', () => applyFilter(new URL(location.href).searchParams.get('type') || 'all', false));
+    search?.addEventListener('input', () => applyFilter(selected));
+    document.querySelector('.catalog-clear')?.addEventListener('click', () => {
+      search.value = ''; applyFilter(selected); search.focus();
+    });
+    document.querySelector('.catalog-reset')?.addEventListener('click', () => {
+      search.value = ''; applyFilter('all'); search.focus();
+    });
+    window.addEventListener('popstate', restore);
+    window.addEventListener('hashchange', revealLinkedCard);
   }
 
   const dialog = document.querySelector('.clothing-gallery');
@@ -117,6 +134,12 @@
   const zoom = dialog.querySelector('.gallery-zoom');
   const copyButton = dialog.querySelector('.gallery-copy-link');
   const copyStatus = dialog.querySelector('.gallery-copy-status');
+  const loading = document.createElement('span');
+  loading.className = 'gallery-loading';
+  loading.textContent = 'Загружаем рисунок…';
+  loading.setAttribute('role', 'status');
+  loading.hidden = true;
+  stage.append(loading);
   let current = null;
   let index = 0;
   let opener = null;
@@ -124,7 +147,7 @@
   let suppressClick = false;
 
   function renderImage() {
-    if (!current || !image.naturalWidth || !stage.clientWidth) return;
+    if (!current || stage.getAttribute('aria-busy') === 'true' || !image.naturalWidth || !stage.clientWidth) return;
     const view = current.images[index].view || { x: 0, y: 0, w: 1, h: 1 };
     const width = image.naturalWidth * view.w;
     const height = image.naturalHeight * view.h;
@@ -150,10 +173,14 @@
   function showSlide(number) {
     index = (number + current.images.length) % current.images.length;
     const frame = current.images[index];
+    stage.setAttribute('aria-busy', 'true');
+    loading.hidden = false;
+    zoom.disabled = true;
     setZoom(false);
     error.hidden = true;
     image.alt = frame.alt;
     image.src = frame.src;
+    if (image.complete) queueMicrotask(() => image.naturalWidth ? imageReady() : imageFailed());
     original.href = frame.src;
     caption.textContent = frame.caption;
     counter.textContent = `${index + 1} / ${current.images.length}`;
@@ -245,8 +272,24 @@
   previous.addEventListener('click', () => showSlide(index - 1));
   next.addEventListener('click', () => showSlide(index + 1));
   zoom.addEventListener('click', () => setZoom(!stage.classList.contains('is-zoomed')));
-  image.addEventListener('error', () => { error.hidden = false; });
-  image.addEventListener('load', () => { error.hidden = true; renderImage(); });
+  function imageReady() {
+    if (!image.complete || !image.naturalWidth) return;
+    stage.setAttribute('aria-busy', 'false');
+    loading.hidden = true;
+    error.hidden = true;
+    zoom.disabled = false;
+    renderImage();
+  }
+  function imageFailed() {
+    stage.setAttribute('aria-busy', 'false');
+    loading.hidden = true;
+    canvas.style.width = '0px';
+    canvas.style.height = '0px';
+    error.hidden = false;
+    zoom.disabled = true;
+  }
+  image.addEventListener('error', imageFailed);
+  image.addEventListener('load', imageReady);
   if (typeof ResizeObserver === 'function') new ResizeObserver(renderImage).observe(stage);
   else window.addEventListener('resize', renderImage);
   image.addEventListener('click', () => {

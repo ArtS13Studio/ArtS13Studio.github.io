@@ -1,0 +1,138 @@
+/* Shared polish and the studio / fitting guide. Existing engraving assets stay intact. */
+.studio-header a[aria-current="page"] { color: #fff; text-decoration: underline; text-decoration-color: #ed0928; text-underline-offset: 7px; }
+.analytics-choice { padding: 14px 20px; margin-block: 12px; gap: 12px 24px; }
+.analytics-choice h2 { font-size: 21px; margin-bottom: 4px; }
+.analytics-choice p { font-size: 12px; line-height: 1.55; }
+.analytics-actions { flex-wrap: nowrap; }
+.analytics-actions button { padding: 10px 14px; white-space: nowrap; }
+.studio-gateway { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(30px,6vw,95px); border-block: 1px solid #34424b; background: #0d151b; }
+.studio-gateway h2 { font-size: clamp(34px,4vw,54px); line-height: 1.15; margin: 14px 0 20px; }
+.studio-gateway h3 { font-size: clamp(29px,3vw,38px); line-height: 1.2; margin: 14px 0 20px; }
+.studio-gateway p { color: #c3cdd3; max-width: 570px; line-height: 1.75; }
+.gateway-guide { align-self: center; border-left: 2px solid #ed0928; padding: 22px 0 22px 34px; }
+.brand-story-image img { object-fit: contain; background: #161b1d; }
+.clothing-page .clothing-hero--lookbook { min-height: 460px; }
+.clothing-hero-image img { object-position: center; }
+.clothing-hero-caption { color: #e1e6eb; }
+.catalog-guide { font: 400 14px/1.75 var(--brand-body); color: #c4d0d9; margin: 16px 0 30px; }
+.catalog-search { margin: 30px 0 22px; }
+.catalog-search label { display: block; margin-bottom: 12px; font: 400 28px/1.3 var(--brand-title); color: #eef3f6; }
+.catalog-search > div { display: flex; gap: 12px; max-width: 760px; }
+.catalog-search input { flex: 1; min-width: 0; min-height: 48px; font-size: 16px; border: 1px solid #647784; border-radius: 2px; padding: 12px 16px; background: #0d151d; color: #fff; }
+.catalog-search input::placeholder { color: #abb9c2; }
+.catalog-clear, .catalog-reset { min-height: 48px; cursor: pointer; font: 400 17px/1.3 var(--brand-title); padding: 12px 20px; border: 1px solid #586d7a; color: #fff; background: linear-gradient(#0a141bda,#0a1118df),url('controls/silver-feather-plaque.webp') center/cover; }
+.catalog-clear:hover, .catalog-reset:hover { border-color: #ed0928; }
+.catalog-empty { padding: 40px 25px; border: 1px solid #445561; text-align: center; }
+.catalog-empty h3 { font-size: 30px; margin-top: 0; }
+.catalog-empty p { color: #c5ced4; }
+.clothing-filter-bar { align-items: flex-start; flex-wrap: wrap; gap: 14px; }
+.clothing-results { min-height: 1.5em; }
+.print-studies .lookbook-frames img { aspect-ratio: 2/3; width: 100%; height: auto; object-fit: contain; background: #10171c; padding: 20px; }
+.print-studies .lookbook-frames a { border: 1px solid #344651; }
+.print-studies .lookbook-frames span { display: block; margin: 0; padding: 20px; font: 400 24px/1.2 var(--brand-title); color: #eaf0f4; }
+.clothing-page .story-scene img { object-fit: contain; background: #171c20; }
+.clothing-page .limited-card:target { background: #11202b; }
+.gallery-stage { position: relative; }
+.gallery-stage[aria-busy="true"] .gallery-canvas { visibility: hidden; }
+.gallery-loading { position: absolute; inset: 45% 15px auto; text-align: center; color: #c7d4de; font: 400 15px/1.4 var(--brand-body); }
+.clothing-gallery .gallery-thumbnail[aria-pressed="true"] { border-color: #ed0928 !important; }
+.gallery-thumbnail img { height: auto; }
+.clothing-gallery .gallery-prev span, .clothing-gallery .gallery-next span { font: 400 30px/1 var(--brand-body); }
+.brand-wordmark { color: #f2f4f6; }
+.atelier-main { padding-top: 28px; }
+.atelier-main p, .atelier-main li { font: 400 15px/1.85 var(--brand-body); color: #c6d1d8; }
+.atelier-main .service-kicker { font-size: 11px; font-weight: 700; color: #ed0928; letter-spacing: .13em; }
+.atelier-main h2 { font: 400 clamp(32px,4vw,48px)/1.13 var(--brand-title); margin: 12px 0 22px; color: #f2f5f7; }
+.atelier-main h3 { font: 400 clamp(25px,2.8vw,31px)/1.25 var(--brand-title); margin: 0 0 16px; color: #f2f5f7; }
+.atelier-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; padding: 24px 0 56px; }
+.atelier-hero h1 { font: 400 clamp(46px,5.7vw,76px)/1.03 var(--brand-title); margin: 20px 0 25px; color: #f5f7f8; }
+.atelier-main figure { margin: 0; }
+.atelier-main figure img { width: 100%; height: auto; display: block; }
+.atelier-main figcaption { font: 400 11px/1.65 var(--brand-body); color: #adbdc8; margin-top: 12px; }
+.atelier-hero figure { position: relative; }
+.atelier-hero figure img { border: 1px solid #53616c; }
+.atelier-index { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-block: 1px solid #47535b; margin-bottom: 35px; }
+.atelier-index a { display: flex; gap: 16px; align-items: center; font: 400 24px/1.3 var(--brand-title); color: #eef1f4; padding: 24px 18px; }
+.atelier-index a + a { border-left: 1px solid #47535b; }
+.atelier-index a:hover { background: #1b252c; }
+.atelier-index span, .placement-options > article > span { color: #ed0928; font: 600 13px/1.4 var(--brand-body); }
+.atelier-chapter { display: grid; grid-template-columns: minmax(0,.75fr) minmax(0,1.7fr); gap: 45px; padding: 52px 0; border-bottom: 1px solid #34424b; scroll-margin-top: 24px; }
+.chapter-title, .chapter-content, .atelier-hero > *, .atelier-brief > * { min-width: 0; }
+.chapter-title p { font-size: 14px; }
+.chapter-content > p:first-child { margin-top: 0; }
+.chapter-pair { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); gap: 30px; align-items: center; }
+.chapter-pair img { width: 100%; height: auto; display: block; }
+.chapter-pair ul { padding-left: 18px; }
+.chapter-pair li + li { margin-top: 8px; }
+.atelier-details { margin-top: 30px; padding: 18px 22px; border: 1px solid #465965; background: #101a22; }
+.atelier-details summary { cursor: pointer; color: #edf1f5; font: 400 23px/1.4 var(--brand-title); padding-block: 6px; }
+.atelier-details p { font-size: 14px; }
+.print-menu { background: linear-gradient(100deg,#0b141bf2,#101821e8),url('controls/autumn-plaque.webp') right center/auto 100% no-repeat; border: 1px solid #4e5e69; padding: 8px 28px; }
+.print-menu article { padding: 24px 0; }
+.print-menu article + article { border-top: 1px solid #3a4a56; }
+.print-menu p { margin: 0; }
+.print-menu h3 { margin-bottom: 9px; }
+.atelier-brief { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; margin-top: 55px; padding: 32px 35px; border: 1px solid #586775; background: linear-gradient(110deg,#111d27ef,#080f17e8),url('controls/autumn-plaque.webp') center/cover; }
+.brief-actions { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 17px; text-align: center; }
+.atelier-main .button { display: inline-flex; align-items: center; }
+.base-colours { display: flex; gap: 30px; margin: 26px 0; }
+.base-colours > span { display: flex; align-items: center; gap: 12px; color: #f0f4f6; font-size: 15px; }
+.base-colours i { display: inline-block; width: 30px; height: 30px; border: 1px solid #71818d; border-radius: 50%; }
+.swatch-black { background: #080a0b; }
+.swatch-white { background: #f2f4f5; }
+.measure-layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; align-items: center; }
+.measure-diagram { padding: 5px; border: 1px solid #344651; background: #0e171e; }
+.measure-diagram svg { display: block; width: 100%; height: auto; }
+.measure-diagram figcaption { padding: 0 14px 14px; }
+.measure-steps { margin: 0; padding-left: 24px; }
+.measure-steps li { padding: 8px 0 8px 6px; font-size: 14px; }
+.measure-steps li::marker { color: #ed0928; font-weight: 700; }
+.measure-steps strong { color: #fff; }
+.placement-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+.placement-options article { border-left: 2px solid #ed0928; padding: 8px 0 8px 22px; }
+.placement-options h3 { margin-top: 13px; }
+.placement-options p { font-size: 14px; }
+@media (max-width: 1000px) {
+ .atelier-chapter { grid-template-columns: minmax(0,1fr); gap: 22px; }
+ .chapter-title { max-width: 650px; }
+ .atelier-hero { gap: 26px; }
+ .atelier-brief { gap: 25px; padding: 26px; }
+ .atelier-index a { font-size: 21px; }
+}
+@media (max-width: 700px) {
+ .studio-gateway, .atelier-hero, .atelier-brief { grid-template-columns: minmax(0,1fr); }
+ .gateway-guide { padding-left: 23px; }
+ .atelier-hero { padding-bottom: 28px; }
+ .atelier-hero h1 { max-width: 540px; }
+ .atelier-hero figure { max-width: 500px; }
+ .atelier-index { grid-template-columns: minmax(0,1fr); }
+ .atelier-index a + a { border-left: 0; border-top: 1px solid #34424b; }
+ .atelier-index a { padding: 17px; }
+ .atelier-chapter { padding: 32px 0; }
+ .chapter-pair, .measure-layout { grid-template-columns: minmax(0,1fr); }
+ .chapter-pair > a { max-width: 340px; margin-inline: auto; }
+ .chapter-pair > figure { max-width: 420px; }
+ .measure-diagram { width: 100%; max-width: 350px; }
+ .atelier-brief { margin-top: 30px; padding: 22px; }
+ .clothing-page .clothing-hero--lookbook { min-height: 0; }
+ .clothing-hero-image { aspect-ratio: 16/10; }
+ .clothing-hero-image img { object-position: center; }
+ .catalog-search > div { flex-wrap: wrap; }
+ .catalog-search input { flex-basis: 100%; }
+ .catalog-clear { font-size: 16px; }
+}
+@media (max-width: 560px) {
+ .analytics-choice { padding: 12px 14px; margin: 10px 18px; }
+ .analytics-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+ .analytics-actions button { flex: 1 1 auto; font-size: 12px; }
+ .placement-options { grid-template-columns: minmax(0,1fr); }
+ .atelier-main .button { padding-inline: 42px; font-size: 18px; }
+ .print-menu { padding-inline: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Keep the video preview at its own height instead of stretching a black frame. */
+.clip-frame { align-self: start; }
+.collab-invite h2 { font: 400 clamp(30px,3vw,44px)/1.2 var(--brand-title); margin: 12px 0; }
+.collab-invite > div > p:last-child { font: 400 14px/1.75 var(--brand-body); color: #c6d1d8; max-width: 490px; }
+.collab-invite > .button { flex-shrink: 0; }
