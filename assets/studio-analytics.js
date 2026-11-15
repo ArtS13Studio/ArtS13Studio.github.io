@@ -8,6 +8,7 @@
   window[disableKey] = true;
   let choice = readChoice();
   let started = false;
+  let shellSuspended = false;
   let tag;
   let returnFocus;
 
@@ -45,7 +46,7 @@
   }
 
   function start() {
-    if (choice !== 'allow' || tag || started || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) || location.protocol !== 'https:') return;
+    if (shellSuspended || choice !== 'allow' || tag || started || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) || location.protocol !== 'https:') return;
     window[disableKey] = false;
     if (!window.ym) {
       window.ym = function () { (window.ym.a = window.ym.a || []).push(arguments); };
@@ -68,6 +69,12 @@
     tag.onerror = () => { tag?.remove(); tag = null; };
     document.head.append(tag);
   }
+
+  window.addEventListener('arts13:shell-start', () => {
+    shellSuspended = true; window[disableKey] = true;
+    if (started && typeof window.ym === 'function') window.ym(counter, 'destruct');
+    started = false; tag?.remove(); tag = null;
+  });
 
   function safeReferrer() {
     try { const url = new URL(document.referrer); return url.origin + url.pathname; }

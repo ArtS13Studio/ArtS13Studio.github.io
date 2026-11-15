@@ -1,9 +1,17 @@
+/* One player per browser tab, shared with same-origin section views. */
+(() => {
+'use strict';
+try {
+  if (window.parent !== window && window.parent.ArtStudioPlayer?.owns(window)) {
+    window.parent.ArtStudioPlayer.attachView(document);
+    return;
+  }
+} catch (_) { /* Ordinary standalone page if embedded elsewhere. */ }
 /*
   Музыкальный плеер ArtS13Studio.
 
-  На главной этот файл управляет только плашкой нового релиза и следит,
-  чтобы одновременно играл один audio. В music/ он дополнительно создаёт
-  нижний общий плеер.
+  Все кнопки треков управляют одним сворачиваемым плеером. В режиме
+  непрерывного прослушивания страницы меняются без пересоздания audio.
 
   ВАЖНО: порядок tracks должен совпадать с data-track-index карточек
   в music/index.html. Индексы начинаются с нуля.
@@ -36,45 +44,14 @@ const tracks = [
   { title: "#Кузница трёх знаков", cover: "music/kuznitsa-trekh-znakov-cover.webp?v=20260901-album-covers1", src: "audio/kuznitsa-trekh-znakov.mp3" },
 ];
 
-// Класс .music-page есть только у music/index.html.
-const isMusicLibraryPage = document.querySelector(".music-page");
-
-if (!isMusicLibraryPage) {
-  // Логика главной страницы: кнопка Play/Pause у текущего релиза.
-  const homeReleaseAudio = document.querySelector("[data-home-release-audio]");
-  const homeReleaseButton = document.querySelector("[data-home-release-play]");
-
-  function updateHomeReleaseButton() {
-    if (!homeReleaseAudio || !homeReleaseButton) return;
-    const isPlaying = !homeReleaseAudio.paused;
-    const label = isPlaying ? "Пауза" : "Слушать";
-    homeReleaseButton.innerHTML = `<img class="track-play-button-icon" src="${controlIcon(isPlaying ? "pause" : "play")}" alt="" aria-hidden="true" /><span class="track-play-button-label">${label}</span>`;
-    homeReleaseButton.setAttribute("aria-label", `${label}: Код ворона`);
-    homeReleaseButton.classList.toggle("is-playing", isPlaying);
-  }
-
-  homeReleaseButton?.addEventListener("click", () => {
-    if (!homeReleaseAudio) return;
-    if (homeReleaseAudio.paused) homeReleaseAudio.play().catch(updateHomeReleaseButton);
-    else homeReleaseAudio.pause();
-  });
-  homeReleaseAudio?.addEventListener("play", updateHomeReleaseButton);
-  homeReleaseAudio?.addEventListener("pause", updateHomeReleaseButton);
-  homeReleaseAudio?.addEventListener("ended", updateHomeReleaseButton);
-
-  // При запуске нового audio останавливаем все остальные плееры на главной.
-  document.addEventListener("play", (event) => {
-    const current = event.target;
-    if (!(current instanceof HTMLAudioElement)) return;
-
-    document.querySelectorAll("audio").forEach((player) => {
-      if (player !== current && !player.paused) player.pause();
-    });
-  }, true);
-} else {
-// Разметка общего нижнего плеера добавляется только на странице всей музыки.
+// Одна общая панель, первоначально свёрнутая, на каждой странице сайта.
 document.body.insertAdjacentHTML("beforeend", `
-  <aside class="global-player" aria-label="Музыкальный плеер">
+  <aside class="global-player" id="studio-player" aria-label="Музыкальный плеер" aria-hidden="true" inert>
+    <div class="player-toolbar">
+      <button type="button" data-player-continuous aria-pressed="false">Музыка на всём сайте</button>
+      <span data-player-continuous-status>Включите, чтобы слушать при переходах</span>
+      <button type="button" data-player-collapse>Свернуть плеер</button>
+    </div>
     <div class="global-player-inner">
       <div class="global-player-track">
         <img data-player-cover src="" alt="" />
@@ -102,8 +79,9 @@ document.body.insertAdjacentHTML("beforeend", `
         <span data-player-duration>0:00</span>
       </div>
     </div>
-    <audio data-global-audio preload="metadata"></audio>
+    <audio data-global-audio preload="none"></audio>
   </aside>
+  <button type="button" class="player-launcher" data-player-open aria-controls="studio-player" aria-expanded="false"><span>Открыть плеер</span><small data-player-mini-title>13 AI the Dark</small></button>
 `);
 
 const audio = document.querySelector("[data-global-audio]");
@@ -122,7 +100,86 @@ const mute = document.querySelector("[data-player-mute]");
 const volume = document.querySelector("[data-player-volume]");
 const volumeIcon = document.querySelector("[data-player-volume-icon]");
 const volumeValue = document.querySelector("[data-player-volume-value]");
-const trackCards = document.querySelectorAll("[data-track-index]");
+let viewDocument = document;
+const player = document.querySelector('.global-player');
+const launcher = document.querySelector('[data-player-open]');
+const continuousButton = document.querySelector('[data-player-continuous]');
+let expanded = false, continuous = false, effectTimer, stopEffect, effectAudio;
+const attached = new WeakSet();
+const navigation = window.createMusicNavigation({ attachView, measure: measurePlayer });
+window.ArtStudioPlayer = { attachView, owns: navigation.owns };
+
+function measurePlayer() {
+  const height = expanded ? Math.ceil(player.getBoundingClientRect().height) : 0;
+  document.documentElement.style.setProperty('--player-height', height + 'px');
+  document.documentElement.style.setProperty('--player-space', height + 'px');
+  const frame = navigation.frame();
+  if (frame) frame.style.height = 'calc(100dvh - ' + height + 'px)';
+  if (viewDocument !== document) viewDocument.documentElement.style.setProperty('--player-height', expanded ? '0px' : '64px');
+}
+function stormTransition() {
+  clearTimeout(effectTimer);stopEffect?.();document.querySelector('.player-snow')?.remove();
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const canvas=document.createElement('canvas');canvas.className='player-snow';canvas.setAttribute('aria-hidden','true');
+  canvas.style.height=Math.min(innerHeight*.6,player.getBoundingClientRect().height+90)+'px';
+  document.body.append(canvas);stopEffect=window.ArtSnow?.start(canvas,{compact:true,duration:.8});
+  effectTimer=setTimeout(()=>{stopEffect?.();canvas.remove();},850);
+  // A short, quiet gust for the controls, never the full entrance soundtrack.
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass)return;
+  try {
+    effectAudio?.close().catch(()=>{});
+    const context=new AudioContextClass();effectAudio=context;
+    const buffer=context.createBuffer(1,Math.ceil(context.sampleRate*.7),context.sampleRate);
+    const data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=Math.random()*2-1;
+    const source=context.createBufferSource();source.buffer=buffer;
+    const filter=context.createBiquadFilter();filter.type='lowpass';filter.frequency.value=750;
+    const gain=context.createGain();gain.gain.setValueAtTime(0,context.currentTime);
+    gain.gain.linearRampToValueAtTime(.075,context.currentTime+.12);gain.gain.linearRampToValueAtTime(0,context.currentTime+.65);
+    source.connect(filter);filter.connect(gain);gain.connect(context.destination);
+    source.onended=()=>{context.close().catch(()=>{});if(effectAudio===context)effectAudio=null;};
+    context.resume().catch(()=>{});source.start();source.stop(context.currentTime+.7);
+  }catch(_){}
+}
+function setExpanded(value, animate=true) {
+  if(expanded===value)return;
+  expanded=value;if(animate)stormTransition();
+  player.inert=!value;player.setAttribute('aria-hidden',String(!value));
+  player.classList.toggle('is-expanded',value);launcher.hidden=value;
+  launcher.setAttribute('aria-expanded',String(value));
+  measurePlayer();
+  if(!value)launcher.focus({preventScroll:true});
+}
+function attachView(doc) {
+  viewDocument=doc;
+  navigation.bindView(doc);
+  if(!attached.has(doc)) {
+    attached.add(doc);
+    doc.addEventListener('click',event=>{
+      const button=event.target.closest('[data-track-play], [data-home-release-play], [data-player-show]');
+      if(button) {
+        event.preventDefault();
+        if(button.matches('[data-player-show]')){setExpanded(true);toggle.focus({preventScroll:true});return;}
+        const index=button.matches('[data-home-release-play]')?0:Number(button.closest('[data-track-index]').dataset.trackIndex);
+        if(index===currentIndex){if(audio.paused)playSelected();else audio.pause();}
+        else selectTrack(index);
+      }
+      navigation.click(event,doc);
+    });
+  }
+  updatePlayerState();measurePlayer();
+}
+launcher.addEventListener('click',()=>{setExpanded(true);toggle.focus({preventScroll:true});});
+document.querySelector('[data-player-collapse]').addEventListener('click',()=>setExpanded(false));
+continuousButton.addEventListener('click',()=>{
+  continuous=!continuous;navigation.setEnabled(continuous);
+  continuousButton.setAttribute('aria-pressed',String(continuous));
+  continuousButton.textContent=continuous?'Музыка на всём сайте: вкл.':'Музыка на всём сайте';
+  document.querySelector('[data-player-continuous-status]').textContent=continuous?'Трек продолжится в любом разделе':'При переходе музыка остановится';
+  if(continuous&&audio.paused)playSelected();
+});
+new ResizeObserver(measurePlayer).observe(player);
+window.addEventListener('pagehide',()=>{stopEffect?.();effectAudio?.close().catch(()=>{});});
 
 // Текущее состояние плеера.
 let currentIndex = 0;
@@ -183,7 +240,7 @@ function formatTime(value) {
 
 // Подсвечивает активную карточку и меняет её кнопку Слушать/Пауза.
 function updateTrackCards() {
-  trackCards.forEach((card) => {
+  viewDocument.querySelectorAll("[data-track-index]").forEach((card) => {
     const cardIndex = Number(card.dataset.trackIndex);
     const isCurrent = cardIndex === currentIndex;
     const isPlaying = isCurrent && !audio.paused;
@@ -199,6 +256,15 @@ function updateTrackCards() {
 }
 
 function updatePlayerState() {
+  const homeButton=viewDocument.querySelector('[data-home-release-play]');
+  if(homeButton){
+    const playing=currentIndex===0&&!audio.paused;
+    homeButton.innerHTML=`<img class="track-play-button-icon" src="${controlIcon(playing?'pause':'play')}" alt="" /><span>${playing?'Пауза':'Слушать'}</span>`;
+    homeButton.setAttribute('aria-label',(playing?'Пауза':'Слушать')+': Код ворона');
+  }
+  launcher.classList.toggle('is-playing',!audio.paused);
+  launcher.querySelector('span').textContent=audio.paused?'Открыть плеер':'Сейчас играет';
+  document.querySelector('[data-player-mini-title]').textContent=tracks[currentIndex].title;
   const playing = !audio.paused;
   if ("mediaSession" in navigator) navigator.mediaSession.playbackState = playing ? "playing" : "paused";
   toggleIcon.src = controlIcon(playing ? "pause" : "play");
@@ -213,6 +279,7 @@ function setStatus(text, isError = false) {
 }
 
 async function playSelected() {
+  setExpanded(true);
   const requestId = selectionId;
   ensureAudioGraph();
   if (audio.error) audio.load();
@@ -294,19 +361,6 @@ function updateVolumeState() {
   mute.classList.toggle("is-muted", playerVolume === 0);
 }
 
-trackCards.forEach((card) => {
-  card.querySelector("[data-track-play]")?.addEventListener("click", () => {
-    ensureAudioGraph();
-    const index = Number(card.dataset.trackIndex);
-    if (index === currentIndex) {
-      if (audio.paused) playSelected();
-      else audio.pause();
-      return;
-    }
-    selectTrack(index);
-  });
-});
-
 toggle.addEventListener("click", () => {
   ensureAudioGraph();
   if (audio.paused) playSelected();
@@ -363,4 +417,5 @@ audio.addEventListener("ended", () => {
 setPlaybackMode("sequential");
 updateVolumeState();
 selectTrack(0, false);
-}
+attachView(document);
+})();

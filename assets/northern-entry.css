@@ -19,7 +19,7 @@ html.northern-entry-pending::before {
   background: radial-gradient(ellipse at center, #030b166b, transparent 65%),linear-gradient(0deg,#07111acc,transparent 28%,transparent 80%,#07111a80);
 }
 .northern-entry-brand { z-index: 2; position: relative; margin: 0 22px; text-align: center; text-shadow: 0 2px 8px #03070e,0 3px 35px #03070e,0 0 70px #03070e; animation: entry-wordmark 8s ease both; }
-.northern-entry-brand strong { display: block; font: 400 clamp(34px,7vw,96px)/1.2 'Caesar Dressing Cyrillic',serif; letter-spacing: .02em; }
+.northern-entry-brand strong { display: block; font: 400 clamp(37.4px,7.7vw,105.6px)/1.2 'Caesar Dressing Cyrillic',serif; letter-spacing: .02em; }
 .northern-entry-brand strong span { color: #ed0928; }
 .northern-entry-brand p { font: 500 clamp(10px,1.1vw,13px)/1.5 Manrope,sans-serif; letter-spacing: .23em; text-transform: uppercase; margin: 18px 0 0; color: #e1e9f2; }
 .northern-entry-actions { position: absolute; z-index: 3; right: max(24px,env(safe-area-inset-right)); bottom: max(26px,env(safe-area-inset-bottom)); display: flex; gap: 12px; }
@@ -32,3 +32,5 @@ html.northern-entry-pending::before {
 @keyframes entry-wordmark { from { opacity: 0; transform: translateY(7px); } 12%,85%,to { opacity: 1; transform: none; } }
 @keyframes entry-safety-exit { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { html.northern-entry-pending { overflow: revert; } html.northern-entry-pending::before, .northern-entry { display: none !important; } }
+
+.northern-entry-actions button[hidden] { display: none; }

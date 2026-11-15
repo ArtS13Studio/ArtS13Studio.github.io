@@ -33,11 +33,5 @@
     const target = document.querySelector('.studio-logo');
     target?.focus({ preventScroll: true });
   });
-  const player = document.querySelector('.global-player');
-  if (player) {
-    const resize = () => document.documentElement.style.setProperty('--player-height', `${Math.ceil(player.getBoundingClientRect().height)}px`);
-    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(player);
-    window.addEventListener('resize', resize, { passive: true });
-    resize();
-  }
+
 })();

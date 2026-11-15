@@ -136,3 +136,32 @@
 .collab-invite h2 { font: 400 clamp(30px,3vw,44px)/1.2 var(--brand-title); margin: 12px 0; }
 .collab-invite > div > p:last-child { font: 400 14px/1.75 var(--brand-body); color: #c6d1d8; max-width: 490px; }
 .collab-invite > .button { flex-shrink: 0; }
+
+/* Two deliberate cards, with real breathing room instead of a flush-left strip. */
+.brand-home .studio-gateway.brand-section {
+  width: min(1360px, calc(100% - 48px)); max-width: 1360px; margin: 28px auto 54px;
+  padding: 0; gap: 24px; border: 0; background: none;
+  grid-template-columns: repeat(2,minmax(0,1fr)); align-items: stretch;
+}
+.studio-gateway > div {
+  display: flex; flex-direction: column; align-items: flex-start; min-width: 0;
+  padding: clamp(26px,3.4vw,48px); border: 1px solid #3a4853; border-top: 3px solid #971225;
+  background: #101820;
+}
+.studio-gateway .gateway-guide { align-self: stretch; }
+.studio-gateway h2, .studio-gateway h3 { font-size: clamp(30px,3.1vw,43px); margin: 14px 0 17px; }
+.studio-gateway .brand-eyebrow { color: #e4ebf0; margin: 0; }
+.studio-gateway p { font-size: 15px; margin: 0 0 22px; }
+.studio-gateway .brand-button { margin-top: auto; width: 100%; max-width: 350px; min-height: 85px; }
+.atelier-main .atelier-brief {
+  background: #101820; border: 1px solid #42515d; border-top: 3px solid #a5192d;
+  padding: clamp(26px,3.5vw,44px); gap: 36px; align-items: center;
+}
+.atelier-brief h2 { font-size: clamp(32px,4vw,46px); }
+.atelier-brief .brief-actions { padding: 20px 0 20px 28px; border-left: 1px solid #42515d; }
+@media(max-width:760px) {
+  .brand-home .studio-gateway.brand-section { grid-template-columns: minmax(0,1fr); width: auto; margin: 24px 22px 40px; gap: 18px; }
+  .studio-gateway > div { padding: 25px; }
+  .atelier-main .atelier-brief { grid-template-columns: minmax(0,1fr); }
+  .atelier-brief .brief-actions { border-left: 0; border-top: 1px solid #42515d; padding: 22px 0 0; }
+}
