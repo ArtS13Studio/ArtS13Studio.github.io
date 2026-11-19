@@ -10,6 +10,11 @@ html.northern-entry-pending::before {
   opacity: 1; transition: opacity .65s ease; touch-action: none;
 }
 .northern-entry.is-leaving { opacity: 0; pointer-events: none; }
+/* The intro is a scene, not selectable page content (including caret browsing). */
+.northern-entry, .northern-entry * {
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+  caret-color: transparent; cursor: default;
+}
 .northern-entry-scene, .northern-entry-snow {
   position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
 }

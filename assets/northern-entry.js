@@ -14,6 +14,7 @@
   const root=document.documentElement, base=new URL('./atmosphere/',document.currentScript.src);
   // Fetch in the head, concurrently with HTML and fonts, not after DOMContentLoaded.
   const scene=new Image(); scene.fetchPriority='high'; scene.decoding='async';
+  scene.draggable=false;
   scene.className='northern-entry-scene'; scene.alt=''; scene.setAttribute('aria-hidden','true');
   const soundtrack=new Audio(new URL('poka-gorim-intro.mp3?v=2',base).href);
   soundtrack.preload='auto'; // Eight seconds, baked at 25% of the source volume with a fading tail.
@@ -60,6 +61,7 @@
     } finally {playPending=false;}
   };
   const onInteraction=event=>{if(event.isTrusted)startMusic();};
+  const preventSelection=event=>event.preventDefault();
   const start=()=>{
     if(!overlay||!scene.complete||!scene.naturalWidth||closing||started)return;
     try{
@@ -68,6 +70,7 @@
       storage.setItem(key,String(now));
     }catch(_){immediateExit();return;}
     started=true;clearTimeout(loadTimeout);originalFocus=document.activeElement;
+    window.getSelection()?.removeAllRanges();
     root.classList.add('northern-entry-pending');document.body.append(overlay);
     const suppress=element=>{
       if(element===overlay||!(element instanceof HTMLElement)||inertElements.has(element))return;
@@ -87,6 +90,7 @@
     overlay.setAttribute('aria-label','Добро пожаловать в ArtS13Studio. Заставка длится восемь секунд.');
     overlay.innerHTML='<canvas class="northern-entry-snow" aria-hidden="true"></canvas><div class="northern-entry-brand"><strong>ArtS<span>13</span>Studio</strong><p>Северная душа. Своя история.</p></div>';
     overlay.prepend(scene);
+    overlay.addEventListener('selectstart',preventSelection);overlay.addEventListener('dragstart',preventSelection);
     overlay.addEventListener('pointerup',onInteraction);overlay.addEventListener('keydown',onInteraction);
     // Slow assets cannot hold the page hostage; content remains visible until ready.
     loadTimeout=setTimeout(immediateExit,5000);start();
