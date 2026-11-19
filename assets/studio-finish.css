@@ -69,8 +69,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .autumn-picks { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 22px; }
 .autumn-pick { display: block; position: relative; padding-bottom: 15px; border-bottom: 1px solid #4b4e4b; color: #eee6dc; }
 .autumn-pick img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: contain; background: #151919; }
-.autumn-pick > span { display: block; margin: 18px 0 9px; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #ed0928; }
-.autumn-pick h3 { padding-right: 0; }
+.autumn-pick h3 { padding-right: 0; margin-top: 14px; color: #f4f6f8; }
 .autumn-pick:hover { border-color: #ed0928; }
 .autumn-intro { padding: 26px; margin: 22px 0 30px; border: 1px solid #495250; border-left: 3px solid #ed0928; background: linear-gradient(120deg,#111c2b,#0a0f16); }
 .autumn-intro h3 { margin: 0 0 14px; font-size: clamp(28px,3vw,40px); }
@@ -78,7 +77,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .autumn-card .limited-card-media { aspect-ratio: 4/5; }
 .autumn-card .limited-card-media img { filter: none; width: 100%; height: auto; aspect-ratio: 4/5; object-fit: contain; }
 .autumn-card .limited-card-media::before, .autumn-card .limited-card-media::after { display: none; }
-.autumn-card .limited-card-copy > span { color: #ed0928; }
+.autumn-card .limited-card-copy > span { color: #d9e0e5; font-size: 12px; line-height: 1.5; }
 .gallery-original { padding: 12px 18px; }
 /* Библиотека компактнее, длинные истории остаются по запросу. */
 .music-page { padding-bottom: calc(var(--player-height) + 34px); }
@@ -138,7 +137,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .studio-mobile-menu > summary { font-size: 11px; gap: 4px; padding: 0; }
   .studio-mobile-menu > summary span { font-size: 18px; }
   .autumn-picks { gap: 24px 12px; }
-  .autumn-pick h3 { font-size: 27px; } .autumn-pick > span { font-size: 8px; letter-spacing: .02em; }
+  .autumn-pick h3 { font-size: 27px; }
   .autumn-intro { padding: 20px; }
   .music-search { width: 100%; padding-inline: 18px; }
   .music-library-grid { grid-template-columns: 1fr; }

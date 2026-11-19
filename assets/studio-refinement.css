@@ -1,4 +1,35 @@
 /* Shared polish and the studio / fitting guide. Existing engraving assets stay intact. */
+/* Both mobile header controls use the same type, surface and touch area. */
+@media (max-width: 1160px) {
+  .studio-header .studio-music-link,
+  .studio-header .studio-mobile-menu > summary {
+    display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+    min-height: 44px; width: 90px; padding: 8px; gap: 5px;
+    border: 1px solid #45586b; border-radius: 4px; color: #f4f6f8;
+    background: linear-gradient(#09121ad9,#090e14e8),url('controls/silver-feather-plaque.webp') center/cover;
+    box-shadow: inset 0 1px #9aaebe33, inset 0 -2px #000;
+    font: 400 18px/1.2 var(--brand-title); white-space: nowrap;
+  }
+  .studio-header .studio-mobile-menu > summary span { font: 400 18px/1 var(--brand-body); }
+  .studio-header .studio-music-link:hover,
+  .studio-header .studio-mobile-menu > summary:hover,
+  .studio-header .studio-mobile-menu[open] > summary { border-color: #ed0928; }
+}
+@media (max-width: 640px) {
+  .studio-header { gap: 8px; flex-wrap: nowrap; padding-inline: 12px; }
+  .studio-header .studio-music-link,
+  .studio-header .studio-mobile-menu > summary { width: 76px; font-size: 16px; padding-inline: 5px; }
+  .studio-header .studio-mobile-menu { flex-shrink: 0; }
+  .studio-header .studio-logo { min-width: 0; flex-shrink: 1; }
+  .studio-header .studio-logo strong { font-size: clamp(17px,5.2vw,22px); }
+}
+@media (max-width: 360px) {
+  .studio-header { gap: 6px; padding-inline: 10px; }
+  .studio-header .studio-music-link,
+  .studio-header .studio-mobile-menu > summary { width: 68px; }
+  .studio-header .studio-logo img { width: 24px; height: 30px; }
+  .studio-header .studio-logo { gap: 5px; }
+}
 .studio-header a[aria-current="page"] { color: #fff; text-decoration: underline; text-decoration-color: #ed0928; text-underline-offset: 7px; }
 .analytics-choice { padding: 14px 20px; margin-block: 12px; gap: 12px 24px; }
 .analytics-choice h2 { font-size: 21px; margin-bottom: 4px; }

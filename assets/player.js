@@ -81,7 +81,7 @@ document.body.insertAdjacentHTML("beforeend", `
     </div>
     <audio data-global-audio preload="none"></audio>
   </aside>
-  <button type="button" class="player-launcher" data-player-open aria-controls="studio-player" aria-expanded="false"><span>Открыть плеер</span><small data-player-mini-title>13 AI the Dark</small></button>
+  <button type="button" class="player-launcher" data-player-open aria-controls="studio-player" aria-expanded="false" aria-label="Открыть плеер" hidden><span>Плеер</span><small data-player-mini-title>13 AI the Dark</small></button>
 `);
 
 const audio = document.querySelector("[data-global-audio]");
@@ -113,9 +113,14 @@ function measurePlayer() {
   const height = expanded ? Math.ceil(player.getBoundingClientRect().height) : 0;
   document.documentElement.style.setProperty('--player-height', height + 'px');
   document.documentElement.style.setProperty('--player-space', height + 'px');
+  const launcherSpace = launcher.hidden ? 0 : Math.ceil(launcher.getBoundingClientRect().height) + 12;
+  document.documentElement.style.setProperty('--player-launcher-space', launcherSpace + 'px');
   const frame = navigation.frame();
   if (frame) frame.style.height = 'calc(100dvh - ' + height + 'px)';
-  if (viewDocument !== document) viewDocument.documentElement.style.setProperty('--player-height', expanded ? '0px' : '64px');
+  if (viewDocument !== document) {
+    viewDocument.documentElement.style.setProperty('--player-height', '0px');
+    viewDocument.documentElement.style.setProperty('--player-launcher-space', launcherSpace + 'px');
+  }
 }
 function stormTransition() {
   clearTimeout(effectTimer);stopEffect?.();document.querySelector('.player-snow')?.remove();
@@ -179,6 +184,7 @@ continuousButton.addEventListener('click',()=>{
   if(continuous&&audio.paused)playSelected();
 });
 new ResizeObserver(measurePlayer).observe(player);
+new ResizeObserver(measurePlayer).observe(launcher);
 window.addEventListener('pagehide',()=>{stopEffect?.();effectAudio?.close().catch(()=>{});});
 
 // Текущее состояние плеера.
@@ -263,7 +269,8 @@ function updatePlayerState() {
     homeButton.setAttribute('aria-label',(playing?'Пауза':'Слушать')+': Код ворона');
   }
   launcher.classList.toggle('is-playing',!audio.paused);
-  launcher.querySelector('span').textContent=audio.paused?'Открыть плеер':'Сейчас играет';
+  launcher.querySelector('span').textContent=audio.paused?'Плеер':'Играет';
+  launcher.setAttribute('aria-label','Открыть плеер'+(!audio.paused?': '+tracks[currentIndex].title:''));
   document.querySelector('[data-player-mini-title]').textContent=tracks[currentIndex].title;
   const playing = !audio.paused;
   if ("mediaSession" in navigator) navigator.mediaSession.playbackState = playing ? "playing" : "paused";
