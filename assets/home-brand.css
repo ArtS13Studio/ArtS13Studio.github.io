@@ -178,7 +178,7 @@
   .brand-wordmark { font-size: 72px; }
   .brand-hero-title { font-size: 29px; }
   .brand-collabs { grid-template-columns: 1fr; }
-  .brand-process { column-gap: 16px; }
+  .brand-process { grid-template-columns: minmax(0,1fr); gap: 18px; }
   .brand-process h3 { font-size: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {

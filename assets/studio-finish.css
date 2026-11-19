@@ -52,8 +52,12 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .autumn-home .brand-button, .brand-button[href*="type=autumn"],
 .autumn-home .brand-button:hover, .brand-button[href*="type=autumn"]:hover {
   background: url('controls/autumn-plaque.webp') center/100% 100% no-repeat;
-  min-height: 108px; padding-inline: 75px;
+  display: inline-grid; grid-template-columns: 27% minmax(0,1fr) 27%; gap: 0;
+  width: 500px; min-height: 132px; padding: 28px 0; flex-shrink: 0;
 }
+.brand-button .autumn-button-label { grid-column: 2; font: inherit; text-wrap: balance; }
+.autumn-home .brand-section-bottom { flex-wrap: wrap; }
+.autumn-home .brand-section-bottom > p { flex: 1 1 auto; }
 .clothing-filters button[data-filter="autumn"] {
   background: linear-gradient(#170b0ecc,#080d13df),url('controls/autumn-plaque.webp') center/cover;
   border-color: #704047;
@@ -111,7 +115,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .global-player-track [data-player-status] { letter-spacing: .025em; font: 500 11px/1.4 var(--brand-body); text-transform: none; color: #bfc6c9; }
 .global-player-track [data-player-status].is-error { color: #fff; text-decoration: underline; text-decoration-color: #ed0928; }
 .global-player-track [data-player-status], .library-track-copy > span { background: none; -webkit-text-fill-color: currentColor; }
-.library-track-copy > span { color: #bdc5ca; }
+.library-track-copy > span { display: block; color: #bdc5ca; font-size: 12px; line-height: 1.5; letter-spacing: .035em; }
 .global-player-options { gap: 0; }
 .global-player-modes .player-mode-button { height: 44px; width: 106px; }
 .global-player .player-mode-icon { -webkit-text-fill-color: #ed0928; background: none; color: #ed0928; font-family: var(--brand-body); }
@@ -145,7 +149,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .library-cover { grid-column: 1; grid-row: 1; width: 100px; }
   .library-track-copy { padding: 0; grid-column: 2; grid-row: 1; }
   .library-track-copy h2 { font-size: 26px; }
-  .library-track-copy > span { font-size: 8px; letter-spacing: .04em; }
+  .library-track-copy > span { font-size: 12px; letter-spacing: .035em; }
   .library-play-button { grid-column: 1/-1; width: 100%; min-height: 46px; }
   .global-player-inner { min-height: 0; grid-template-columns: minmax(0,1fr) auto; grid-template-rows: auto auto auto; gap: 0 8px; padding: 8px 14px max(3px,env(safe-area-inset-bottom)); }
   .global-player-track { gap: 9px; }
@@ -250,7 +254,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 }
 @media (max-width: 640px) {
  .brand-button, .lookbook-link, .section-open-button, .button { min-height: 100px; padding-inline: 58px; font-size: 19px; }
- .autumn-home .brand-button, .brand-button[href*="type=autumn"] { padding-inline: 60px; }
+ .autumn-home .brand-button, .brand-button[href*="type=autumn"] { padding: 28px 0; }
  .studio-music-link { padding-inline: 12px; }
  .global-player-transport button { width: 44px; height: 44px; }
  .global-player-transport .global-player-main-button { width: 48px; height: 48px; }

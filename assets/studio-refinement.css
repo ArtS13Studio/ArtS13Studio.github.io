@@ -157,7 +157,7 @@
  .analytics-actions { display: flex; flex-wrap: wrap; gap: 8px; }
  .analytics-actions button { flex: 1 1 auto; font-size: 12px; }
  .placement-options { grid-template-columns: minmax(0,1fr); }
- .atelier-main .button { padding-inline: 42px; font-size: 18px; }
+ .atelier-main .button { padding-inline: 58px; font-size: 18px; }
  .print-menu { padding-inline: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -167,6 +167,17 @@
 .collab-invite h2 { font: 400 clamp(30px,3vw,44px)/1.2 var(--brand-title); margin: 12px 0; }
 .collab-invite > div > p:last-child { font: 400 14px/1.75 var(--brand-body); color: #c6d1d8; max-width: 490px; }
 .collab-invite > .button { flex-shrink: 0; }
+
+/* Keep small labels readable, and reserve the carved edges for decoration. */
+.service-aside .button { padding-inline: 50px; }
+.brand-home .brand-text-link { font-size: 14px; }
+.brand-home .wear-pick-label, .brand-home .wear-pick-open,
+.clothing-card-open, .clothing-page .limited-card-copy > span,
+.catalog-card-actions .catalog-reference, .gallery-thumbnail span,
+.album-index-card small, .album-index-card > span,
+.featured-release-meta dt, .library-track-meta dt { font-size: 12px; line-height: 1.5; letter-spacing: .035em; }
+.brand-home .wear-pick p, .brand-section-bottom p { font-size: 14px; }
+.gallery-disclaimer { font-size: 12px !important; }
 
 /* Two deliberate cards, with real breathing room instead of a flush-left strip. */
 .brand-home .studio-gateway.brand-section {
